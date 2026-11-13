@@ -1,0 +1,264 @@
+{
+  "meta": {
+    "home": {
+      "title": "{brand} — Premi. Agita. Bevi. La creatina nel tappo",
+      "description": "Una bevanda pronta da bere con 3–5 g di creatina monoidrato conservata asciutta nel tappo. Premi, agita, bevi. Progetto studentesco ESCP."
+    },
+    "privacy": {
+      "title": "Informativa privacy — {brand}",
+      "description": "Quali dati misura il sito {brand}, perché, per quanto tempo e come esercitare i tuoi diritti."
+    },
+    "legal": {
+      "title": "Note legali — {brand}",
+      "description": "Editore, hosting e natura del sito {brand}, un test di concept studentesco di ESCP Business School."
+    },
+    "ogImageAlt": "Bottiglia {brand} con il tappo alla creatina, su sfondo grafite"
+  },
+  "nav": {
+    "skip": "Vai al contenuto",
+    "home": "{brand}, home",
+    "langLabel": "Scegli la lingua",
+    "preorder": "Preordina",
+    "back": "Vedi il prodotto"
+  },
+  "hero": {
+    "meta": "Pronta da bere — creatina all'asciutto",
+    "metaRight": "Proto 01 / Lab",
+    "title": "Premi.\nAgita.\nBevi.",
+    "lead": "Una bevanda pronta da bere. Nel tappo, la tua dose di creatina monoidrato, tenuta all'asciutto fino al momento di bere.",
+    "chip1": "3–5 g di creatina monoidrato",
+    "chip2": "Conservata asciutta nel tappo",
+    "dragHint": "Trascina per ruotare",
+    "priceUnit": "a bottiglia",
+    "cta": "Preordina",
+    "scroll": "Esplora l'oggetto"
+  },
+  "scene": {
+    "alt": "Bottiglia {brand} in 3D: una bevanda e un tappo trasparente che contiene la creatina in polvere.",
+    "labelDose": "Creatina monoidrato · 3–5 g",
+    "labelSports": "Pesi · Powerlifting · CrossFit",
+    "labelMeta": "Dry-cap · Proto 01",
+    "keys": "Usa le frecce sinistra e destra per farla girare."
+  },
+  "explore": {
+    "kicker": "Esplora l'oggetto",
+    "navLabel": "Capitoli dell'oggetto",
+    "c1": {
+      "tab": "Il tappo",
+      "title": "Il tappo\nfa il lavoro.",
+      "text": "Una camera asciutta e trasparente, sopra la bevanda. Vedi la tua dose prima di rilasciarla. Un pulsante da premere, una membrana che si apre.",
+      "spec": "Camera asciutta · Pulsante · Membrana"
+    },
+    "c2": {
+      "tab": "La dose",
+      "title": "Da 3 a 5 g.\nGià dosati.",
+      "text": "Creatina monoidrato, pronta nel tappo. Niente misurino, niente barattolo da aprire, niente dosi a occhio.",
+      "spec": "Creatina monoidrato · 3–5 g · Dose pronta"
+    },
+    "c3": {
+      "tab": "La bevanda",
+      "title": "Asciutta\nfino al clic.",
+      "text": "La creatina è considerata più stabile in forma secca che in soluzione. Per questo aspetta nel tappo e raggiunge la bevanda solo quando premi.",
+      "spec": "Pronta da bere · Da portare · Senza shaker"
+    },
+    "c4": {
+      "tab": "Per chi",
+      "title": "Fatta per\nla palestra.",
+      "text": "Pesi, powerlifting, CrossFit: la bottiglia va nella borsa, la polvere non va dappertutto.",
+      "spec": "Pesi · Powerlifting · CrossFit"
+    }
+  },
+  "demo": {
+    "kicker": "Imparare facendo",
+    "title": "Non leggere.\nFallo.",
+    "intro": "Tre gesti, come con la bottiglia vera. Vai.",
+    "stepsLabel": "Passaggi della demo",
+    "reset": "Ricomincia",
+    "s1": {
+      "name": "Premi",
+      "title": "Premi il tappo.",
+      "text": "Tieni premuto il pulsante fino al clic: la membrana si apre e la creatina cade nella bevanda.",
+      "button": "Tieni premuto",
+      "hint": "Oppure tieni premuto il tappo direttamente sulla bottiglia.",
+      "gesture": "Tieni…"
+    },
+    "s2": {
+      "name": "Agita",
+      "title": "Agita.",
+      "text": "Scorri veloce a destra e a sinistra sulla bottiglia, oppure tocca il pulsante più volte.",
+      "button": "Agita",
+      "motion": "Usa il sensore di movimento",
+      "meter": "Miscela",
+      "hint": "Dal telefono puoi anche agitarlo davvero.",
+      "gesture": "Agita!"
+    },
+    "s3": {
+      "name": "Bevi",
+      "title": "Bevi.",
+      "text": "La dose è nella bevanda. Tocca a te.",
+      "button": "Bevi",
+      "gesture": "Salute."
+    },
+    "done": {
+      "title": "Fatto.\nZero shaker.",
+      "text": "Niente bustine, niente misurino, niente polvere in fondo alla borsa. Solo una bottiglia."
+    }
+  },
+  "why": {
+    "kicker": "Perché",
+    "title": "La polvere\nha il suo posto.\nAll'asciutto.",
+    "p1": {
+      "title": "Asciutta fino in fondo",
+      "text": "La creatina è generalmente considerata più stabile in polvere che una volta disciolta. Per questo resta nel tappo e la rilasci al momento di bere."
+    },
+    "p2": {
+      "title": "Una dose fissa",
+      "text": "Da 3 a 5 g di creatina monoidrato, dosati in anticipo. Niente misurino, niente approssimazioni, niente barattoli in giro."
+    },
+    "p3": {
+      "title": "Né shaker, né bustine",
+      "text": "Niente da travasare, niente da lavare. Premi, agiti, bevi."
+    },
+    "who": {
+      "title": "Per chi?",
+      "a": {
+        "title": "Pesi",
+        "text": "La tua dose nella borsa della palestra, pronta quando lo sei tu."
+      },
+      "b": {
+        "title": "Powerlifting",
+        "text": "Nessun barattolo da aprire in pedana. Il tappo ha già dosato."
+      },
+      "c": {
+        "title": "CrossFit",
+        "text": "Una bottiglia, un gesto. Niente polvere in giro per il box."
+      }
+    },
+    "claim": {
+      "title": "Indicazione sulla salute autorizzata (UE)",
+      "text": "La creatina aumenta la prestazione fisica in caso di esercizi di alta intensità, brevi e ripetuti. L'effetto benefico si ottiene con l'assunzione giornaliera di 3 g di creatina.",
+      "note": "Prodotto in sviluppo: composizione, gusto e formato non sono definitivi. Da consumare nell'ambito di una dieta varia ed equilibrata e di uno stile di vita sano. Sconsigliato a bambini, adolescenti e donne in gravidanza o in allattamento. Non superare la dose giornaliera indicata."
+    }
+  },
+  "final": {
+    "title": "La tua dose.\nNel tappo.",
+    "text": "Una bevanda pronta da bere, 3–5 g di creatina monoidrato all'asciutto, tre gesti."
+  },
+  "bar": {
+    "label": "Prezzo"
+  },
+  "footer": {
+    "project": "Progetto studentesco ESCP Business School",
+    "navLabel": "Informazioni",
+    "privacy": "Privacy",
+    "legal": "Note legali",
+    "contact": "Contatto",
+    "concept": "Concept in fase di test, non in vendita"
+  },
+  "banner": {
+    "label": "Informazione",
+    "text": "Questo sito è un test di un progetto studentesco. Misurazione del pubblico senza pubblicità, con un identificativo casuale salvato nel tuo browser (niente cookie).",
+    "link": "Scopri di più",
+    "ok": "OK"
+  },
+  "dialog": {
+    "kicker": "Preordine",
+    "title": "Non ancora in vendita.",
+    "message": "Questo prodotto è in fase di sviluppo e non è ancora in vendita. Lascia la tua e-mail per essere avvisato/a del lancio.",
+    "emailLabel": "La tua e-mail",
+    "emailPlaceholder": "tu@esempio.it",
+    "consent": "Accetto di essere contattato/a riguardo al lancio. I miei dati saranno usati solo per questo progetto studentesco e cancellati entro il {deletionDate}.",
+    "honeypot": "Non compilare questo campo",
+    "submit": "Avvisami",
+    "noThanks": "No, grazie",
+    "close": "Chiudi",
+    "sending": "Invio…",
+    "legal": "Facoltativo. Nessun pagamento, nessun indirizzo postale.",
+    "errInvalidEmail": "Questo indirizzo e-mail non sembra valido.",
+    "errConsent": "Spunta la casella così possiamo avvisarti.",
+    "errRate": "Troppi tentativi. Riprova tra qualche minuto.",
+    "errNetwork": "Connessione impossibile. Controlla la rete e riprova.",
+    "errGeneric": "Si è verificato un errore. Riprova più tardi.",
+    "successKicker": "Avviso di lancio",
+    "successTitle": "Fatto.",
+    "successText": "Ti avvisiamo al lancio, e solo per quello. Nessun ordine è stato effettuato. Grazie per aiutarci a testare l'idea.",
+    "questionnaire": "Rispondi a un breve questionario",
+    "newTab": "Si apre in una nuova scheda"
+  },
+  "privacy": {
+    "kicker": "Dati personali",
+    "title": "Privacy",
+    "intro": "Questo sito è un test di concept realizzato nell'ambito di un progetto studentesco. Nessun prodotto è in vendita. Ecco, in modo semplice, cosa misuriamo e perché.",
+    "controller": {
+      "h": "Chi è il titolare?",
+      "body": "{publisher}.\nContatto: {contactEmail}"
+    },
+    "purposes": {
+      "h": "Perché questi dati?",
+      "body": "- Misurare l'interesse per il prodotto in base al prezzo mostrato (test di prezzo), in forma pseudonima: un identificativo casuale, senza il tuo nome né la tua e-mail.\n- Avvisarti del lancio, solo se ci lasci la tua e-mail e dai il tuo consenso."
+    },
+    "data": {
+      "h": "Quali dati?",
+      "body": "- Un identificativo casuale, creato dal tuo browser e salvato nella sua memoria locale (localStorage). Non contiene né il tuo nome né la tua e-mail. Durata: 13 mesi al massimo, poi viene sostituito.\n- Gli eventi di visita: visualizzazione della pagina, clic su «Preordina», invio del modulo, clic verso il questionario, con data e ora.\n- La lingua della pagina e il prezzo mostrato.\n- La fonte della visita (parametri UTM del link, ad esempio instagram_story), altrimenti «direct». Anche la fonte della tua prima visita resta salvata nel tuo browser.\n- Il tuo indirizzo e-mail, solo se lo inserisci e spunti la casella del consenso. È conservato separatamente dalle statistiche.\n- Il tuo indirizzo IP, solo in forma hash (illeggibile) e temporanea, per limitare gli abusi. Non viene mai salvato in chiaro."
+    },
+    "notCollected": {
+      "h": "Cosa non facciamo",
+      "body": "- Niente cookie di misurazione, niente Google Analytics, niente pixel pubblicitari.\n- Niente pubblicità mirata.\n- Nessuna vendita o condivisione dei tuoi dati a fini commerciali.\n- Nessuna raccolta di dati della carta o di indirizzi postali."
+    },
+    "legalBasis": {
+      "h": "Su quale base giuridica?",
+      "body": "- Misurazione pseudonima del pubblico (identificativo casuale): il nostro legittimo interesse a valutare il concept nell'ambito del progetto. Puoi opporti (vedi «Non essere più misurato»).\n- E-mail: il tuo consenso, che puoi revocare in qualsiasi momento."
+    },
+    "retention": {
+      "h": "Per quanto tempo?",
+      "body": "Tutti i dati (statistiche ed e-mail) vengono cancellati entro il {deletionDate}. Se lo chiedi, la tua e-mail viene cancellata prima."
+    },
+    "recipients": {
+      "h": "Chi vi ha accesso?",
+      "body": "Solo il team di progetto ha accesso ai dati. Ci avvaliamo di due responsabili tecnici del trattamento:\n\n- Vercel Inc. (hosting del sito, Stati Uniti): i trasferimenti di dati sono coperti dal Data Privacy Framework UE–USA.\n- Turso (ChiselStrike Inc.): database, istanza ospitata in una regione dell'Unione europea."
+    },
+    "rights": {
+      "h": "I tuoi diritti",
+      "body": "Puoi chiedere l'accesso ai tuoi dati, la rettifica o la cancellazione, la limitazione del trattamento e la portabilità della tua e-mail, opporti al trattamento o revocare il consenso scrivendo a {contactEmail}.\n\nSe ritieni che i tuoi diritti non siano rispettati, puoi presentare un reclamo alla CNIL (autorità francese per la protezione dei dati): https://www.cnil.fr oppure all'autorità del tuo paese (in Italia: Garante per la protezione dei dati personali, https://www.garanteprivacy.it)."
+    },
+    "optout": {
+      "h": "Non essere più misurato",
+      "body": "Clicca sul pulsante qui sotto: da questo browser non viene più inviato alcun evento. La scelta è salvata in questo browser: cancellare i dati del sito la annulla.",
+      "stop": "Non misurarmi più",
+      "resume": "Riattiva la misurazione",
+      "stateOn": "Misurazione attiva su questo browser.",
+      "stateOff": "Misurazione disattivata: da questo browser non viene più inviato alcun evento.",
+      "failed": "Il tuo browser blocca la memoria locale: non è stato possibile salvare la scelta. Scrivi a {contactEmail} per far cancellare i tuoi dati."
+    },
+    "updated": "Ultimo aggiornamento: novembre 2026"
+  },
+  "legal": {
+    "kicker": "Informazioni legali",
+    "title": "Note legali",
+    "intro": "Questo sito è un test di concept realizzato da studenti di ESCP Business School.",
+    "publisher": {
+      "h": "Editore",
+      "body": "{publisher}\nContatto: {contactEmail}"
+    },
+    "host": {
+      "h": "Hosting",
+      "body": "Vercel Inc.\n440 N Barranca Ave #4133\nCovina, CA 91723\nStati Uniti\nContatto: privacy@vercel.com"
+    },
+    "database": {
+      "h": "Database",
+      "body": "Turso (ChiselStrike Inc.), istanza ospitata in una regione dell'Unione europea."
+    },
+    "concept": {
+      "h": "Natura del sito",
+      "body": "Questo sito è un test di concept («fake door test»): nessun prodotto è in vendita, nessun pagamento viene richiesto né incassato. Il pulsante «Preordina» serve solo a misurare l'interesse per il prodotto, che è in fase di sviluppo. I prezzi mostrati fanno parte di questo test."
+    },
+    "ip": {
+      "h": "Proprietà intellettuale",
+      "body": "Testi, immagini e codice di questo sito appartengono al team di progetto. Font: Archivo e JetBrains Mono (SIL Open Font License). Libreria 3D: Three.js (licenza MIT)."
+    },
+    "data": {
+      "h": "Dati personali",
+      "body": "Il trattamento dei dati è descritto nella pagina Privacy."
+    }
+  }
+}

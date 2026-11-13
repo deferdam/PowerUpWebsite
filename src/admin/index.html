@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Tableau de bord — test de prix</title>
+    <!-- Chemins absolus : la page est servie à l'URL /admin (sans barre finale). -->
+    <link rel="stylesheet" href="/admin/admin.css" />
+    <script type="module" src="/admin/admin.js"></script>
+  </head>
+  <body>
+    <header class="topbar">
+      <h1>Tableau de bord</h1>
+      <div class="actions" id="dashboard-actions" hidden>
+        <button type="button" id="refresh" class="btn">Actualiser</button>
+        <a class="btn" href="/api/admin/export-events" download="events.csv">CSV des événements</a>
+        <a class="btn" href="/api/admin/export-emails" download="emails.csv">CSV des e-mails</a>
+        <button type="button" id="logout" class="btn btn-ghost">Se déconnecter</button>
+      </div>
+    </header>
+
+    <main>
+      <p id="message" class="message" role="status" hidden></p>
+
+      <section id="login-section" class="card login" hidden>
+        <h2>Connexion</h2>
+        <form id="login-form">
+          <label for="password">Mot de passe</label>
+          <input id="password" name="password" type="password" autocomplete="current-password" required />
+          <button type="submit" class="btn btn-primary">Se connecter</button>
+        </form>
+      </section>
+
+      <section id="dashboard" hidden>
+        <p class="meta" id="meta"></p>
+
+        <div class="kpis" id="kpis"></div>
+
+        <h2>Par prix</h2>
+        <div class="table-wrap"><table id="table-price"></table></div>
+
+        <h2>Par source</h2>
+        <div class="table-wrap"><table id="table-source"></table></div>
+
+        <h2>Par prix et par source</h2>
+        <div class="table-wrap"><table id="table-rows"></table></div>
+
+        <aside class="note">
+          <h2>Lire ces chiffres avec prudence</h2>
+          <p>
+            Les taux sont calculés sur des <strong>visiteurs uniques</strong> : visiteurs = au moins une page vue ;
+            clics = au moins un clic sur « Précommander » ; e-mails = au moins un e-mail envoyé.
+            Taux de clic = clics / visiteurs ; conversion = e-mails / visiteurs.
+          </p>
+          <p>
+            La colonne <strong>IC 95 %</strong> donne l'intervalle de confiance de Wilson : la vraie valeur a 95 % de
+            chances de se trouver dans cette fourchette. Avec peu de visiteurs (moins de 100 par prix, par exemple),
+            la fourchette est très large : si les intervalles de deux prix se chevauchent beaucoup, on ne peut pas
+            conclure qu'un prix fait mieux que l'autre. Attendez d'avoir assez de visiteurs avant de trancher.
+          </p>
+        </aside>
+      </section>
+    </main>
+  </body>
+</html>

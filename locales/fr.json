@@ -1,0 +1,264 @@
+{
+  "meta": {
+    "home": {
+      "title": "{brand} — Appuie. Secoue. Bois. La créatine dans le bouchon",
+      "description": "Une boisson prête à boire avec 3 à 5 g de créatine monohydrate conservée au sec dans le bouchon. Appuie, secoue, bois. Projet étudiant ESCP."
+    },
+    "privacy": {
+      "title": "Confidentialité — {brand}",
+      "description": "Quelles données le site {brand} mesure, pourquoi, combien de temps, et comment exercer tes droits."
+    },
+    "legal": {
+      "title": "Mentions légales — {brand}",
+      "description": "Éditeur, hébergeur et nature du site {brand}, un test de concept étudiant ESCP Business School."
+    },
+    "ogImageAlt": "Bouteille {brand} avec son bouchon à créatine, sur fond graphite"
+  },
+  "nav": {
+    "skip": "Aller au contenu",
+    "home": "{brand}, accueil",
+    "langLabel": "Choisir la langue",
+    "preorder": "Précommander",
+    "back": "Voir le produit"
+  },
+  "hero": {
+    "meta": "Boisson prête à boire — créatine au sec",
+    "metaRight": "Proto 01 / Lab",
+    "title": "Appuie.\nSecoue.\nBois.",
+    "lead": "Une boisson prête à boire. Dans le bouchon, ta dose de créatine monohydrate, gardée au sec jusqu'au moment de boire.",
+    "chip1": "3–5 g de créatine monohydrate",
+    "chip2": "Conservée au sec dans le bouchon",
+    "dragHint": "Glisse pour tourner",
+    "priceUnit": "la bouteille",
+    "cta": "Précommander",
+    "scroll": "Explore l'objet"
+  },
+  "scene": {
+    "alt": "Bouteille {brand} en 3D : une boisson et un bouchon transparent qui contient la créatine en poudre.",
+    "labelDose": "Créatine monohydrate · 3–5 g",
+    "labelSports": "Muscu · Powerlifting · CrossFit",
+    "labelMeta": "Dry-cap · Proto 01",
+    "keys": "Flèches gauche et droite pour la faire tourner."
+  },
+  "explore": {
+    "kicker": "Explore l'objet",
+    "navLabel": "Chapitres de l'objet",
+    "c1": {
+      "tab": "Le bouchon",
+      "title": "Le bouchon\nfait le boulot.",
+      "text": "Une chambre sèche et transparente, au-dessus de la boisson. Tu vois ta dose avant de la libérer. Un bouton à presser, une membrane qui s'ouvre.",
+      "spec": "Chambre sèche · Bouton-poussoir · Membrane"
+    },
+    "c2": {
+      "tab": "La dose",
+      "title": "3 à 5 g.\nDéjà dosés.",
+      "text": "De la créatine monohydrate, prête dans le bouchon. Pas de cuillère, pas de pot à ouvrir, pas d'à-peu-près.",
+      "spec": "Créatine monohydrate · 3–5 g · Dose prête"
+    },
+    "c3": {
+      "tab": "La boisson",
+      "title": "Au sec\njusqu'au clic.",
+      "text": "La créatine est réputée plus stable sous forme sèche qu'en solution. Elle attend donc dans le bouchon et ne rejoint la boisson qu'au moment où tu appuies.",
+      "spec": "Prête à boire · À emporter · Sans shaker"
+    },
+    "c4": {
+      "tab": "Pour qui",
+      "title": "Fait pour\nla salle.",
+      "text": "Musculation, powerlifting, CrossFit : la bouteille va dans le sac, la poudre ne va pas partout.",
+      "spec": "Muscu · Powerlifting · CrossFit"
+    }
+  },
+  "demo": {
+    "kicker": "Apprendre en faisant",
+    "title": "Ne lis pas.\nFais-le.",
+    "intro": "Trois gestes, comme avec la vraie bouteille. Vas-y.",
+    "stepsLabel": "Étapes de la démo",
+    "reset": "Recommencer",
+    "s1": {
+      "name": "Appuie",
+      "title": "Appuie sur le bouchon.",
+      "text": "Maintiens le bouton jusqu'au clic : la membrane s'ouvre et la créatine tombe dans la boisson.",
+      "button": "Maintiens pour appuyer",
+      "hint": "Ou maintiens le bouchon directement sur la bouteille.",
+      "gesture": "Maintiens…"
+    },
+    "s2": {
+      "name": "Secoue",
+      "title": "Secoue.",
+      "text": "Glisse vite de gauche à droite sur la bouteille, ou tape le bouton plusieurs fois.",
+      "button": "Secouer",
+      "motion": "Utiliser le capteur de mouvement",
+      "meter": "Mélange",
+      "hint": "Sur téléphone, tu peux aussi secouer pour de vrai.",
+      "gesture": "Secoue !"
+    },
+    "s3": {
+      "name": "Bois",
+      "title": "Bois.",
+      "text": "La dose est dans la boisson. À toi.",
+      "button": "Boire",
+      "gesture": "Santé."
+    },
+    "done": {
+      "title": "Voilà.\nZéro shaker.",
+      "text": "Pas de sachet, pas de cuillère, pas de poudre au fond du sac. Juste une bouteille."
+    }
+  },
+  "why": {
+    "kicker": "Pourquoi",
+    "title": "La poudre\na sa place.\nAu sec.",
+    "p1": {
+      "title": "Au sec jusqu'au bout",
+      "text": "La créatine est généralement considérée comme plus stable sous forme sèche qu'une fois dissoute. Elle reste donc dans le bouchon, et tu la libères au moment de boire."
+    },
+    "p2": {
+      "title": "Une dose fixe",
+      "text": "3 à 5 g de créatine monohydrate, dosés d'avance. Pas de cuillère, pas d'approximation, pas de pot qui traîne."
+    },
+    "p3": {
+      "title": "Ni shaker, ni sachet",
+      "text": "Rien à transvaser, rien à laver. Tu appuies, tu secoues, tu bois."
+    },
+    "who": {
+      "title": "Pour qui ?",
+      "a": {
+        "title": "Musculation",
+        "text": "Ta dose dans le sac de sport, prête quand tu l'es."
+      },
+      "b": {
+        "title": "Powerlifting",
+        "text": "Pas de pot à ouvrir sur le plateau. Le bouchon a déjà dosé."
+      },
+      "c": {
+        "title": "CrossFit",
+        "text": "Une bouteille, un geste. Pas de poudre qui traîne dans la box."
+      }
+    },
+    "claim": {
+      "title": "Allégation de santé autorisée (UE)",
+      "text": "La créatine augmente la performance physique lors d'exercices brefs, intenses et répétés. L'effet bénéfique est obtenu par la consommation journalière de 3 g de créatine.",
+      "note": "Produit en développement : composition, goût et format ne sont pas définitifs. À consommer dans le cadre d'une alimentation variée et équilibrée et d'un mode de vie sain. Déconseillé aux enfants, aux adolescents et aux femmes enceintes ou allaitantes. Ne pas dépasser la dose journalière indiquée."
+    }
+  },
+  "final": {
+    "title": "Ta dose.\nDans le bouchon.",
+    "text": "Une boisson prête à boire, 3 à 5 g de créatine monohydrate au sec, trois gestes."
+  },
+  "bar": {
+    "label": "Prix"
+  },
+  "footer": {
+    "project": "Projet étudiant ESCP Business School",
+    "navLabel": "Informations",
+    "privacy": "Confidentialité",
+    "legal": "Mentions légales",
+    "contact": "Contact",
+    "concept": "Concept en test, non commercialisé"
+  },
+  "banner": {
+    "label": "Information",
+    "text": "Ce site est un test d'un projet étudiant. Mesure d'audience sans publicité, avec un identifiant aléatoire enregistré dans ton navigateur (pas de cookie).",
+    "link": "En savoir plus",
+    "ok": "OK"
+  },
+  "dialog": {
+    "kicker": "Précommande",
+    "title": "Pas encore en vente.",
+    "message": "Ce produit est en cours de développement et n'est pas encore en vente. Laisse ton e-mail pour être prévenu(e) du lancement.",
+    "emailLabel": "Ton e-mail",
+    "emailPlaceholder": "toi@exemple.fr",
+    "consent": "J'accepte d'être contacté(e) au sujet du lancement. Mes données ne seront utilisées que pour ce projet étudiant et supprimées au plus tard le {deletionDate}.",
+    "honeypot": "Ne pas remplir ce champ",
+    "submit": "Me prévenir",
+    "noThanks": "Non merci",
+    "close": "Fermer",
+    "sending": "Envoi…",
+    "legal": "Facultatif. Aucun paiement, aucune adresse postale.",
+    "errInvalidEmail": "Cette adresse e-mail ne semble pas valide.",
+    "errConsent": "Coche la case pour qu'on puisse te prévenir.",
+    "errRate": "Trop de tentatives. Réessaie dans quelques minutes.",
+    "errNetwork": "Connexion impossible. Vérifie ton réseau et réessaie.",
+    "errGeneric": "Une erreur est survenue. Réessaie un peu plus tard.",
+    "successKicker": "Alerte lancement",
+    "successTitle": "C'est noté.",
+    "successText": "On te prévient au lancement, et seulement pour ça. Aucune commande n'a été passée. Merci de nous aider à tester l'idée.",
+    "questionnaire": "Répondre à un court questionnaire",
+    "newTab": "S'ouvre dans un nouvel onglet"
+  },
+  "privacy": {
+    "kicker": "Données personnelles",
+    "title": "Confidentialité",
+    "intro": "Ce site est un test de concept réalisé dans le cadre d'un projet étudiant. Aucun produit n'est vendu. Voici, simplement, ce que nous mesurons et pourquoi.",
+    "controller": {
+      "h": "Qui est responsable ?",
+      "body": "{publisher}.\nContact : {contactEmail}"
+    },
+    "purposes": {
+      "h": "Pourquoi ces données ?",
+      "body": "- Mesurer l'intérêt pour le produit selon le prix affiché (test de prix), de façon pseudonyme : un identifiant aléatoire, sans ton nom ni ton e-mail.\n- Te prévenir du lancement, uniquement si tu nous laisses ton e-mail et que tu y consens."
+    },
+    "data": {
+      "h": "Quelles données ?",
+      "body": "- Un identifiant aléatoire, créé par ton navigateur et enregistré dans sa mémoire locale (localStorage). Il ne contient ni ton nom ni ton e-mail. Durée de vie : 13 mois maximum, puis il est remplacé.\n- Les événements de visite : affichage de la page, clic sur « Précommander », envoi du formulaire, clic vers le questionnaire, avec leur date et heure.\n- La langue de la page et le prix affiché.\n- La source de la visite (paramètres UTM du lien, par exemple instagram_story), sinon « direct ». La source de ta première visite est aussi gardée dans ton navigateur.\n- Ton adresse e-mail, seulement si tu la donnes et coches la case de consentement. Elle est conservée séparément des statistiques.\n- Ton adresse IP, uniquement sous forme hachée (rendue illisible) et temporaire, pour limiter les abus. Elle n'est jamais enregistrée en clair."
+    },
+    "notCollected": {
+      "h": "Ce que nous ne faisons pas",
+      "body": "- Pas de cookies de mesure, pas de Google Analytics, pas de pixel publicitaire.\n- Pas de publicité ciblée.\n- Pas de revente ni de partage de tes données à des fins commerciales.\n- Pas de collecte de carte bancaire ni d'adresse postale."
+    },
+    "legalBasis": {
+      "h": "Sur quelle base ?",
+      "body": "- Mesure d'audience pseudonyme (identifiant aléatoire) : notre intérêt légitime à évaluer le concept dans le cadre du projet. Tu peux t'y opposer (voir « Ne plus être mesuré »).\n- E-mail : ton consentement, que tu peux retirer à tout moment."
+    },
+    "retention": {
+      "h": "Combien de temps ?",
+      "body": "Toutes les données (statistiques et e-mails) sont supprimées au plus tard le {deletionDate}. Si tu le demandes, ton e-mail est supprimé avant."
+    },
+    "recipients": {
+      "h": "Qui y a accès ?",
+      "body": "Seule l'équipe projet a accès aux données. Nous faisons appel à deux sous-traitants techniques :\n\n- Vercel Inc. (hébergement du site, États-Unis) : les transferts de données sont encadrés par le Data Privacy Framework UE–États-Unis.\n- Turso (ChiselStrike Inc.) : base de données, instance hébergée dans une région de l'Union européenne."
+    },
+    "rights": {
+      "h": "Tes droits",
+      "body": "Tu peux demander l'accès à tes données, leur rectification ou leur effacement, la limitation de leur traitement et la portabilité de ton e-mail, t'opposer à leur traitement, ou retirer ton consentement, en écrivant à {contactEmail}.\n\nSi tu estimes que tes droits ne sont pas respectés, tu peux adresser une réclamation à la CNIL : https://www.cnil.fr"
+    },
+    "optout": {
+      "h": "Ne plus être mesuré",
+      "body": "Clique sur le bouton ci-dessous : plus aucun événement n'est envoyé depuis ce navigateur. Le choix est enregistré dans ce navigateur : effacer les données du site annule ce choix.",
+      "stop": "Ne plus être mesuré",
+      "resume": "Réactiver la mesure",
+      "stateOn": "Mesure active sur ce navigateur.",
+      "stateOff": "Mesure désactivée : plus aucun événement n'est envoyé depuis ce navigateur.",
+      "failed": "Ton navigateur bloque la mémoire locale : le choix n'a pas pu être enregistré. Écris-nous à {contactEmail} pour faire supprimer tes données."
+    },
+    "updated": "Dernière mise à jour : novembre 2026"
+  },
+  "legal": {
+    "kicker": "Informations légales",
+    "title": "Mentions légales",
+    "intro": "Ce site est un test de concept réalisé par des étudiants de l'ESCP Business School.",
+    "publisher": {
+      "h": "Éditeur",
+      "body": "{publisher}\nContact : {contactEmail}"
+    },
+    "host": {
+      "h": "Hébergement",
+      "body": "Vercel Inc.\n440 N Barranca Ave #4133\nCovina, CA 91723\nÉtats-Unis\nContact : privacy@vercel.com"
+    },
+    "database": {
+      "h": "Base de données",
+      "body": "Turso (ChiselStrike Inc.), instance hébergée dans une région de l'Union européenne."
+    },
+    "concept": {
+      "h": "Nature du site",
+      "body": "Ce site est un test de concept (« fake door test ») : aucun produit n'est vendu, aucun paiement n'est demandé ni encaissé. Le bouton « Précommander » sert uniquement à mesurer l'intérêt pour le produit, qui est en cours de développement. Les prix affichés font partie de ce test."
+    },
+    "ip": {
+      "h": "Propriété intellectuelle",
+      "body": "Les textes, visuels et le code de ce site appartiennent à l'équipe projet. Polices : Archivo et JetBrains Mono (SIL Open Font License). Bibliothèque 3D : Three.js (licence MIT)."
+    },
+    "data": {
+      "h": "Données personnelles",
+      "body": "Le traitement des données est décrit sur la page Confidentialité."
+    }
+  }
+}

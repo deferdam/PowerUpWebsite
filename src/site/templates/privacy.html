@@ -1,0 +1,27 @@
+    <article class="doc">
+      <header class="doc__head">
+        <p class="kicker mono">{{privacy.kicker}}</p>
+        <h1 class="doc__title display">{{privacy.title}}</h1>
+        <p class="doc__intro">{{privacy.intro}}</p>
+      </header>
+      <section class="doc__section"><h2>{{privacy.controller.h}}</h2>{{md:privacy.controller.body}}</section>
+      <section class="doc__section"><h2>{{privacy.purposes.h}}</h2>{{md:privacy.purposes.body}}</section>
+      <section class="doc__section"><h2>{{privacy.data.h}}</h2>{{md:privacy.data.body}}</section>
+      <section class="doc__section"><h2>{{privacy.notCollected.h}}</h2>{{md:privacy.notCollected.body}}</section>
+      <section class="doc__section"><h2>{{privacy.legalBasis.h}}</h2>{{md:privacy.legalBasis.body}}</section>
+      <section class="doc__section"><h2>{{privacy.retention.h}}</h2>{{md:privacy.retention.body}}</section>
+      <section class="doc__section"><h2>{{privacy.recipients.h}}</h2>{{md:privacy.recipients.body}}</section>
+      <section class="doc__section"><h2>{{privacy.rights.h}}</h2>{{md:privacy.rights.body}}</section>
+      <section class="doc__section"><h2>{{privacy.optout.h}}</h2>{{md:privacy.optout.body}}
+        <!-- Boutons d'opposition (affichés par ui.js, qui lit l'état dans le localStorage) -->
+        <div class="optout" data-optout hidden>
+          <p class="optout__state mono" role="status" aria-live="polite" data-optout-state
+            data-on="{{privacy.optout.stateOn}}"
+            data-off="{{privacy.optout.stateOff}}"
+            data-failed="{{privacy.optout.failed}}"></p>
+          <button class="btn btn--small" type="button" data-optout-stop>{{privacy.optout.stop}}</button>
+          <button class="btn btn--small btn--ghost" type="button" data-optout-resume>{{privacy.optout.resume}}</button>
+        </div>
+      </section>
+      <p class="doc__updated mono muted">{{privacy.updated}}</p>
+    </article>

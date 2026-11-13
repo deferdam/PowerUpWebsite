@@ -1,0 +1,12 @@
+node_modules/
+dist/
+.env
+.env.*
+!.env.example
+*.db
+*.db-*
+.vercel
+
+# Clone vide créé par erreur dans le dossier (dépôt git imbriqué) : ne pas le commiter
+PowerUpWebsite/
+.claude/settings.local.json

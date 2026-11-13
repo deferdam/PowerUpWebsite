@@ -1,0 +1,223 @@
+    <!-- ============ 1. HERO ============ -->
+    <section class="hero" id="top" data-hero aria-labelledby="hero-title">
+      <p class="hero__ghost display" aria-hidden="true">{{brandUpper}}</p>
+      <div class="hero__meta mono">
+        <span>{{hero.meta}}</span>
+        <span class="hero__meta-right">{{hero.metaRight}}</span>
+      </div>
+
+      <h1 class="hero__title display" id="hero-title">{{lines:hero.title}}</h1>
+
+      <div class="stage stage--hero" data-zone="hero" role="img" aria-label="{{scene.alt}}" data-keys="{{scene.keys}}">
+        <img class="stage__fallback" src="{{productSrc}}" alt="" width="600" height="900" decoding="async" fetchpriority="high">
+        <p class="drag-hint mono" aria-hidden="true">
+          <svg viewBox="0 0 32 16" focusable="false"><path d="M9 3 3 8l6 5M23 3l6 5-6 5M3 8h26"/></svg>
+          {{hero.dragHint}}
+        </p>
+      </div>
+
+      <div class="hero__aside">
+        <p class="hero__lead">{{hero.lead}}</p>
+        <ul class="chips">
+          <li class="chip mono"><span class="chip__dot" aria-hidden="true"></span>{{hero.chip1}}</li>
+          <li class="chip mono"><span class="chip__dot" aria-hidden="true"></span>{{hero.chip2}}</li>
+        </ul>
+        <div class="buy">
+          <button class="cta cta--magnetic" type="button" data-preorder>
+            <span>{{hero.cta}}</span>
+            <svg class="cta__arrow" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4 10h12M11 5l5 5-5 5"/></svg>
+          </button>
+          <p class="buy__price mono"><span class="price" data-price>…</span> <span class="muted">/ {{hero.priceUnit}}</span></p>
+        </div>
+      </div>
+
+      <a class="hero__scroll mono" href="#objet"><span>{{hero.scroll}}</span><span class="hero__scroll-line" aria-hidden="true"></span></a>
+    </section>
+
+    <!-- ============ 2. EXPLORE L'OBJET (scène collante + chapitres) ============ -->
+    <section class="explore" id="objet" aria-labelledby="explore-title" data-explore>
+      <div class="explore__grid">
+        <div class="explore__stage">
+          <div class="explore__head">
+            <h2 class="kicker mono" id="explore-title">{{explore.kicker}}</h2>
+            <p class="mono muted" aria-hidden="true"><span data-chapter-num>01</span> / 04</p>
+          </div>
+          <div class="stage stage--explore" data-zone="chapters" role="img" aria-label="{{scene.alt}}" data-keys="{{scene.keys}}">
+            <img class="stage__fallback" src="{{productSrc}}" alt="" width="600" height="900" loading="lazy" decoding="async">
+          </div>
+          <nav class="tabs" aria-label="{{explore.navLabel}}">
+            <button class="tab" type="button" data-chapter-tab="0" aria-current="true"><span class="tab__num mono">01</span><span class="tab__label">{{explore.c1.tab}}</span></button>
+            <button class="tab" type="button" data-chapter-tab="1"><span class="tab__num mono">02</span><span class="tab__label">{{explore.c2.tab}}</span></button>
+            <button class="tab" type="button" data-chapter-tab="2"><span class="tab__num mono">03</span><span class="tab__label">{{explore.c3.tab}}</span></button>
+            <button class="tab" type="button" data-chapter-tab="3"><span class="tab__num mono">04</span><span class="tab__label">{{explore.c4.tab}}</span></button>
+            <span class="tabs__bar" aria-hidden="true"><span class="tabs__fill" data-tabs-fill></span></span>
+          </nav>
+        </div>
+
+        <div class="explore__chapters">
+          <article class="chapter" id="chapter-1" data-chapter="0">
+            <div class="chapter__card">
+              <p class="chapter__num mono">01 — {{explore.c1.tab}}</p>
+              <h3 class="chapter__title display">{{lines:explore.c1.title}}</h3>
+              <p class="chapter__text">{{explore.c1.text}}</p>
+              <p class="spec mono">{{explore.c1.spec}}</p>
+            </div>
+          </article>
+          <article class="chapter" id="chapter-2" data-chapter="1">
+            <div class="chapter__card">
+              <p class="chapter__num mono">02 — {{explore.c2.tab}}</p>
+              <h3 class="chapter__title display">{{lines:explore.c2.title}}</h3>
+              <p class="chapter__text">{{explore.c2.text}}</p>
+              <p class="spec mono">{{explore.c2.spec}}</p>
+            </div>
+          </article>
+          <article class="chapter" id="chapter-3" data-chapter="2">
+            <div class="chapter__card">
+              <p class="chapter__num mono">03 — {{explore.c3.tab}}</p>
+              <h3 class="chapter__title display">{{lines:explore.c3.title}}</h3>
+              <p class="chapter__text">{{explore.c3.text}}</p>
+              <p class="spec mono">{{explore.c3.spec}}</p>
+            </div>
+          </article>
+          <article class="chapter" id="chapter-4" data-chapter="3">
+            <div class="chapter__card">
+              <p class="chapter__num mono">04 — {{explore.c4.tab}}</p>
+              <h3 class="chapter__title display">{{lines:explore.c4.title}}</h3>
+              <p class="chapter__text">{{explore.c4.text}}</p>
+              <p class="spec mono">{{explore.c4.spec}}</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 3. DÉMO : APPRENDRE EN FAISANT ============ -->
+    <section class="demo" id="essaie" aria-labelledby="demo-title" data-demo data-phase="press">
+      <header class="demo__head reveal">
+        <p class="kicker mono">{{demo.kicker}}</p>
+        <h2 class="demo__title display" id="demo-title">{{lines:demo.title}}</h2>
+        <p class="demo__intro">{{demo.intro}}</p>
+      </header>
+
+      <div class="demo__grid">
+        <div class="stage stage--demo" data-zone="demo" role="img" aria-label="{{scene.alt}}" data-keys="{{scene.keys}}">
+          <img class="stage__fallback" src="{{productSrc}}" alt="" width="600" height="900" loading="lazy" decoding="async">
+          <p class="demo__gesture mono" aria-hidden="true" data-gesture></p>
+        </div>
+
+        <div class="demo__panel">
+          <ol class="steps" aria-label="{{demo.stepsLabel}}">
+            <li class="steps__item" data-step-dot="press" aria-current="step"><span class="mono">01</span> {{demo.s1.name}}</li>
+            <li class="steps__item" data-step-dot="shake"><span class="mono">02</span> {{demo.s2.name}}</li>
+            <li class="steps__item" data-step-dot="drink"><span class="mono">03</span> {{demo.s3.name}}</li>
+          </ol>
+          <p class="sr-only" aria-live="polite" data-demo-live></p>
+
+          <div class="panel" data-panel="press">
+            <h3 class="panel__title display">{{demo.s1.title}}</h3>
+            <p>{{demo.s1.text}}</p>
+            <button class="hold" type="button" data-action="press" data-gesture-text="{{demo.s1.gesture}}">
+              <span class="hold__ring" aria-hidden="true"><span class="hold__fill" data-hold-fill></span></span>
+              <span>{{demo.s1.button}}</span>
+            </button>
+            <p class="hint mono">{{demo.s1.hint}}</p>
+          </div>
+
+          <div class="panel" data-panel="shake" hidden>
+            <h3 class="panel__title display">{{demo.s2.title}}</h3>
+            <p>{{demo.s2.text}}</p>
+            <div class="meter" role="progressbar" aria-label="{{demo.s2.meter}}" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" data-meter>
+              <span class="meter__fill" data-meter-fill></span>
+            </div>
+            <button class="btn btn--volt" type="button" data-action="shake" data-gesture-text="{{demo.s2.gesture}}">{{demo.s2.button}}</button>
+            <button class="btn btn--ghost btn--small" type="button" data-action="motion" hidden>{{demo.s2.motion}}</button>
+            <p class="hint mono">{{demo.s2.hint}}</p>
+          </div>
+
+          <div class="panel" data-panel="drink" hidden>
+            <h3 class="panel__title display">{{demo.s3.title}}</h3>
+            <p>{{demo.s3.text}}</p>
+            <button class="btn btn--volt" type="button" data-action="drink" data-gesture-text="{{demo.s3.gesture}}">{{demo.s3.button}}</button>
+          </div>
+
+          <div class="panel" data-panel="done" hidden>
+            <h3 class="panel__title display">{{lines:demo.done.title}}</h3>
+            <p>{{demo.done.text}}</p>
+            <div class="buy buy--row">
+              <button class="cta cta--magnetic" type="button" data-preorder>
+                <span>{{hero.cta}}</span>
+                <svg class="cta__arrow" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4 10h12M11 5l5 5-5 5"/></svg>
+              </button>
+              <p class="buy__price mono"><span class="price" data-price>…</span> <span class="muted">/ {{hero.priceUnit}}</span></p>
+            </div>
+          </div>
+
+          <button class="reset mono" type="button" data-action="reset">
+            <svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4 10a6 6 0 1 0 2-4.5M4 3v3h3"/></svg>
+            {{demo.reset}}
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 4. POURQUOI ============ -->
+    <section class="why" id="pourquoi" aria-labelledby="why-title">
+      <header class="why__head reveal">
+        <p class="kicker mono">{{why.kicker}}</p>
+        <h2 class="why__title display" id="why-title">{{lines:why.title}}</h2>
+      </header>
+      <div class="why__grid">
+        <article class="card reveal">
+          <p class="card__num mono">01</p>
+          <h3 class="card__title display">{{why.p1.title}}</h3>
+          <p>{{why.p1.text}}</p>
+        </article>
+        <article class="card reveal">
+          <p class="card__num mono">02</p>
+          <h3 class="card__title display">{{why.p2.title}}</h3>
+          <p>{{why.p2.text}}</p>
+        </article>
+        <article class="card reveal">
+          <p class="card__num mono">03</p>
+          <h3 class="card__title display">{{why.p3.title}}</h3>
+          <p>{{why.p3.text}}</p>
+        </article>
+      </div>
+
+      <div class="who reveal">
+        <h3 class="who__title mono">{{why.who.title}}</h3>
+        <ul class="who__list">
+          <li><span class="who__name display">{{why.who.a.title}}</span><span class="who__text">{{why.who.a.text}}</span></li>
+          <li><span class="who__name display">{{why.who.b.title}}</span><span class="who__text">{{why.who.b.text}}</span></li>
+          <li><span class="who__name display">{{why.who.c.title}}</span><span class="who__text">{{why.who.c.text}}</span></li>
+        </ul>
+      </div>
+
+      <aside class="claim reveal" aria-label="{{why.claim.title}}">
+        <p class="mono">{{why.claim.title}}</p>
+        <p>{{why.claim.text}}</p>
+        <p class="muted">{{why.claim.note}}</p>
+      </aside>
+    </section>
+
+    <!-- ============ 5. APPEL FINAL ============ -->
+    <section class="final" id="precommande" aria-labelledby="final-title" data-final>
+      <p class="final__ghost display" aria-hidden="true">{{brandUpper}}</p>
+      <h2 class="final__title display reveal" id="final-title">{{lines:final.title}}</h2>
+      <p class="final__text reveal">{{final.text}}</p>
+      <div class="buy buy--center reveal">
+        <button class="cta cta--magnetic cta--big" type="button" data-preorder>
+          <span>{{hero.cta}}</span>
+          <svg class="cta__arrow" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4 10h12M11 5l5 5-5 5"/></svg>
+        </button>
+        <p class="buy__price mono"><span class="price" data-price>…</span> <span class="muted">/ {{hero.priceUnit}}</span></p>
+      </div>
+    </section>
+
+    <!-- Barre d'achat collante (mobile), visible après le hero -->
+    <div class="bar" data-bar inert>
+      <p class="bar__price"><span class="mono muted">{{bar.label}}</span><span class="price display" data-price>…</span></p>
+      <button class="cta cta--small" type="button" data-preorder><span>{{hero.cta}}</span>
+        <svg class="cta__arrow" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4 10h12M11 5l5 5-5 5"/></svg>
+      </button>
+    </div>

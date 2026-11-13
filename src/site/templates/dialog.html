@@ -1,0 +1,58 @@
+  <!-- Fenêtre « Précommander » : message honnête + e-mail facultatif -->
+  <dialog class="dialog" id="preorder" aria-labelledby="preorder-title" data-dialog>
+    <button class="dialog__close" type="button" data-close aria-label="{{dialog.close}}">
+      <svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M5 5l10 10M15 5 5 15"/></svg>
+    </button>
+
+    <div class="dialog__view" data-view="form">
+      <p class="mono muted">{{dialog.kicker}}</p>
+      <h2 class="dialog__title display" id="preorder-title" tabindex="-1">{{dialog.title}}</h2>
+      <p class="dialog__message">{{dialog.message}}</p>
+
+      <form class="form" data-form novalidate
+        data-err-invalid-email="{{dialog.errInvalidEmail}}"
+        data-err-consent="{{dialog.errConsent}}"
+        data-err-rate="{{dialog.errRate}}"
+        data-err-network="{{dialog.errNetwork}}"
+        data-err-generic="{{dialog.errGeneric}}"
+        data-sending="{{dialog.sending}}">
+        <label class="field">
+          <span class="field__label mono">{{dialog.emailLabel}}</span>
+          <input class="field__input" type="email" name="email" autocomplete="email" inputmode="email" maxlength="254" required placeholder="{{dialog.emailPlaceholder}}" aria-describedby="preorder-status">
+        </label>
+
+        <label class="consent">
+          <input class="consent__box" type="checkbox" name="consent" required>
+          <span>{{dialog.consent}}</span>
+        </label>
+
+        <!-- Champ piège pour les robots : invisible pour les humains, ne pas remplir -->
+        <div class="hp" aria-hidden="true">
+          <label>{{dialog.honeypot}} <input type="text" name="website" tabindex="-1" autocomplete="off"></label>
+        </div>
+
+        <p class="form__status" id="preorder-status" role="status" aria-live="polite" data-status></p>
+
+        <div class="form__actions">
+          <button class="cta" type="submit" data-submit><span>{{dialog.submit}}</span>
+            <svg class="cta__arrow" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4 10h12M11 5l5 5-5 5"/></svg>
+          </button>
+          <button class="btn btn--ghost" type="button" data-close>{{dialog.noThanks}}</button>
+        </div>
+        <p class="form__legal mono muted">{{dialog.legal}} <a href="{{privacyHref}}">{{footer.privacy}}</a></p>
+      </form>
+    </div>
+
+    <div class="dialog__view" data-view="success" hidden>
+      <p class="mono muted">{{dialog.successKicker}}</p>
+      <h2 class="dialog__title display" tabindex="-1" data-success-title>{{dialog.successTitle}}</h2>
+      <p class="dialog__message">{{dialog.successText}}</p>
+      <p class="dialog__questionnaire" data-questionnaire hidden>
+        <a class="cta" href="#" target="_blank" rel="noopener noreferrer" data-questionnaire-link><span>{{dialog.questionnaire}}</span>
+          <svg class="cta__arrow" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4 10h12M11 5l5 5-5 5"/></svg>
+        </a>
+        <span class="mono muted">{{dialog.newTab}}</span>
+      </p>
+      <button class="btn btn--ghost" type="button" data-close>{{dialog.close}}</button>
+    </div>
+  </dialog>

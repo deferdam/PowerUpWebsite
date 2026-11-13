@@ -1,0 +1,264 @@
+{
+  "meta": {
+    "home": {
+      "title": "{brand} — Press. Shake. Drink. Creatine in the cap",
+      "description": "A ready-to-drink bottle with 3–5 g of creatine monohydrate kept dry in the cap. Press, shake, drink. An ESCP student project."
+    },
+    "privacy": {
+      "title": "Privacy policy — {brand}",
+      "description": "What data the {brand} site measures, why, for how long, and how to exercise your rights."
+    },
+    "legal": {
+      "title": "Legal notice — {brand}",
+      "description": "Publisher, host and purpose of the {brand} site, a student concept test at ESCP Business School."
+    },
+    "ogImageAlt": "{brand} bottle with its creatine cap, on a graphite background"
+  },
+  "nav": {
+    "skip": "Skip to content",
+    "home": "{brand}, home",
+    "langLabel": "Choose language",
+    "preorder": "Pre-order",
+    "back": "See the product"
+  },
+  "hero": {
+    "meta": "Ready-to-drink — creatine kept dry",
+    "metaRight": "Proto 01 / Lab",
+    "title": "Press.\nShake.\nDrink.",
+    "lead": "A ready-to-drink bottle. In the cap: your dose of creatine monohydrate, kept dry until the moment you drink.",
+    "chip1": "3–5 g creatine monohydrate",
+    "chip2": "Kept dry in the cap",
+    "dragHint": "Drag to turn",
+    "priceUnit": "per bottle",
+    "cta": "Pre-order",
+    "scroll": "Explore the object"
+  },
+  "scene": {
+    "alt": "3D {brand} bottle: a drink and a clear cap holding the creatine powder.",
+    "labelDose": "Creatine monohydrate · 3–5 g",
+    "labelSports": "Bodybuilding · Powerlifting · CrossFit",
+    "labelMeta": "Dry-cap · Proto 01",
+    "keys": "Use the left and right arrow keys to turn it."
+  },
+  "explore": {
+    "kicker": "Explore the object",
+    "navLabel": "Object chapters",
+    "c1": {
+      "tab": "The cap",
+      "title": "The cap\ndoes the work.",
+      "text": "A clear, dry chamber sitting above the drink. You see your dose before you release it. One button to press, one membrane that opens.",
+      "spec": "Dry chamber · Push button · Membrane"
+    },
+    "c2": {
+      "tab": "The dose",
+      "title": "3 to 5 g.\nPre-measured.",
+      "text": "Creatine monohydrate, ready in the cap. No scoop, no tub to open, no guesswork.",
+      "spec": "Creatine monohydrate · 3–5 g · Ready dose"
+    },
+    "c3": {
+      "tab": "The drink",
+      "title": "Dry\nuntil the click.",
+      "text": "Creatine is generally considered more stable dry than in solution. So it waits in the cap and only meets the drink when you press.",
+      "spec": "Ready to drink · On the go · No shaker"
+    },
+    "c4": {
+      "tab": "Who it's for",
+      "title": "Built for\nthe gym.",
+      "text": "Bodybuilding, powerlifting, CrossFit: the bottle goes in your bag, the powder doesn't go everywhere.",
+      "spec": "Bodybuilding · Powerlifting · CrossFit"
+    }
+  },
+  "demo": {
+    "kicker": "Learn by doing",
+    "title": "Don't read.\nDo it.",
+    "intro": "Three moves, just like with the real bottle. Go ahead.",
+    "stepsLabel": "Demo steps",
+    "reset": "Start over",
+    "s1": {
+      "name": "Press",
+      "title": "Press the cap.",
+      "text": "Hold the button until it clicks: the membrane opens and the creatine drops into the drink.",
+      "button": "Hold to press",
+      "hint": "Or press and hold the cap right on the bottle.",
+      "gesture": "Hold…"
+    },
+    "s2": {
+      "name": "Shake",
+      "title": "Shake.",
+      "text": "Swipe fast left and right across the bottle, or tap the button a few times.",
+      "button": "Shake",
+      "motion": "Use the motion sensor",
+      "meter": "Mix",
+      "hint": "On a phone, you can shake it for real.",
+      "gesture": "Shake it!"
+    },
+    "s3": {
+      "name": "Drink",
+      "title": "Drink.",
+      "text": "The dose is in the drink. Your turn.",
+      "button": "Drink",
+      "gesture": "Cheers."
+    },
+    "done": {
+      "title": "Done.\nZero shaker.",
+      "text": "No sachet, no scoop, no powder at the bottom of your bag. Just a bottle."
+    }
+  },
+  "why": {
+    "kicker": "Why",
+    "title": "Powder\nhas its place.\nDry.",
+    "p1": {
+      "title": "Dry until the end",
+      "text": "Creatine is generally considered more stable as a dry powder than once dissolved. So it stays in the cap, and you release it when you're about to drink."
+    },
+    "p2": {
+      "title": "A fixed dose",
+      "text": "3 to 5 g of creatine monohydrate, measured in advance. No scoop, no guessing, no tub rolling around."
+    },
+    "p3": {
+      "title": "No shaker, no sachet",
+      "text": "Nothing to pour, nothing to wash. Press, shake, drink."
+    },
+    "who": {
+      "title": "Who's it for?",
+      "a": {
+        "title": "Bodybuilding",
+        "text": "Your dose in your gym bag, ready when you are."
+      },
+      "b": {
+        "title": "Powerlifting",
+        "text": "No tub to open on the platform. The cap already measured it."
+      },
+      "c": {
+        "title": "CrossFit",
+        "text": "One bottle, one move. No powder lying around the box."
+      }
+    },
+    "claim": {
+      "title": "Authorised health claim (EU)",
+      "text": "Creatine increases physical performance in successive bursts of short-term, high intensity exercise. The beneficial effect is obtained with a daily intake of 3 g of creatine.",
+      "note": "Product in development: recipe, taste and format are not final. To be consumed as part of a varied, balanced diet and a healthy lifestyle. Not recommended for children, teenagers, or pregnant or breastfeeding women. Do not exceed the stated daily dose."
+    }
+  },
+  "final": {
+    "title": "Your dose.\nIn the cap.",
+    "text": "A ready-to-drink bottle, 3–5 g of creatine monohydrate kept dry, three moves."
+  },
+  "bar": {
+    "label": "Price"
+  },
+  "footer": {
+    "project": "ESCP Business School student project",
+    "navLabel": "Information",
+    "privacy": "Privacy",
+    "legal": "Legal notice",
+    "contact": "Contact",
+    "concept": "Concept being tested, not for sale"
+  },
+  "banner": {
+    "label": "Information",
+    "text": "This site is a test for a student project. Ad-free audience measurement, using a random identifier stored in your browser (no cookies).",
+    "link": "Learn more",
+    "ok": "OK"
+  },
+  "dialog": {
+    "kicker": "Pre-order",
+    "title": "Not on sale yet.",
+    "message": "This product is in development and isn't on sale yet. Leave your email to hear when it launches.",
+    "emailLabel": "Your email",
+    "emailPlaceholder": "you@example.com",
+    "consent": "I agree to be contacted about the launch. My data will only be used for this student project and will be deleted no later than {deletionDate}.",
+    "honeypot": "Do not fill in this field",
+    "submit": "Notify me",
+    "noThanks": "No thanks",
+    "close": "Close",
+    "sending": "Sending…",
+    "legal": "Optional. No payment, no postal address.",
+    "errInvalidEmail": "This email address doesn't look valid.",
+    "errConsent": "Tick the box so we can let you know.",
+    "errRate": "Too many attempts. Try again in a few minutes.",
+    "errNetwork": "Can't connect. Check your network and try again.",
+    "errGeneric": "Something went wrong. Please try again a bit later.",
+    "successKicker": "Launch alert",
+    "successTitle": "Got it.",
+    "successText": "We'll let you know at launch, and only for that. No order has been placed. Thanks for helping us test the idea.",
+    "questionnaire": "Answer a short questionnaire",
+    "newTab": "Opens in a new tab"
+  },
+  "privacy": {
+    "kicker": "Personal data",
+    "title": "Privacy",
+    "intro": "This site is a concept test run as part of a student project. No product is sold. Here is, plainly, what we measure and why.",
+    "controller": {
+      "h": "Who is responsible?",
+      "body": "{publisher}.\nContact: {contactEmail}"
+    },
+    "purposes": {
+      "h": "Why this data?",
+      "body": "- To measure interest in the product depending on the price shown (price test), pseudonymously: a random identifier, without your name or email.\n- To let you know about the launch, only if you leave your email and agree to it."
+    },
+    "data": {
+      "h": "What data?",
+      "body": "- A random identifier, created by your browser and saved in its local storage (localStorage). It contains neither your name nor your email. Lifetime: 13 months at most, then it is replaced.\n- Visit events: page view, click on \"Pre-order\", form submission, click to the questionnaire, with their date and time.\n- The page language and the price shown.\n- The source of the visit (UTM parameters of the link, e.g. instagram_story), otherwise \"direct\". The source of your first visit is also kept in your browser.\n- Your email address, only if you give it and tick the consent box. It is kept separately from the statistics.\n- Your IP address, only in hashed (unreadable) and temporary form, to limit abuse. It is never saved in plain text."
+    },
+    "notCollected": {
+      "h": "What we don't do",
+      "body": "- No tracking cookies, no Google Analytics, no advertising pixel.\n- No targeted advertising.\n- No selling or sharing of your data for commercial purposes.\n- No collection of card details or postal address."
+    },
+    "legalBasis": {
+      "h": "On what legal basis?",
+      "body": "- Pseudonymous audience measurement (random identifier): our legitimate interest in evaluating the concept as part of the project. You can object to it (see \"Opting out of measurement\").\n- Email: your consent, which you can withdraw at any time."
+    },
+    "retention": {
+      "h": "For how long?",
+      "body": "All data (statistics and emails) is deleted no later than {deletionDate}. If you ask, your email is deleted sooner."
+    },
+    "recipients": {
+      "h": "Who has access?",
+      "body": "Only the project team has access to the data. We use two technical processors:\n\n- Vercel Inc. (website hosting, United States): data transfers are covered by the EU–US Data Privacy Framework.\n- Turso (ChiselStrike Inc.): database, instance hosted in a European Union region."
+    },
+    "rights": {
+      "h": "Your rights",
+      "body": "You can ask to access, correct or erase your data, restrict its processing and receive your email in a portable format, object to its processing, or withdraw your consent, by writing to {contactEmail}.\n\nIf you believe your rights are not respected, you can lodge a complaint with the CNIL (French data protection authority): https://www.cnil.fr or with the data protection authority of your country."
+    },
+    "optout": {
+      "h": "Opting out of measurement",
+      "body": "Click the button below: no more events are sent from this browser. The choice is saved in this browser: clearing this site's data cancels it.",
+      "stop": "Stop measuring me",
+      "resume": "Turn measurement back on",
+      "stateOn": "Measurement is on for this browser.",
+      "stateOff": "Measurement is off: no more events are sent from this browser.",
+      "failed": "Your browser blocks local storage, so the choice could not be saved. Write to {contactEmail} to have your data deleted."
+    },
+    "updated": "Last updated: November 2026"
+  },
+  "legal": {
+    "kicker": "Legal information",
+    "title": "Legal notice",
+    "intro": "This site is a concept test made by students of ESCP Business School.",
+    "publisher": {
+      "h": "Publisher",
+      "body": "{publisher}\nContact: {contactEmail}"
+    },
+    "host": {
+      "h": "Hosting",
+      "body": "Vercel Inc.\n440 N Barranca Ave #4133\nCovina, CA 91723\nUnited States\nContact: privacy@vercel.com"
+    },
+    "database": {
+      "h": "Database",
+      "body": "Turso (ChiselStrike Inc.), instance hosted in a European Union region."
+    },
+    "concept": {
+      "h": "Nature of the site",
+      "body": "This site is a concept test (\"fake door test\"): no product is sold, no payment is requested or taken. The \"Pre-order\" button is only used to measure interest in the product, which is in development. The prices shown are part of this test."
+    },
+    "ip": {
+      "h": "Intellectual property",
+      "body": "The texts, visuals and code of this site belong to the project team. Fonts: Archivo and JetBrains Mono (SIL Open Font License). 3D library: Three.js (MIT licence)."
+    },
+    "data": {
+      "h": "Personal data",
+      "body": "Data processing is described on the Privacy page."
+    }
+  }
+}

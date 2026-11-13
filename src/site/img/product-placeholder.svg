@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 900" role="img" aria-label="">
+  <defs>
+    <linearGradient id="body" x1="0" x2="1">
+      <stop offset="0" stop-color="#EEEBE3" stop-opacity=".10"/>
+      <stop offset=".35" stop-color="#EEEBE3" stop-opacity=".28"/>
+      <stop offset=".6" stop-color="#EEEBE3" stop-opacity=".08"/>
+      <stop offset="1" stop-color="#EEEBE3" stop-opacity=".18"/>
+    </linearGradient>
+    <linearGradient id="liquid" x1="0" x2="1">
+      <stop offset="0" stop-color="#E6F0A0" stop-opacity=".35"/>
+      <stop offset=".4" stop-color="#E6F0A0" stop-opacity=".6"/>
+      <stop offset="1" stop-color="#E6F0A0" stop-opacity=".3"/>
+    </linearGradient>
+    <linearGradient id="cap" x1="0" x2="1">
+      <stop offset="0" stop-color="#1A1A1C"/>
+      <stop offset=".4" stop-color="#4A4A50"/>
+      <stop offset="1" stop-color="#141416"/>
+    </linearGradient>
+    <radialGradient id="shadow" cx=".5" cy=".5" r=".5">
+      <stop offset="0" stop-color="#000" stop-opacity=".6"/>
+      <stop offset="1" stop-color="#000" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <ellipse cx="300" cy="842" rx="170" ry="26" fill="url(#shadow)"/>
+  <!-- corps -->
+  <path d="M215 300 C215 262 250 246 262 222 L262 196 L338 196 L338 222 C350 246 385 262 385 300 L385 470 C385 500 372 512 372 540 C372 568 385 580 385 610 L385 800 C385 822 370 836 348 836 L252 836 C230 836 215 822 215 800 L215 610 C215 580 228 568 228 540 C228 512 215 500 215 470 Z" fill="url(#body)" stroke="#EEEBE3" stroke-opacity=".35" stroke-width="2"/>
+  <!-- boisson -->
+  <path d="M224 330 L376 330 L376 470 C376 500 363 512 363 540 C363 568 376 580 376 610 L376 798 C376 816 364 826 346 826 L254 826 C236 826 224 816 224 798 L224 610 C224 580 237 568 237 540 C237 512 224 500 224 470 Z" fill="url(#liquid)"/>
+  <!-- étiquette -->
+  <rect x="215" y="620" width="170" height="120" fill="#141416"/>
+  <rect x="215" y="620" width="170" height="4" fill="#D4FF3A"/>
+  <rect x="238" y="652" width="124" height="18" fill="#EEEBE3" opacity=".9"/>
+  <rect x="238" y="682" width="80" height="8" fill="#D4FF3A" opacity=".9"/>
+  <rect x="238" y="700" width="104" height="6" fill="#8A8A85"/>
+  <!-- bouchon : bague, chambre sèche avec poudre, bouton -->
+  <rect x="250" y="150" width="100" height="52" rx="6" fill="url(#cap)"/>
+  <rect x="256" y="68" width="88" height="84" rx="8" fill="#EEEBE3" fill-opacity=".12" stroke="#EEEBE3" stroke-opacity=".4" stroke-width="2"/>
+  <rect x="264" y="104" width="72" height="42" rx="4" fill="#F4F2EA" opacity=".92"/>
+  <rect x="252" y="58" width="96" height="14" rx="4" fill="#1A1A1C"/>
+  <rect x="268" y="40" width="64" height="20" rx="6" fill="#D4FF3A"/>
+</svg>
