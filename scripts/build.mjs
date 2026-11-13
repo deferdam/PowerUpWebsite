@@ -114,7 +114,7 @@ export function validateConfig(config) {
     errors.push('DATA_DELETION_DATE doit être une date valide au format AAAA-MM-JJ.');
   }
   if (typeof config.SITE_URL !== 'string' || !isHttpUrl(config.SITE_URL)) {
-    errors.push('SITE_URL doit être une URL complète en http:// ou https:// (ex. "https://powerup.vercel.app").');
+    errors.push('SITE_URL doit être une URL complète en http:// ou https:// (ex. "https://upkap.vercel.app").');
   }
   if (typeof config.BRAND_NAME !== 'string' || config.BRAND_NAME.trim() === '') {
     errors.push('BRAND_NAME ne peut pas être vide.');

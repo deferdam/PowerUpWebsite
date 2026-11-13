@@ -1,4 +1,4 @@
-# PowerUp — test d'intention d'achat (projet étudiant ESCP)
+# UPKAP — test d'intention d'achat (projet étudiant ESCP)
 
 Ce site est un **« fake door test »** (test de la fausse porte). Il présente une boisson prête à boire dont le bouchon contient 3 à 5 g de créatine monohydrate stockée au sec : on appuie sur le bouchon, la poudre tombe, on secoue, on boit. Il mesure **combien de visiteurs cliquent sur « Précommander » selon le prix affiché** (2,50 €, 3,50 € ou 4,50 €) et selon la source du visiteur (Instagram, affiche en salle, LinkedIn…).
 
@@ -114,7 +114,7 @@ Dans le projet Vercel : **Settings > Environment Variables**, ajouter pour **Pro
 | `ADMIN_PASSWORD` | mot de passe de `/admin`, 12 caractères minimum (différent de celui utilisé en local) |
 | `APP_SECRET` | nouveau secret de 32 caractères minimum (commande de la section 3) |
 
-Facultatif : `SITE_URL` si vous utilisez un nom de domaine personnalisé (ex. `https://powerup.fr`, sans « / » final). Sinon, l'URL `*.vercel.app` est détectée automatiquement pour les balises Open Graph.
+Facultatif : `SITE_URL` si vous utilisez un nom de domaine personnalisé (ex. `https://upkap.fr`, sans « / » final). Sinon, l'URL `*.vercel.app` est détectée automatiquement pour les balises Open Graph.
 
 ### 4.3 Redéployer et vérifier
 
@@ -149,7 +149,7 @@ Tout se règle dans **un seul fichier : `site.config.js`**. Ensuite : `git commi
 
 | Réglage | Exemple | Rôle |
 | --- | --- | --- |
-| `BRAND_NAME` | `'PowerUp'` | Nom de la marque partout sur le site. Vérifier sa disponibilité (INPI / EUIPO) avant tout lancement réel. |
+| `BRAND_NAME` | `'UPKAP'` | Nom de la marque partout sur le site. Vérifier sa disponibilité (INPI / EUIPO) avant tout lancement réel. |
 | `PRICES` | `[2.5, 3.5, 4.5]` | Prix testés en euros par bouteille (nombres entre 0 et 100). |
 | `PRICE_MODE` | `'random'` | `'random'` : chaque visiteur reçoit au hasard un des prix, toujours le même pour lui. `'schedule'` : le prix dépend de la date (heure de Paris), selon `PRICE_SCHEDULE`. |
 | `PRICE_SCHEDULE` | `{ from: '2026-11-16', price: 2.5 }` | Utilisé seulement en mode `'schedule'`. À partir de chaque date (incluse), ce prix s'applique. Chaque prix doit figurer dans `PRICES`. |
