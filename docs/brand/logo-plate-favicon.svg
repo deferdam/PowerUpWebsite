@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" role="img" aria-label="Logo favicon">
+  <rect width="32" height="32" rx="7" fill="#0B0B0C"/>
+  <path fill="#EEEBE3" fill-rule="evenodd" d="M16 2A14 14 0 1 1 16 30A14 14 0 1 1 16 2ZM16 6A10 10 0 1 0 16 26A10 10 0 1 0 16 6Z"/>
+  <path fill="#D4FF3A" fill-rule="evenodd" d="M16 8A8 8 0 1 1 16 24A8 8 0 1 1 16 8ZM17 10L12 17L15 17L15 22L20 15L17 15Z"/>
+</svg>

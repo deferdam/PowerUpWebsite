@@ -483,11 +483,11 @@ main:focus {
   text-decoration: none;
 }
 .wordmark__mark {
-  width: 18px;
-  height: 18px;
+  width: 24px;
+  height: 24px;
   fill: var(--chalk);
 }
-.wordmark__mark rect:first-child {
+.wordmark__mark .wordmark__volt {
   fill: var(--volt);
 }
 .lang {

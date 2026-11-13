@@ -238,7 +238,7 @@
     "intro": "Ce site est un test de concept réalisé par des étudiants de l'ESCP Business School.",
     "publisher": {
       "h": "Éditeur",
-      "body": "{publisher}\nContact : {contactEmail}"
+      "body": "{publisher}\nDirecteur de la publication : {director}\nContact : {contactEmail}"
     },
     "host": {
       "h": "Hébergement",

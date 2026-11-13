@@ -37,10 +37,11 @@ export const QUESTIONNAIRE_URL = '';
 export const CONTACT_EMAIL = 'damien.defer@proton.me';
 
 // Éditeur du site ET responsable de traitement (mentions légales + page Confidentialité).
-// OBLIGATOIRE avant la mise en ligne : prénoms et noms des membres de l'équipe
-// (RGPD art. 13 et LCEN art. 6-III), par exemple :
-// 'Prénom NOM, Prénom NOM — étudiants ESCP Business School, projet PowerUp'
-export const PUBLISHER = 'Équipe projet PowerUp — étudiants ESCP Business School (Option Entrepreneuriat)';
+// Ajouter les prénoms et noms des autres membres de l'équipe quand ils sont connus.
+export const PUBLISHER = "Damien Defer et l'équipe projet — étudiants ESCP Business School (Option Entrepreneuriat)";
+
+// Directeur de la publication (LCEN art. 6-III) : une personne physique nommée.
+export const PUBLICATION_DIRECTOR = 'Damien Defer';
 
 // Date limite de suppression de toutes les données (format AAAA-MM-JJ).
 export const DATA_DELETION_DATE = '2027-06-30';
@@ -59,6 +60,7 @@ export default {
   QUESTIONNAIRE_URL,
   CONTACT_EMAIL,
   PUBLISHER,
+  PUBLICATION_DIRECTOR,
   DATA_DELETION_DATE,
   SITE_URL,
 };

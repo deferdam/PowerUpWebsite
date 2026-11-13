@@ -357,6 +357,7 @@ async function renderPages({ outDir, config, locales, productSrc }) {
       brand: config.BRAND_NAME,
       contactEmail: config.CONTACT_EMAIL,
       publisher: config.PUBLISHER,
+      director: config.PUBLICATION_DIRECTOR,
       deletionDate: formatDate(config.DATA_DELETION_DATE, lang),
     };
     const t = (key) => {

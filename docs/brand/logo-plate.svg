@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Logo symbol">
+  <!-- Bumper plate, front view (chalk ring) -->
+  <path fill="#EEEBE3" fill-rule="evenodd" d="M32 2A30 30 0 1 1 32 62A30 30 0 1 1 32 2ZM32 13A19 19 0 1 0 32 51A19 19 0 1 0 32 13Z"/>
+  <!-- Center hole = bottle cap (volt) with charge bolt knocked out -->
+  <path fill="#D4FF3A" fill-rule="evenodd" d="M32 17A15 15 0 1 1 32 47A15 15 0 1 1 32 17ZM35 20L25 34L31 34L29 44L39 30L33 30Z"/>
+</svg>

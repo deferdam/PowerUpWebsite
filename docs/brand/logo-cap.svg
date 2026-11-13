@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <!-- Cap (chalk) with downward press chevron cut out -->
+  <path fill="#EEEBE3" fill-rule="evenodd" d="M16 6H48A8 8 0 0 1 56 14V28A8 8 0 0 1 48 36H16A8 8 0 0 1 8 28V14A8 8 0 0 1 16 6ZM18 13H25L32 20L39 13H46L32 27Z"/>
+  <!-- Dose dropping out (volt) -->
+  <circle fill="#D4FF3A" cx="32" cy="51" r="8"/>
+</svg>
