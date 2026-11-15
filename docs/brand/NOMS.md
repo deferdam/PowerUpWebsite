@@ -1,5 +1,7 @@
 # Noms de marque possibles (remplaçants de PowerUp)
 
+> **Choix final : UPKAP.** Recherche INPI (marques) faite par l'équipe : 0 résultat. Nom de domaine non réservé (pas nécessaire pour le test). Faire aussi une recherche EUIPO avant un vrai lancement commercial.
+
 Pourquoi changer : sur INPI, une société POWERUP existe, ainsi qu'une salle **POWER-UP CROSSTRAINING** (même public que nous), et 62 marques contiennent « powerup ».
 
 Classement par une recherche multi-agents (24+ candidats, domaines vérifiés, recherche de conflits web). **À confirmer à la main sur INPI et EUIPO (classes 5, 29, 32) avant tout usage public.**

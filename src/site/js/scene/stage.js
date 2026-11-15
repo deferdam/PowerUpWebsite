@@ -68,6 +68,21 @@ const CHAPTERS = [
   { yaw: 0, tilt: 0.02, zoom: 1.0, focus: CENTER_Y }, // 03 la boisson (étiquette de face)
   { yaw: Math.PI, tilt: -0.04, zoom: 1.12, focus: 1.25 }, // 04 pour qui (dos de l'étiquette)
 ];
+// Téléphone / tablette (< 1024 px, même seuil que le CSS) : bouteille plus petite et
+// remontée dans le hero (la consigne « glisse pour tourner » est dessous), gros plans
+// plus doux. Dans « Explore », le rendu est découpé au cadre (le gros plan fait loupe).
+const ZONES_M = {
+  hero: { fill: 0.8, zoom: 1, focus: CENTER_Y - 0.2, yaw: null, tilt: 0.06 },
+  demo: { fill: 0.84, zoom: 1, focus: CENTER_Y, yaw: -0.45, tilt: 0.05 },
+  chapters: { fill: 0.82 },
+};
+const CHAPTERS_M = [
+  { ...CHAPTERS[0], zoom: 1.8, focus: 2.25 },
+  { ...CHAPTERS[1], zoom: 1.45, focus: 2.0 },
+  { ...CHAPTERS[2], zoom: 1.0, focus: CENTER_Y },
+  { ...CHAPTERS[3], zoom: 1.05, focus: 1.25 },
+];
+const NARROW_MQ = '(max-width: 1023px)';
 
 const COLORS = {
   chalk: '#EEEBE3',
@@ -86,6 +101,18 @@ const smoothstep = (a, b, v) => smooth(clamp((v - a) / (b - a), 0, 1));
 const damp = (k, dt) => 1 - Math.exp(-k * dt); // lissage indépendant du nombre d'images/s
 /** Ramène un angle dans ]-π, π] (pour tourner par le chemin le plus court). */
 const wrapAngle = (a) => Math.atan2(Math.sin(a), Math.cos(a));
+/**
+ * Ressort à amortissement critique (solution exacte, donc indépendante du nombre
+ * d'images/s) : part sans à-coup, arrive sans rebond. st = { x, v }, w = raideur (1/s).
+ */
+function spring(st, target, w, dt) {
+  const x = st.x - target;
+  const e = Math.exp(-w * dt);
+  const k = (st.v + w * x) * dt;
+  st.x = target + (x + k) * e;
+  st.v = (st.v - w * k) * e;
+}
+const sp = (x = 0) => ({ x, v: 0 });
 
 function makeCanvas(w, h) {
   const c = document.createElement('canvas');
@@ -204,8 +231,13 @@ function drawLabel(canvas, label) {
  */
 export async function createStage({ canvas, zones, reducedMotion = false, label }) {
   const mobile = matchMedia('(max-width: 767px), (pointer: coarse)').matches;
+  // < 1024 px : cadrages « mobile », rendu découpé au cadre dans Explore, et canvas qui
+  // défile avec la page (voir frame()). Relu à chaque changement (rotation d'une tablette).
+  const narrowMq = matchMedia(NARROW_MQ);
+  let narrow = narrowMq.matches;
   const renderer = new WebGLRenderer({ canvas, antialias: true, alpha: true, powerPreference: 'high-performance' });
   renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, mobile ? 1.5 : 2));
+  renderer.autoClear = false; // on efface nous-mêmes, avant le découpage au cadre
   renderer.outputColorSpace = SRGBColorSpace;
   renderer.toneMapping = NeutralToneMapping;
   renderer.toneMappingExposure = 1.05;
@@ -410,14 +442,22 @@ export async function createStage({ canvas, zones, reducedMotion = false, label 
   const s = {
     yaw: 0.5,
     yawVel: 0,
-    tilt: 0.06,
+    yawEaseV: 0, // vitesse du ressort qui ramène vers l'angle du chapitre
+    tilt: sp(0.06),
     lastUser: -1e9, // dernier geste de l'utilisateur (ms)
     chapter: 0,
     zoneName: 'hero',
+    zoneEl: null, // zone sur laquelle la bouteille est posée
     zoneVis: new Set(), // zones visibles à l'écran
-    pos: null, // {x, y, sc} position actuelle lissée
-    zoom: 1,
-    focus: CENTER_Y,
+    pos: null, // {x, y, sc} position affichée (null = se placer d'un coup)
+    // La bouteille suit sa zone exactement pendant le défilement ; seul le passage
+    // d'une zone à l'autre est animé, par un décalage qui revient à 0 en ressort.
+    offX: sp(),
+    offY: sp(),
+    base: sp(), // échelle donnée par la zone (sans le zoom)
+    zoom: sp(1),
+    focus: sp(CENTER_Y),
+    clip: sp(), // 0 = plein écran, 1 = rendu découpé au cadre de la zone « chapters »
     demoW: 0, // 1 quand la zone démo est active (sinon la bouteille revient « neuve »)
     // démo
     press: 0,
@@ -433,45 +473,97 @@ export async function createStage({ canvas, zones, reducedMotion = false, label 
   // =================================================================
   //  Interaction : glisser pour tourner (avec inertie) et flèches du clavier
   // =================================================================
-  let drag = null;
+  // Au doigt, un appui sur la zone ne devient une rotation qu'au premier mouvement
+  // nettement horizontal : un défilement vertical qui commence sur la bouteille reste
+  // un défilement (le navigateur l'annule par pointercancel) et ne fige rien.
+  let drag = null; // rotation confirmée
+  let pending = null; // appui au doigt pas encore confirmé
   const now = () => performance.now();
+  const VEL_WINDOW = 80; // ms : l'élan est mesuré sur les derniers mouvements seulement
 
   function onPointerDown(e) {
     const zone = e.currentTarget;
     if (zone.dataset.drag === 'off' || (e.pointerType === 'mouse' && e.button !== 0)) return;
-    drag = { id: e.pointerId, x: e.clientX, y: e.clientY, t: e.timeStamp, mouse: e.pointerType === 'mouse' };
+    const p = {
+      id: e.pointerId,
+      zone,
+      x0: e.clientX,
+      y0: e.clientY,
+      x: e.clientX,
+      y: e.clientY,
+      t: e.timeStamp,
+      mouse: e.pointerType === 'mouse',
+      samples: [{ x: e.clientX, t: e.timeStamp }],
+    };
+    if (p.mouse) startDrag(p);
+    else pending = p;
+  }
+  function startDrag(p) {
+    pending = null;
+    drag = p;
     s.yawVel = 0;
+    s.yawEaseV = 0;
     s.lastUser = now();
-    zone.classList.add('is-dragging');
+    p.zone.classList.add('is-dragging');
     try {
-      zone.setPointerCapture(e.pointerId); // on continue à suivre même hors de la zone
+      p.zone.setPointerCapture(p.id); // on continue à suivre même hors de la zone
     } catch {
       /* ignoré */
     }
   }
+  /** Vitesse (px/s) sur les dernières VEL_WINDOW ms : un petit mouvement isolé ne lance pas la bouteille. */
+  function dragVelocity(tNow) {
+    const list = drag.samples;
+    while (list.length > 2 && tNow - list[0].t > VEL_WINDOW) list.shift();
+    const a = list[0];
+    const b = list[list.length - 1];
+    if (!a || a === b) return 0;
+    return (b.x - a.x) / Math.max((b.t - a.t) / 1000, 1 / 60);
+  }
   function onPointerMove(e) {
+    if (pending && e.pointerId === pending.id) {
+      if (pending.zone.dataset.drag === 'off') {
+        pending = null;
+        return;
+      }
+      const dx = e.clientX - pending.x0;
+      const dy = e.clientY - pending.y0;
+      if (Math.abs(dx) > 8 && Math.abs(dx) > 1.2 * Math.abs(dy)) startDrag(pending);
+      else {
+        if (Math.abs(dy) > 12) pending = null; // geste vertical : c'est un défilement
+        return;
+      }
+    }
     if (!drag || e.pointerId !== drag.id) return;
     const dx = e.clientX - drag.x;
     const dy = e.clientY - drag.y;
-    const dt = Math.max((e.timeStamp - drag.t) / 1000, 1 / 240);
     s.yaw += dx * 0.01;
-    s.yawVel = lerp(s.yawVel, (dx * 0.01) / dt, 0.5);
     // Inclinaison légère, souris seulement (au doigt, le geste vertical fait défiler la page)
-    if (drag.mouse) s.tilt = clamp(s.tilt + dy * 0.004, -0.35, 0.35);
+    if (drag.mouse) {
+      s.tilt.x = clamp(s.tilt.x + dy * 0.004, -0.35, 0.35);
+      s.tilt.v = 0;
+    }
     drag.x = e.clientX;
     drag.y = e.clientY;
     drag.t = e.timeStamp;
+    drag.samples.push({ x: e.clientX, t: e.timeStamp });
+    s.yawVel = dragVelocity(e.timeStamp) * 0.01; // sert aussi à la vague de la boisson
     s.lastUser = now();
   }
   function onPointerUp(e) {
+    if (pending && e.pointerId === pending.id) {
+      pending = null; // simple tap, ou défilement repris par le navigateur : rien à faire
+      return;
+    }
     if (!drag || e.pointerId !== drag.id) return;
     // Doigt (ou souris) immobile avant de lâcher : pas d'élan, la bouteille s'arrête.
     // drag.t = heure du dernier mouvement (aucun pointermove n'arrive quand on ne bouge plus).
-    if (e.timeStamp - drag.t > 80) s.yawVel = 0;
+    const v = e.timeStamp - drag.t > VEL_WINDOW ? 0 : dragVelocity(e.timeStamp) * 0.01;
+    const max = drag.mouse ? 9 : 6;
+    s.yawVel = clamp(v, -max, max);
+    drag.zone.classList.remove('is-dragging');
     drag = null;
-    s.yawVel = clamp(s.yawVel, -9, 9);
     s.lastUser = now();
-    e.currentTarget.classList.remove('is-dragging');
   }
   function onKey(e) {
     if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
@@ -521,8 +613,21 @@ export async function createStage({ canvas, zones, reducedMotion = false, label 
     } else if (!shouldRun && running) {
       running = false;
       cancelAnimationFrame(raf);
+      // Au retour, la bouteille se replace d'un coup (le canvas est masqué entre-temps) :
+      // pas de vol depuis une position périmée.
+      s.pos = null;
+      s.zoneEl = null;
     }
   }
+
+  let canvasY = null; // décalage vertical appliqué au canvas (< 1024 px)
+  function onNarrowChange() {
+    narrow = narrowMq.matches;
+    s.pos = null;
+    canvasY = null;
+    if (!narrow) canvas.style.transform = '';
+  }
+  narrowMq.addEventListener('change', onNarrowChange);
 
   function resize() {
     const w = canvas.clientWidth;
@@ -534,68 +639,138 @@ export async function createStage({ canvas, zones, reducedMotion = false, label 
     camera.updateProjectionMatrix();
   }
 
-  /** La zone la plus visible à l'écran. */
+  /**
+   * La zone la plus visible à l'écran. Avec hystérésis : on garde la zone actuelle tant
+   * qu'elle est visible et qu'aucune autre ne la dépasse nettement (sinon, près d'une
+   * frontière, la bouteille ferait des allers-retours entre deux zones).
+   */
   function pickZone() {
     let best = null;
     let bestVis = 0;
+    let cur = null;
+    let curVis = 0;
     for (const el of s.zoneVis) {
       const r = el.getBoundingClientRect();
       const vis = Math.min(r.bottom, size.h) - Math.max(r.top, 0);
+      if (vis <= 0) continue;
+      if (el === s.zoneEl) {
+        cur = { el, r };
+        curVis = vis;
+      }
       if (vis > bestVis) {
         bestVis = vis;
         best = { el, r };
       }
     }
+    if (cur && best && best.el !== cur.el && bestVis < curVis + Math.max(48, size.h * 0.1)) return cur;
     return best;
   }
+
+  const chaptersZone = zones.find((z) => z.dataset.zone === 'chapters') || null;
 
   function frame(t) {
     raf = requestAnimationFrame(frame);
     const dt = Math.min((t - last) / 1000, 1 / 20);
     last = t;
     resize();
+    // < 1024 px, le canvas est dans le flux de la page (position absolue) : on le recale
+    // sur l'écran dans la même image que le rendu. Pendant un défilement inertiel (géré
+    // hors du fil JS sur iOS / Android), il bouge donc avec la page, et la bouteille
+    // reste collée à sa zone au lieu de flotter d'une image.
+    if (narrow) {
+      const y = Math.round(window.scrollY);
+      if (y !== canvasY) {
+        canvasY = y;
+        canvas.style.transform = `translate3d(0, ${y}px, 0)`;
+      }
+    }
     const zone = pickZone();
     if (!zone) return;
     update(dt, t, zone);
+    renderer.setScissorTest(false);
+    renderer.clear(); // tout le canvas, avant le découpage
+    applyClip();
     renderer.render(scene, camera);
+  }
+
+  /** Mobile, chapitres : rendu découpé au cadre de la zone (le gros plan ne déborde pas sur le texte). */
+  function applyClip() {
+    const c = clamp(s.clip.x, 0, 1);
+    if (c < 0.001 || !chaptersZone) return;
+    const r = chaptersZone.getBoundingClientRect();
+    const left = lerp(0, r.left + 1, c);
+    const top = lerp(0, r.top + 1, c);
+    const right = lerp(size.w, r.right - 1, c);
+    const bottom = lerp(size.h, r.bottom - 1, c);
+    // setScissor : px CSS, origine en bas à gauche (Three applique lui-même le pixelRatio)
+    renderer.setScissor(left, size.h - bottom, Math.max(0, right - left), Math.max(0, bottom - top));
+    renderer.setScissorTest(true);
   }
 
   function update(dt, t, zone) {
     const name = zone.el.dataset.zone;
     s.zoneName = name;
-    const cfg = name === 'chapters' ? { ...ZONES.chapters, ...CHAPTERS[s.chapter] } : ZONES[name] || ZONES.hero;
-    const userActive = drag || now() - s.lastUser < 1600;
+    const Z = narrow ? ZONES_M : ZONES;
+    const C = narrow ? CHAPTERS_M : CHAPTERS;
+    const cfg = name === 'chapters' ? { ...Z.chapters, ...C[s.chapter] } : Z[name] || Z.hero;
+    const userActive = drag || now() - s.lastUser < 1000;
+    const snap = reducedMotion || !s.pos; // mouvement réduit ou premier placement : d'un coup
+    const go = (st, target, stiff) => {
+      if (snap) {
+        st.x = target;
+        st.v = 0;
+      } else spring(st, target, stiff, dt);
+    };
 
     // ----- Rotation -----
     if (!drag) {
       s.yaw += s.yawVel * dt;
       s.yawVel *= Math.exp(-3 * dt); // inertie qui s'éteint
     }
-    if (!userActive) {
-      if (cfg.yaw !== null && cfg.yaw !== undefined) {
-        s.yaw += wrapAngle(cfg.yaw - s.yaw) * damp(reducedMotion ? 10 : 3.2, dt);
-      } else if (!reducedMotion) {
-        s.yaw += 0.32 * dt; // rotation lente au repos
-      }
+    if (!userActive && cfg.yaw !== null && cfg.yaw !== undefined) {
+      // ressort sur l'écart (par le chemin le plus court) vers l'angle visé
+      const d = { x: wrapAngle(s.yaw - cfg.yaw), v: s.yawEaseV };
+      if (reducedMotion) d.x *= 1 - damp(10, dt);
+      else spring(d, 0, 4.5, dt);
+      s.yaw = cfg.yaw + d.x;
+      s.yawEaseV = d.v;
+    } else {
+      s.yawEaseV = 0;
+      if (!userActive && !reducedMotion) s.yaw += 0.32 * dt; // rotation lente au repos
     }
-    if (!drag || !drag.mouse) s.tilt = lerp(s.tilt, cfg.tilt || 0, damp(3, dt));
+    if (!drag || !drag.mouse) go(s.tilt, cfg.tilt || 0, 4.5);
 
     // ----- Placement sur la zone (en unités 3D) -----
+    // Taille à l'écran = hauteur de la zone × fill × zoom (le FOV et la distance s'annulent).
     const upp = (2 * CAM_Z * Math.tan((FOV * Math.PI) / 360)) / size.h; // unités par pixel
     const r = zone.r;
-    s.zoom = lerp(s.zoom, cfg.zoom || 1, damp(4, dt));
-    s.focus = lerp(s.focus, cfg.focus || CENTER_Y, damp(4, dt));
+    go(s.zoom, cfg.zoom || 1, 5.5);
+    go(s.focus, cfg.focus || CENTER_Y, 5.5);
     const px = Math.min((r.height * cfg.fill) / BOTTLE_H, (r.width * 0.8) / 1.0);
     const target = {
-      sc: px * upp * s.zoom,
       x: (r.left + r.width / 2 - size.w / 2) * upp,
       y: -(r.top + r.height / 2 - size.h / 2) * upp,
     };
-    if (!s.pos) s.pos = { ...target };
-    const k = damp(reducedMotion ? 30 : 9, dt);
-    s.pos.sc = lerp(s.pos.sc, target.sc, k);
-    s.pos.x = lerp(s.pos.x, target.x, k);
-    s.pos.y = lerp(s.pos.y, target.y, k);
+    // Changement de zone : la bouteille part d'où elle est et glisse vers la nouvelle.
+    // Pendant le défilement, elle suit sa zone exactement (aucun retard).
+    if (zone.el !== s.zoneEl) {
+      if (s.pos && s.zoneEl) {
+        s.offX.x = s.pos.x - target.x;
+        s.offY.x = s.pos.y - target.y;
+      }
+      s.zoneEl = zone.el;
+    }
+    if (!s.pos) {
+      s.offX = sp();
+      s.offY = sp();
+    }
+    const stiff = narrow ? 9 : 11;
+    go(s.offX, 0, stiff);
+    go(s.offY, 0, stiff);
+    go(s.base, px * upp, stiff);
+    // Découpage au cadre : s'installe avec la bouteille, se retire vite en quittant la zone.
+    go(s.clip, narrow && name === 'chapters' ? 1 : 0, name === 'chapters' ? stiff : 16);
+    s.pos = { x: target.x + s.offX.x, y: target.y + s.offY.x, sc: s.base.x * s.zoom.x };
 
     // ----- Démo -----
     s.demoW = lerp(s.demoW, name === 'demo' ? 1 : 0, damp(5, dt));
@@ -614,9 +789,9 @@ export async function createStage({ canvas, zones, reducedMotion = false, label 
       fill = lerp(1, FILL_END, smoothstep(0.25, 0.75, d));
     }
 
-    anchor.position.set(s.pos.x + s.shakeAng * 0.35 * s.pos.sc * w, s.pos.y - s.focus * s.pos.sc, 0);
+    anchor.position.set(s.pos.x + s.shakeAng * 0.35 * s.pos.sc * w, s.pos.y - s.focus.x * s.pos.sc, 0);
     anchor.scale.setScalar(s.pos.sc);
-    pivot.rotation.set(s.tilt, s.yaw, (s.shakeAng + drinkAngle) * w);
+    pivot.rotation.set(s.tilt.x, s.yaw, (s.shakeAng + drinkAngle) * w);
 
     // Bouton et membrane
     const shownPress = s.press * w;
@@ -742,6 +917,9 @@ export async function createStage({ canvas, zones, reducedMotion = false, label 
       running = false;
       io.disconnect();
       document.removeEventListener('visibilitychange', onVisibility);
+      narrowMq.removeEventListener('change', onNarrowChange);
+      renderer.setScissorTest(false);
+      canvas.style.transform = '';
       for (const zone of zones) {
         zone.removeEventListener('pointerdown', onPointerDown);
         zone.removeEventListener('pointermove', onPointerMove);

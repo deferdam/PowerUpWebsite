@@ -33,22 +33,68 @@ function initChapters(scene, story) {
     scene.call('setChapter', i);
   }
 
+  // Téléphone / tablette (< 1024 px, même seuil que le CSS) : les cartes défilent à
+  // l'horizontale sous la bouteille. Ordinateur : elles défilent à la verticale.
+  const narrow = matchMedia('(max-width: 1023px)');
+  const scroller = document.querySelector('.explore__chapters');
+  const behavior = () => (reducedMotion.matches ? 'auto' : 'smooth');
+
   tabs.forEach((tab) =>
     tab.addEventListener('click', () => {
       const i = Number(tab.dataset.chapterTab);
       setChapter(i);
-      chapters[i].scrollIntoView({ behavior: reducedMotion.matches ? 'auto' : 'smooth', block: 'center' });
+      if (narrow.matches && scroller) {
+        // scrollIntoView ferait aussi défiler la page à la verticale
+        const pad = parseFloat(getComputedStyle(scroller).paddingLeft) || 0;
+        lock = i; // pendant le défilement animé, on ne repasse pas par les cartes intermédiaires
+        clearTimeout(lockTimer);
+        lockTimer = setTimeout(() => (lock = null), 1200);
+        scroller.scrollTo({ left: chapters[i].offsetLeft - pad, behavior: behavior() });
+      } else {
+        chapters[i].scrollIntoView({ behavior: behavior(), block: 'center' });
+      }
     }),
   );
 
-  // Le chapitre « actif » est celui qui passe au milieu de l'écran.
+  // Ordinateur : le chapitre « actif » est celui qui passe au milieu de l'écran.
   const io = new IntersectionObserver(
     (entries) => {
+      if (narrow.matches) return;
       for (const e of entries) if (e.isIntersecting) setChapter(Number(e.target.dataset.chapter));
     },
     { rootMargin: '-48% 0px -48% 0px' },
   );
   chapters.forEach((c) => io.observe(c));
+
+  // Mobile : la carte « active » est celle qui est calée à gauche dans la rangée.
+  let ticking = false;
+  let lock = null;
+  let lockTimer = 0;
+  function fromScroll() {
+    ticking = false;
+    if (!narrow.matches || !scroller || chapters.length < 2) return;
+    const step = chapters[1].offsetLeft - chapters[0].offsetLeft;
+    if (step <= 0) return;
+    const atEnd = scroller.scrollLeft + scroller.clientWidth >= scroller.scrollWidth - 4;
+    const i = atEnd ? chapters.length - 1 : Math.round(scroller.scrollLeft / step);
+    const next = Math.min(chapters.length - 1, Math.max(0, i));
+    if (lock !== null) {
+      if (next === lock) lock = null;
+      return;
+    }
+    if (next !== story.chapter) setChapter(next);
+  }
+  if (scroller) {
+    scroller.addEventListener(
+      'scroll',
+      () => {
+        if (!ticking) requestAnimationFrame(fromScroll);
+        ticking = true;
+      },
+      { passive: true },
+    );
+  }
+  narrow.addEventListener('change', fromScroll);
   setChapter(0);
 }
 

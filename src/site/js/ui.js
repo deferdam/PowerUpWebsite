@@ -11,10 +11,19 @@ export function initBanner() {
   if (!banner || storage.get(LS.banner) === '1') return;
   banner.hidden = false;
   document.body.classList.add('has-banner');
+  // Hauteur réelle de la bannière (elle varie selon la langue et la largeur) :
+  // le CSS s'en sert pour garder le prix et « Précommander » du hero au-dessus d'elle.
+  const root = document.documentElement;
+  const measure = () => root.style.setProperty('--banner-h', `${banner.offsetHeight}px`);
+  measure();
+  const ro = 'ResizeObserver' in window ? new ResizeObserver(measure) : null;
+  ro?.observe(banner);
   banner.querySelector('[data-banner-ok]').addEventListener('click', () => {
     storage.set(LS.banner, '1');
     banner.hidden = true;
     document.body.classList.remove('has-banner');
+    ro?.disconnect();
+    root.style.removeProperty('--banner-h');
   });
 }
 
@@ -79,12 +88,13 @@ export function initReveal() {
  * Barre « prix + Précommander » en bas sur mobile.
  * Visible dès l'arrivée (sur téléphone, le prix du hero est sous la ligne de flottaison),
  * cachée quand un autre bouton « Précommander » est déjà à l'écran (hero, appel final)
- * et pendant « Explore l'objet » (elle couvrirait les onglets des chapitres).
+ * et pendant « Explore l'objet » et la démo (elle couvrirait les onglets des chapitres
+ * et les boutons Secouer / Boire / Maintiens ; la démo a son propre « Précommander » à la fin).
  */
 export function initStickyBar() {
   const bar = document.querySelector('[data-bar]');
   if (!bar || !('IntersectionObserver' in window)) return;
-  const targets = ['[data-hero] .buy', '[data-explore]', '[data-final]']
+  const targets = ['[data-hero] .buy', '[data-explore]', '[data-demo] .demo__grid', '[data-final]']
     .map((selector) => document.querySelector(selector))
     .filter(Boolean);
   const onScreen = new Set();

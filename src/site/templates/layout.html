@@ -35,11 +35,14 @@
 <body data-page="{{page}}">
   <a class="skip" href="#main">{{nav.skip}}</a>
 
-  <!-- Le seul canvas WebGL du site : fixe, derrière le contenu. La bouteille se place sur la « zone » visible. -->
-  <canvas class="gl" aria-hidden="true"
-    data-label-dose="{{scene.labelDose}}"
-    data-label-sports="{{scene.labelSports}}"
-    data-label-meta="{{scene.labelMeta}}"></canvas>
+  <!-- Le seul canvas WebGL du site, derrière le contenu. La bouteille se place sur la « zone » visible.
+       Fixe sur ordinateur ; sur téléphone, il défile avec la page (le cadre .gl-wrap l'empêche d'allonger la page). -->
+  <div class="gl-wrap" aria-hidden="true">
+    <canvas class="gl"
+      data-label-dose="{{scene.labelDose}}"
+      data-label-sports="{{scene.labelSports}}"
+      data-label-meta="{{scene.labelMeta}}"></canvas>
+  </div>
   <div class="grain" aria-hidden="true"></div>
 
   <header class="header" data-header>

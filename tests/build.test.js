@@ -245,3 +245,24 @@ test('zones 3D : pas focusables dans le HTML (main.js les active seulement si la
   assert.equal(zones.length, 3);
   for (const z of zones) assert.doesNotMatch(z, /tabindex/, z);
 });
+
+test('mobile : la bouteille ne remonte plus sur le titre, cibles tactiles de 44 px, canvas dans son cadre', async () => {
+  const css = await read('assets/site.css');
+  // Toutes les déclarations des règles dont le sélecteur est exactement `sel`
+  const rule = (sel) => {
+    const out = [];
+    for (const m of css.matchAll(/([^{}]+)\{([^{}]*)\}/g)) {
+      if (m[1].split(',').some((s) => s.trim() === sel)) out.push(m[2]);
+    }
+    return out.join(';');
+  };
+  assert.doesNotMatch(rule('.stage--hero'), /margin-top:\s*-/, '.stage--hero : pas de marge négative (elle faisait passer la bouteille sur le titre)');
+  assert.match(rule('.lang__link'), /min-height:\s*44px/, '.lang__link : 44 px de haut au doigt');
+  assert.match(rule('.reset'), /min-height:\s*44px/, '.reset : 44 px de haut');
+  assert.match(rule('.footer__nav a'), /min-height:\s*44px/, 'liens du pied de page : 44 px de haut');
+  assert.match(css, /\.btn--small\s*\{[^}]*min-height:\s*44px/, '.btn--small : 44 px au doigt');
+  for (const [, rel] of PAGES) {
+    const html = await read(rel);
+    assert.match(html, /<div class="gl-wrap"[^>]*>\s*<canvas class="gl"/, `${rel} : le canvas est dans .gl-wrap`);
+  }
+});

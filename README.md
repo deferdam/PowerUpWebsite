@@ -131,6 +131,27 @@ Facultatif : `SITE_URL` si vous utilisez un nom de domaine personnalisé (ex. `h
 
 Si `/admin` affiche « Tableau de bord désactivé » : `ADMIN_PASSWORD` ou `APP_SECRET` manque ou est trop court, ou le site n'a pas été redéployé.
 
+### 4.4 Changer l'adresse du site (ex. `upkap.vercel.app`)
+
+Aujourd'hui, le site est en ligne sur `https://powerupwebsite.vercel.app` : Vercel a tiré cette adresse du nom du dépôt.
+
+1. Vercel, ouvrir le projet, puis **Settings > Domains > Add Domain**.
+2. Taper `upkap.vercel.app` et valider. Si l'adresse est déjà prise par quelqu'un d'autre, essayer `upkap-test.vercel.app` ou `drink-upkap.vercel.app`.
+3. Sur la ligne `powerupwebsite.vercel.app` : **Edit**, puis **Redirect to** `upkap.vercel.app` (308). Les anciens liens continuent de marcher.
+4. **Deployments > Redeploy**. Les balises Open Graph prennent alors automatiquement la nouvelle adresse : Vercel choisit le domaine de production le plus court.
+5. Facultatif : **Settings > General > Project Name**, renommer le projet en `upkap`. Cela change seulement le nom dans le tableau de bord Vercel, pas l'adresse (c'est l'étape 2 qui la change).
+
+Pour changer le **nom de la marque** affiché sur le site, il suffit de modifier `BRAND_NAME` dans `site.config.js` (section 6), puis de faire un commit et un push.
+
+### 4.5 Dépannage
+
+| Symptôme | Cause | Solution |
+| --- | --- | --- |
+| `/admin` affiche « admin désactivé » / `/api/admin/stats` renvoie `503 admin_disabled` | `ADMIN_PASSWORD` (12 caractères min.) ou `APP_SECRET` (32 min.) manquant | Section 4.2, puis Redeploy |
+| `/api/event` ou `/api/email` renvoie `500 internal_error` | Pas de base Turso : sur Vercel, le fichier local n'est pas accessible en écriture | Section 4.1, puis Redeploy |
+| Les variables sont ajoutées mais rien ne change | Pas de redéploiement, ou variables seulement en « Development » | Cocher Production + Preview, puis Redeploy |
+| Le site affiche toujours l'ancien texte | Le cache du navigateur ou d'Instagram | Recharger ; pour l'aperçu Instagram/Facebook : https://developers.facebook.com/tools/debug/ |
+
 ## 5. Traductions
 
 <!-- NOTE : les traductions EN et IT doivent être relues par un locuteur natif avant la mise en ligne. -->

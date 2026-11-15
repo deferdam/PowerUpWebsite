@@ -9,7 +9,7 @@
 
 const env = typeof process !== 'undefined' && process.env ? process.env : {};
 
-export const BRAND_NAME = 'UPKAP'; // nom choisi ; vérifier sur INPI / EUIPO (classes 5, 29, 32, 41) avant lancement public
+export const BRAND_NAME = 'UPKAP'; // recherche INPI faite (0 marque UPKAP). Pour changer le nom : modifier ici, commit, push.
 
 // "random"   : chaque visiteur reçoit au hasard un des prix de PRICES, toujours le même pour lui.
 // "schedule" : le prix dépend de la date (heure de Paris), selon PRICE_SCHEDULE.
