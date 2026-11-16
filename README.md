@@ -174,7 +174,7 @@ Tout se règle dans **un seul fichier : `site.config.js`**. Ensuite : `git commi
 | `PRICES` | `[2.5, 3.5, 4.5]` | Prix testés en euros par bouteille (nombres entre 0 et 100). |
 | `PRICE_MODE` | `'random'` | `'random'` : chaque visiteur reçoit au hasard un des prix, toujours le même pour lui. `'schedule'` : le prix dépend de la date (heure de Paris), selon `PRICE_SCHEDULE`. |
 | `PRICE_SCHEDULE` | `{ from: '2026-11-16', price: 2.5 }` | Utilisé seulement en mode `'schedule'`. À partir de chaque date (incluse), ce prix s'applique. Chaque prix doit figurer dans `PRICES`. |
-| `QUESTIONNAIRE_URL` | `'https://forms.gle/...'` | Lien du questionnaire sur l'écran de remerciement. Doit commencer par `https://`. Vide (`''`) = lien masqué. |
+| `QUESTIONNAIRE_URL` | `{ fr: 'https://tally.so/r/…', en: …, it: … }` | Questionnaire de l'écran de remerciement, une URL par langue (ou une seule URL pour toutes). Doit commencer par `https://`. Vide (`''`) = lien masqué. Le site ajoute au lien les champs cachés Tally `p` (prix vu, « 3,50 »), `arm` (prix en centimes), `lang` et `src` (`site_` + source UTM) : la question sur le prix affiche donc le même prix que le site. Aucun identifiant visiteur n'est transmis. |
 | `CONTACT_EMAIL` | `'prenom.nom@...'` | Contact affiché sur les pages Confidentialité et Mentions légales. |
 | `PUBLISHER` | `'Prénom NOM, Prénom NOM — étudiants ESCP…'` | **Obligatoire avant la mise en ligne** : noms des membres de l'équipe (éditeur du site et responsables de traitement). |
 | `DATA_DELETION_DATE` | `'2027-06-30'` | Date limite de suppression de toutes les données, affichée sur le site et dans la case de consentement. |

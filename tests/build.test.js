@@ -129,6 +129,15 @@ test('validateConfig refuse les configurations invalides', () => {
   );
   assert.throws(() => validateConfig({ ...config, QUESTIONNAIRE_URL: 'http://exemple.fr/q' }), /QUESTIONNAIRE_URL/);
   assert.doesNotThrow(() => validateConfig({ ...config, QUESTIONNAIRE_URL: 'https://exemple.fr/q' }));
+  assert.doesNotThrow(() =>
+    validateConfig({ ...config, QUESTIONNAIRE_URL: { fr: 'https://exemple.fr/fr', en: '', it: 'https://exemple.fr/it' } }),
+  );
+  assert.throws(() => validateConfig({ ...config, QUESTIONNAIRE_URL: { fr: 'https://exemple.fr/fr' } }), /QUESTIONNAIRE_URL/);
+  assert.throws(
+    () => validateConfig({ ...config, QUESTIONNAIRE_URL: { fr: '', en: '', it: '', de: 'https://exemple.fr' } }),
+    /QUESTIONNAIRE_URL/,
+  );
+  assert.throws(() => validateConfig({ ...config, QUESTIONNAIRE_URL: { fr: 'javascript:alert(1)', en: '', it: '' } }), /QUESTIONNAIRE_URL/);
   assert.throws(() => validateConfig({ ...config, DATA_DELETION_DATE: '2027-02-31' }), /DATA_DELETION_DATE/);
   assert.throws(() => validateConfig({ ...config, DATA_DELETION_DATE: '30/06/2027' }), /DATA_DELETION_DATE/);
   assert.throws(

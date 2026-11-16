@@ -1,10 +1,11 @@
 // Bouton « Précommander » → enregistre le clic, ouvre la fenêtre honnête,
 // puis envoie (si la personne le veut) son e-mail avec son consentement.
 import { track, getVisitorId, getUtm, lang } from './track.js';
+import { questionnaireUrl } from '../../shared/questionnaire.js';
 
 const EMAIL_RE = /^[^\s@<>()[\]\\,;:"]{1,64}@[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?(?:\.[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?)+$/;
 
-export function initPreorder({ questionnaireUrl }) {
+export function initPreorder({ questionnaire, priceCents }) {
   const dialog = document.querySelector('[data-dialog]');
   if (!dialog) return;
   const form = dialog.querySelector('[data-form]');
@@ -16,11 +17,12 @@ export function initPreorder({ questionnaireUrl }) {
   };
   let done = false; // e-mail déjà envoyé pendant cette visite
 
-  // Lien vers le questionnaire : affiché seulement s'il est configuré.
+  // Lien vers le questionnaire (dans la langue de la page, avec le prix vu) : affiché seulement s'il est configuré.
   const qWrap = dialog.querySelector('[data-questionnaire]');
   const qLink = dialog.querySelector('[data-questionnaire-link]');
-  if (questionnaireUrl && qWrap && qLink) {
-    qLink.href = questionnaireUrl;
+  const qUrl = questionnaireUrl(questionnaire, { lang: lang(), priceCents, source: getUtm().utm_source });
+  if (qUrl && qWrap && qLink) {
+    qLink.href = qUrl;
     qWrap.hidden = false;
     qLink.addEventListener('click', () => track('clic_questionnaire'));
   }

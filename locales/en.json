@@ -215,7 +215,7 @@
     },
     "recipients": {
       "h": "Who has access?",
-      "body": "Only the project team has access to the data. We use two technical processors:\n\n- Vercel Inc. (website hosting, United States): data transfers are covered by the EU–US Data Privacy Framework.\n- Turso (ChiselStrike Inc.): database, instance hosted in a European Union region."
+      "body": "Only the project team has access to the data. We use two technical processors:\n\n- Vercel Inc. (website hosting, United States): data transfers are covered by the EU–US Data Privacy Framework.\n- Turso (ChiselStrike Inc.): database, instance hosted in a European Union region.\n\nThe optional questionnaire is hosted by Tally (Tally BV, Belgium, European Union). The link to it only passes on the language, the price shown and the source of your visit, never your identifier or your e-mail: your answers cannot be linked to your visit to this site. What the questionnaire collects is explained on its first page."
     },
     "rights": {
       "h": "Your rights",

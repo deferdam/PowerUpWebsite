@@ -1,7 +1,7 @@
 # Registre des activités de traitement (RGPD art. 30)
 
 Projet étudiant ESCP Business School, Option Entrepreneuriat. Test d'intention d'achat (« fake door test »).
-Version du 13/11/2026. Mettre ce registre à jour à chaque changement : nouvelle donnée, nouveau prestataire, nouvelle date.
+Version du 16/11/2026. Mettre ce registre à jour à chaque changement : nouvelle donnée, nouveau prestataire, nouvelle date.
 
 ## Responsable de traitement
 
@@ -52,6 +52,18 @@ Version du 13/11/2026. Mettre ce registre à jour à chaque changement : nouvell
 | Données | Empreinte HMAC de l'adresse IP (non réversible sans le secret serveur) et un compteur, par fenêtre de temps |
 | Durée de conservation | 24 heures au plus (purge automatique) |
 
+## Traitement n° 4 : questionnaire d'étude (Tally)
+
+| Rubrique | Contenu |
+|---|---|
+| Finalité | Étude de marché du projet : habitudes de consommation de compléments sportifs et intention d'achat selon le prix |
+| Base légale | Consentement (art. 6.1.a), recueilli sur la première page du questionnaire ; réservé aux personnes majeures |
+| Personnes concernées | Visiteurs qui ouvrent volontairement le questionnaire (depuis le site ou un lien direct) |
+| Données | Réponses au questionnaire. Champs cachés transmis par le site : langue, prix affiché (`p`, `arm`), source (`src`). Aucun identifiant visiteur, aucune adresse e-mail : réponses non reliables aux statistiques du site |
+| Sous-traitant | Tally BV (Belgique, UE) |
+| Durée de conservation | Jusqu'au 30/06/2027 au plus tard, puis suppression des formulaires et réponses dans Tally |
+| Note | Le formulaire e-mail séparé (entretien de 15 minutes) relève du même principe : consentement, table distincte des réponses |
+
 ---
 
 ## Procédures
@@ -67,5 +79,5 @@ Version du 13/11/2026. Mettre ce registre à jour à chaque changement : nouvell
   3. Évaluer s'il faut notifier la CNIL sous 72 h (art. 33).
 - **Fin du projet** :
   1. Lancer `npm run purge:all -- --yes`, ou supprimer la base Turso.
-  2. Supprimer le projet Vercel.
+  2. Supprimer le projet Vercel et les formulaires Tally (avec leurs réponses).
   3. Noter ici la date de suppression effective : ____ / ____ / ______

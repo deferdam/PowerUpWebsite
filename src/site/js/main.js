@@ -21,8 +21,8 @@ function boot() {
   if (!isHome) return;
 
   track('page_vue');
-  showPrice();
-  initPreorder({ questionnaireUrl: config.QUESTIONNAIRE_URL });
+  const priceCents = showPrice();
+  initPreorder({ questionnaire: config.QUESTIONNAIRE_URL, priceCents });
   initStickyBar();
   initMagnetic();
 
@@ -42,6 +42,7 @@ function showPrice() {
   const { priceCents } = priceFor(config, getVisitorId());
   const text = new Intl.NumberFormat(lang(), { style: 'currency', currency: config.CURRENCY }).format(priceCents / 100);
   for (const el of document.querySelectorAll('[data-price]')) el.textContent = text;
+  return priceCents;
 }
 
 /** Charge la 3D après le premier affichage, quand le navigateur est libre. */

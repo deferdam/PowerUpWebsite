@@ -215,7 +215,7 @@
     },
     "recipients": {
       "h": "Qui y a accès ?",
-      "body": "Seule l'équipe projet a accès aux données. Nous faisons appel à deux sous-traitants techniques :\n\n- Vercel Inc. (hébergement du site, États-Unis) : les transferts de données sont encadrés par le Data Privacy Framework UE–États-Unis.\n- Turso (ChiselStrike Inc.) : base de données, instance hébergée dans une région de l'Union européenne."
+      "body": "Seule l'équipe projet a accès aux données. Nous faisons appel à deux sous-traitants techniques :\n\n- Vercel Inc. (hébergement du site, États-Unis) : les transferts de données sont encadrés par le Data Privacy Framework UE–États-Unis.\n- Turso (ChiselStrike Inc.) : base de données, instance hébergée dans une région de l'Union européenne.\n\nLe questionnaire facultatif est hébergé par Tally (Tally BV, Belgique, Union européenne). Le lien qui y mène lui transmet seulement la langue, le prix affiché et la source de ta visite, jamais ton identifiant ni ton e-mail : tes réponses ne peuvent pas être reliées à ta visite sur ce site. Ce que le questionnaire collecte est expliqué sur sa première page."
     },
     "rights": {
       "h": "Tes droits",

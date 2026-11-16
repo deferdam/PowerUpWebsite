@@ -142,7 +142,7 @@ CREATE TABLE IF NOT EXISTS rate_limits (
    - `PRICE_MODE` dans `{random, schedule}` ;
    - `PRICES` non vide, nombres > 0 et < 100 ;
    - calendrier : dates `AAAA-MM-JJ` valides, prix présents dans `PRICES` ;
-   - `QUESTIONNAIRE_URL` vide ou en `https://` ;
+   - `QUESTIONNAIRE_URL` vide ou en `https://`, ou objet `{ fr, en, it }` de telles URL ;
    - `CONTACT_EMAIL` valide ;
    - `DATA_DELETION_DATE` valide.
 2. **Parité des clés** entre `fr.json`, `en.json` et `it.json` (mêmes clés, aucune vide), sinon erreur.
@@ -178,7 +178,7 @@ CREATE TABLE IF NOT EXISTS rate_limits (
   2. ouverture d'un `<dialog>` avec le message honnête : produit en développement, pas encore en vente ;
   3. formulaire e-mail facultatif. La case de consentement est **non cochée** et `required`, avec le texte et la date de suppression. Le formulaire contient aussi le champ piège `website`, caché hors écran, avec `tabindex=-1`, `autocomplete=off` et `aria-hidden`.
   4. Le bouton « Non merci » ferme simplement le dialogue.
-- **Envoi du formulaire** : `POST /api/email` avec les UTM. En cas de succès, l'écran de remerciement s'affiche, avec le lien vers le questionnaire (`target=_blank rel="noopener noreferrer"`) **seulement si** `QUESTIONNAIRE_URL` est non vide. Le clic sur ce lien envoie `clic_questionnaire`. En cas d'erreur, un message localisé s'affiche.
+- **Envoi du formulaire** : `POST /api/email` avec les UTM. En cas de succès, l'écran de remerciement s'affiche, avec le lien vers le questionnaire (`target=_blank rel="noopener noreferrer"`) **seulement si** `QUESTIONNAIRE_URL` est non vide pour la langue de la page. Le lien est construit par `src/shared/questionnaire.js` : champs cachés `p` (prix au format de la langue), `arm` (centimes), `lang`, `src` (`site_` + utm_source ou `site_direct`), sans identifiant visiteur. Le clic sur ce lien envoie `clic_questionnaire`. En cas d'erreur, un message localisé s'affiche.
 - **Bannière d'information** : courte, en bas de page, avec un lien vers Confidentialité et un bouton « OK » qui enregistre `LS.banner`. C'est une information, pas un mur de consentement : la mesure est pseudonyme (identifiant aléatoire, sans nom ni e-mail) et ne pose aucun cookie.
 
 ## Règles de contenu (obligatoires, dans les trois langues)

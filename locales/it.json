@@ -215,7 +215,7 @@
     },
     "recipients": {
       "h": "Chi vi ha accesso?",
-      "body": "Solo il team di progetto ha accesso ai dati. Ci avvaliamo di due responsabili tecnici del trattamento:\n\n- Vercel Inc. (hosting del sito, Stati Uniti): i trasferimenti di dati sono coperti dal Data Privacy Framework UE–USA.\n- Turso (ChiselStrike Inc.): database, istanza ospitata in una regione dell'Unione europea."
+      "body": "Solo il team di progetto ha accesso ai dati. Ci avvaliamo di due responsabili tecnici del trattamento:\n\n- Vercel Inc. (hosting del sito, Stati Uniti): i trasferimenti di dati sono coperti dal Data Privacy Framework UE–USA.\n- Turso (ChiselStrike Inc.): database, istanza ospitata in una regione dell'Unione europea.\n\nIl questionario facoltativo è ospitato da Tally (Tally BV, Belgio, Unione europea). Il link che porta al questionario trasmette solo la lingua, il prezzo mostrato e la fonte della tua visita, mai il tuo identificativo né la tua e-mail: le tue risposte non possono essere collegate alla tua visita su questo sito. Ciò che il questionario raccoglie è spiegato nella sua prima pagina."
     },
     "rights": {
       "h": "I tuoi diritti",

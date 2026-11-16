@@ -29,9 +29,14 @@ export const PRICE_SCHEDULE = [
 
 export const CURRENCY = 'EUR';
 
-// Lien du questionnaire externe affiché sur l'écran de remerciement.
-// Laisser vide ('') tant qu'il n'existe pas : le lien est alors masqué. Doit commencer par https://
-export const QUESTIONNAIRE_URL = '';
+// Questionnaire externe (Tally) affiché sur l'écran de remerciement, une version par langue.
+// Le site ajoute tout seul au lien le prix vu par le visiteur, la langue et la source (champs cachés p, arm, lang, src).
+// Les liens doivent commencer par https://. Mettre '' pour masquer le lien.
+export const QUESTIONNAIRE_URL = {
+  fr: 'https://tally.so/r/Ge92Wo',
+  en: 'https://tally.so/r/Kp57pk',
+  it: 'https://tally.so/r/5Xj6XP',
+};
 
 // Contact affiché sur les pages Confidentialité et Mentions légales.
 export const CONTACT_EMAIL = 'damien.defer@proton.me';

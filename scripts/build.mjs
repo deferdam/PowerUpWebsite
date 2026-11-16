@@ -104,8 +104,16 @@ export function validateConfig(config) {
   if (typeof config.CURRENCY !== 'string' || !/^[A-Z]{3}$/.test(config.CURRENCY)) {
     errors.push('CURRENCY doit être un code à 3 lettres (ex. "EUR").');
   }
-  if (typeof config.QUESTIONNAIRE_URL !== 'string' || (config.QUESTIONNAIRE_URL !== '' && !isHttpsUrl(config.QUESTIONNAIRE_URL))) {
-    errors.push('QUESTIONNAIRE_URL doit être vide ou commencer par https://');
+  const q = config.QUESTIONNAIRE_URL;
+  const qOk = (u) => u === '' || isHttpsUrl(u);
+  const qValid =
+    typeof q === 'string'
+      ? qOk(q)
+      : q !== null && typeof q === 'object' && !Array.isArray(q) &&
+        LANGS.every((l) => typeof q[l] === 'string' && qOk(q[l])) &&
+        Object.keys(q).every((k) => LANGS.includes(k));
+  if (!qValid) {
+    errors.push(`QUESTIONNAIRE_URL doit être '' ou une URL https://, ou un objet { ${LANGS.join(', ')} } de telles URL.`);
   }
   if (typeof config.CONTACT_EMAIL !== 'string' || !EMAIL_RE.test(config.CONTACT_EMAIL)) {
     errors.push('CONTACT_EMAIL n\'est pas une adresse e-mail valide.');
