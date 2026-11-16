@@ -265,4 +265,12 @@ test('mobile : la bouteille ne remonte plus sur le titre, cibles tactiles de 44 
     const html = await read(rel);
     assert.match(html, /<div class="gl-wrap"[^>]*>\s*<canvas class="gl"/, `${rel} : le canvas est dans .gl-wrap`);
   }
+  // Écrans très hauts (téléphone en « version ordinateur », 980 x 2177) : aucun espacement
+  // proportionnel à la hauteur sans borne, sinon des trous énormes entre les sections.
+  for (const m of css.matchAll(/(padding|margin)(-top|-bottom)?:([^;}]*)/g)) {
+    const value = m[3].replace(/clamp\([^()]*(\([^()]*\)[^()]*)*\)/g, '');
+    assert.doesNotMatch(value, /\d(s|d|l)?vh/, `${m[0].trim()} : espacement en vh non borné (utiliser clamp)`);
+  }
+  // « Pour qui » : deux colonnes seulement à partir de 1100 px, 1re colonne = largeur du mot.
+  assert.match(css, /grid-template-columns:\s*max-content minmax\(18ch,\s*1fr\)/);
 });

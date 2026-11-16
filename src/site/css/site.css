@@ -644,8 +644,8 @@ main:focus {
   position: relative;
   overflow-x: hidden; /* le mot géant ne doit pas élargir la page sur mobile */
   overflow-x: clip;
-  min-height: 100vh;
-  min-height: 100svh;
+  min-height: min(100vh, 960px);
+  min-height: min(100svh, 960px);
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   align-content: start;
@@ -790,6 +790,7 @@ main:focus {
     height: 52vh;
     height: 52svh;
     min-height: 300px;
+    max-height: 560px;
     margin-top: 8px;
   }
   .hero__aside {
@@ -808,7 +809,7 @@ main:focus {
 
 @media (min-width: 1024px) {
   .hero {
-    min-height: max(100vh, 680px);
+    min-height: clamp(680px, 100vh, 1000px);
     grid-template-columns: repeat(12, minmax(0, 1fr));
     grid-template-rows: auto 1fr auto;
     column-gap: 20px;
@@ -880,7 +881,7 @@ main:focus {
 /* ---------- 6. Explore l'objet ---------- */
 .explore {
   position: relative;
-  margin-top: 8vh;
+  margin-top: clamp(32px, 8vh, 80px);
 }
 .explore__grid {
   display: grid;
@@ -1019,7 +1020,7 @@ main:focus {
    (la suivante dépasse pour inviter au geste). Le texte ne passe jamais sur la bouteille. */
 @media (max-width: 1023px) {
   .explore {
-    margin-top: 6vh;
+    margin-top: clamp(24px, 6vh, 64px);
   }
   .explore__stage {
     grid-area: auto;
@@ -1161,7 +1162,7 @@ main:focus {
 /* ---------- 7. Démo ---------- */
 .demo {
   position: relative;
-  padding: 16vh var(--pad) 12vh;
+  padding: clamp(64px, 16vh, 160px) var(--pad) clamp(48px, 12vh, 120px);
 }
 .demo__head {
   display: grid;
@@ -1185,6 +1186,7 @@ main:focus {
   height: 60vh;
   height: 60svh;
   min-height: 360px;
+  max-height: 720px;
   border: 1px solid var(--line);
   background: radial-gradient(60% 50% at 50% 60%, rgba(238, 235, 227, 0.06), transparent 70%),
     repeating-linear-gradient(90deg, transparent 0 39px, rgba(238, 235, 227, 0.035) 39px 40px),
@@ -1358,8 +1360,8 @@ main:focus {
    à l'écran, même sur un navigateur intégré (Instagram, ~600 px de haut). */
 @media (max-width: 1023px) {
   .demo {
-    padding: 10vh var(--pad) 8vh;
-    padding: 10svh var(--pad) 8svh;
+    padding: clamp(40px, 10vh, 96px) var(--pad) clamp(32px, 8vh, 80px);
+    padding: clamp(40px, 10svh, 96px) var(--pad) clamp(32px, 8svh, 80px);
   }
   .demo__grid {
     gap: 16px;
@@ -1409,13 +1411,14 @@ main:focus {
   }
   .stage--demo {
     height: 78vh;
+    max-height: 820px;
   }
 }
 
 /* ---------- 8. Pourquoi ---------- */
 .why {
   position: relative;
-  padding: 14vh var(--pad);
+  padding: clamp(56px, 14vh, 140px) var(--pad);
   background: var(--surface);
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
@@ -1515,10 +1518,29 @@ main:focus {
   .why__grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
+}
+/* Deux colonnes seulement s'il y a la place : la 1re colonne prend la largeur réelle du mot
+   (max-content), donc le texte commence toujours après lui, sans chevauchement. */
+@media (min-width: 1100px) {
+  .who__name {
+    font-size: clamp(64px, 8vw, 120px);
+  }
   .who__list li {
-    grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+    grid-template-columns: max-content minmax(18ch, 1fr);
     align-items: end;
-    gap: 32px;
+    gap: 40px;
+  }
+  /* Navigateurs récents : une seule colonne commune, les phrases sont alignées. */
+  @supports (grid-template-columns: subgrid) {
+    .who__list {
+      display: grid;
+      grid-template-columns: max-content minmax(18ch, 1fr);
+      column-gap: 40px;
+    }
+    .who__list li {
+      grid-column: 1 / -1;
+      grid-template-columns: subgrid;
+    }
   }
   .who__text {
     padding-bottom: 10px;
@@ -1531,7 +1553,7 @@ main:focus {
   display: grid;
   justify-items: center;
   gap: 24px;
-  padding: 18vh var(--pad);
+  padding: clamp(72px, 18vh, 180px) var(--pad);
   text-align: center;
   overflow: hidden;
 }
@@ -1946,7 +1968,7 @@ main:focus {
   z-index: 2;
   max-width: 780px;
   margin: 0 auto;
-  padding: calc(var(--header-h) + 48px) var(--pad) 12vh;
+  padding: calc(var(--header-h) + 48px) var(--pad) clamp(48px, 12vh, 120px);
 }
 .doc__head {
   display: grid;
