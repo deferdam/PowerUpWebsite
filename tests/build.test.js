@@ -31,7 +31,7 @@ const meta = (html, prop) => {
 };
 
 before(async () => {
-  outDir = await fs.mkdtemp(path.join(os.tmpdir(), 'upkap-build-'));
+  outDir = await fs.mkdtemp(path.join(os.tmpdir(), 'frucdoz-build-'));
   await build({ outDir, quiet: true });
 });
 
@@ -217,7 +217,7 @@ test('URL sans « / » final (vercel.json : trailingSlash false) dans canonical,
 });
 
 test('SITE_URL est échappé dans les balises hreflang', async () => {
-  const dir = await fs.mkdtemp(path.join(os.tmpdir(), 'upkap-build-url-'));
+  const dir = await fs.mkdtemp(path.join(os.tmpdir(), 'frucdoz-build-url-'));
   try {
     await build({ outDir: dir, quiet: true, config: { ...config, SITE_URL: 'https://exemple.fr/a"b' } });
     const html = await fs.readFile(path.join(dir, 'index.html'), 'utf8');
@@ -282,4 +282,17 @@ test('mobile : la bouteille ne remonte plus sur le titre, cibles tactiles de 44 
   }
   // « Pour qui » : deux colonnes seulement à partir de 1100 px, 1re colonne = largeur du mot.
   assert.match(css, /grid-template-columns:\s*max-content minmax\(18ch,\s*1fr\)/);
+});
+
+test('les grands mots de fond suivent la longueur du nom de marque', async () => {
+  const css = await fs.readFile(path.join(outDir, 'assets', 'site.css'), 'utf8');
+  const fit = Math.min(1, 5 / [...config.BRAND_NAME].length);
+  assert.ok(css.startsWith(`:root{--brand-fit:${String(Number(fit.toFixed(3))).replace(/^0\./, '.')}}`), css.slice(0, 40));
+  const src = await fs.readFile(path.join(ROOT, 'src', 'site', 'css', 'site.css'), 'utf8');
+  for (const cls of ['.hero__ghost', '.final__ghost', '.footer__brand']) {
+    const block = src.slice(src.indexOf(`${cls} {`), src.indexOf('}', src.indexOf(`${cls} {`)));
+    assert.match(block, /font-size: calc\(\d+vw \* var\(--brand-fit, 1\)\)/, cls);
+  }
+  // Le logo de l'en-tête ne doit jamais s'écraser à côté d'un nom long.
+  assert.match(src, /\.wordmark__mark \{\s*flex-shrink: 0;/);
 });

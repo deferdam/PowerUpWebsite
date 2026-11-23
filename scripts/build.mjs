@@ -122,7 +122,7 @@ export function validateConfig(config) {
     errors.push('DATA_DELETION_DATE doit être une date valide au format AAAA-MM-JJ.');
   }
   if (typeof config.SITE_URL !== 'string' || !isHttpUrl(config.SITE_URL)) {
-    errors.push('SITE_URL doit être une URL complète en http:// ou https:// (ex. "https://upkap.vercel.app").');
+    errors.push('SITE_URL doit être une URL complète en http:// ou https:// (ex. "https://frucdoz.vercel.app").');
   }
   if (typeof config.BRAND_NAME !== 'string' || config.BRAND_NAME.trim() === '') {
     errors.push('BRAND_NAME ne peut pas être vide.');
@@ -485,7 +485,11 @@ export async function build({ outDir = process.env.BUILD_OUT_DIR || 'dist', conf
   }
 
   // CSS : un seul fichier, minifié.
-  const css = await fs.readFile(path.join(SITE, 'css', 'site.css'), 'utf8');
+  // --brand-fit : les grands mots de fond (nom de la marque) ont été réglés pour 5 lettres ;
+  // un nom plus long réduit leur taille d'autant, pour qu'il tienne toujours en entier.
+  const brandFit = Math.min(1, 5 / [...config.BRAND_NAME].length);
+  const css = `:root{--brand-fit:${brandFit.toFixed(3)}}
+` + (await fs.readFile(path.join(SITE, 'css', 'site.css'), 'utf8'));
   const cssMin = await transform(css, { loader: 'css', minify: true, target: ['chrome100', 'safari15', 'firefox100'] });
   await fs.writeFile(path.join(assets, 'site.css'), cssMin.code);
 

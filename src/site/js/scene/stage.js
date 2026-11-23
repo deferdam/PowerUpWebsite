@@ -207,7 +207,8 @@ function drawLabel(canvas, label) {
   // Face avant : la marque en très grand, la dose en dessous
   ctx.fillStyle = COLORS.chalk;
   ctx.font = display(H * 0.5);
-  fitText(ctx, label.brand.toUpperCase(), W / 2, H * 0.42, W * 0.3);
+  // 22 % du tour (~80°) : au-delà, les lettres du bord fuient sur le côté de la bouteille.
+  fitText(ctx, label.brand.toUpperCase(), W / 2, H * 0.42, W * 0.22);
   ctx.fillStyle = COLORS.volt;
   ctx.font = mono(H * 0.085);
   fitText(ctx, (label.labelDose || '').toUpperCase(), W / 2, H * 0.78, W * 0.3);

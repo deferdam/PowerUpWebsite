@@ -1,6 +1,8 @@
 # Noms de marque possibles (remplaçants de PowerUp)
 
-> **Choix final : UPKAP.** Recherche INPI (marques) faite par l'équipe : 0 résultat. Nom de domaine non réservé (pas nécessaire pour le test). Faire aussi une recherche EUIPO avant un vrai lancement commercial.
+> **Choix final : FRUCDOZ** (novembre 2026), qui remplace UPKAP. Vérifier sur INPI ([recherche marques](https://data.inpi.fr/search?advancedSearch=%257B%257D&filter=%257B%257D&nbResultsPerPage=20&order=asc&page=1&q=frucdoz&sort=relevance&type=brands)) et EUIPO avant un vrai lancement commercial.
+>
+> Ancien choix : UPKAP (recherche INPI faite par l'équipe : 0 résultat).
 
 Pourquoi changer : sur INPI, une société POWERUP existe, ainsi qu'une salle **POWER-UP CROSSTRAINING** (même public que nous), et 62 marques contiennent « powerup ».
 

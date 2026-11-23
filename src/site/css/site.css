@@ -539,6 +539,7 @@ main:focus {
   text-decoration: none;
 }
 .wordmark__mark {
+  flex-shrink: 0; /* le logo ne s'écrase jamais, même avec un nom long */
   width: 24px;
   height: 24px;
   fill: var(--chalk);
@@ -582,14 +583,16 @@ main:focus {
   }
 }
 /* Petits écrans : en-tête compact, mais chaque cible reste à 44 px de haut */
-@media (max-width: 419px) {
+@media (max-width: 479px) {
   .header {
     gap: 4px;
+    padding-left: 14px;
+    padding-right: 14px;
   }
   .wordmark {
     min-height: 44px;
-    font-size: 19px;
-    gap: 6px;
+    font-size: 17px;
+    gap: 5px;
   }
   .lang {
     gap: 0;
@@ -599,15 +602,15 @@ main:focus {
     font-size: 11px;
   }
   .header .btn--small {
-    padding: 0 12px;
+    padding: 0 10px;
     font-size: 11px;
     letter-spacing: 0.03em;
     white-space: nowrap; /* « Voir le produit » sur une seule ligne */
   }
 }
-@media (max-width: 374px) {
+@media (max-width: 389px) {
   .lang__link {
-    min-width: 38px;
+    min-width: 36px;
   }
 }
 /* Très petits écrans (320 px) : le nom passe en texte masqué (le logo et le libellé accessible restent) */
@@ -656,7 +659,7 @@ main:focus {
   top: 46%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-size: 34vw;
+  font-size: calc(34vw * var(--brand-fit, 1));
   white-space: nowrap;
   color: rgba(238, 235, 227, 0.045);
   pointer-events: none;
@@ -817,7 +820,7 @@ main:focus {
   }
   .hero__ghost {
     top: 50%;
-    font-size: 27vw;
+    font-size: calc(27vw * var(--brand-fit, 1));
   }
   .hero__meta {
     grid-column: 1 / -1;
@@ -1562,7 +1565,7 @@ main:focus {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-size: 30vw;
+  font-size: calc(30vw * var(--brand-fit, 1));
   white-space: nowrap;
   color: transparent;
   -webkit-text-stroke: 1px rgba(238, 235, 227, 0.1);
@@ -1589,7 +1592,7 @@ main:focus {
   overflow: hidden;
 }
 .footer__brand {
-  font-size: 27vw;
+  font-size: calc(27vw * var(--brand-fit, 1));
   line-height: 0.8;
   color: var(--surface-2);
   margin: 4vw 0 2vw -0.03em;
