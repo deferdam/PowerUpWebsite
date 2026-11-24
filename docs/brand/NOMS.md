@@ -1,6 +1,8 @@
 # Noms de marque possibles (remplaçants de PowerUp)
 
-> **Choix final : FRUCDOZ** (novembre 2026), qui remplace UPKAP. Vérifier sur INPI ([recherche marques](https://data.inpi.fr/search?advancedSearch=%257B%257D&filter=%257B%257D&nbResultsPerPage=20&order=asc&page=1&q=frucdoz&sort=relevance&type=brands)) et EUIPO avant un vrai lancement commercial.
+> **Choix final (définitif) : Dosé** (novembre 2026), après UPKAP puis FRUCDOZ. Vérifier sur INPI ([recherche marques](https://data.inpi.fr/search?advancedSearch=%257B%257D&filter=%257B%257D&nbResultsPerPage=20&order=asc&page=1&q=dos%C3%A9&sort=relevance&type=brands)) et EUIPO avant un vrai lancement commercial. « Dose » est un mot courant : une marque n'est protégeable que si elle reste distinctive pour le produit.
+>
+> Ancien choix : FRUCDOZ (novembre 2026), qui remplaçait UPKAP.
 >
 > Ancien choix : UPKAP (recherche INPI faite par l'équipe : 0 résultat).
 

@@ -9,7 +9,7 @@
 
 const env = typeof process !== 'undefined' && process.env ? process.env : {};
 
-export const BRAND_NAME = 'FRUCDOZ'; // remplace UPKAP (novembre 2026). Pour changer le nom : modifier ici, commit, push.
+export const BRAND_NAME = 'Dosé'; // nom définitif (novembre 2026), après UPKAP puis FRUCDOZ. Pour changer le nom : modifier ici, commit, push.
 
 // "random"   : chaque visiteur reçoit au hasard un des prix de PRICES, toujours le même pour lui.
 // "schedule" : le prix dépend de la date (heure de Paris), selon PRICE_SCHEDULE.
@@ -43,7 +43,7 @@ export const CONTACT_EMAIL = 'damien.defer@proton.me';
 
 // Éditeur du site ET responsable de traitement (mentions légales + page Confidentialité).
 // Ajouter les prénoms et noms des autres membres de l'équipe quand ils sont connus.
-export const PUBLISHER = "Damien Defer et l'équipe projet FRUCDOZ — étudiants ESCP Business School (Option Entrepreneuriat)";
+export const PUBLISHER = "Damien Defer et l'équipe projet Dosé — étudiants ESCP Business School (Option Entrepreneuriat)";
 
 // Directeur de la publication (LCEN art. 6-III) : une personne physique nommée.
 export const PUBLICATION_DIRECTOR = 'Damien Defer';

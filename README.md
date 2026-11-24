@@ -1,4 +1,4 @@
-# FRUCDOZ — test d'intention d'achat (projet étudiant ESCP)
+# Dosé — test d'intention d'achat (projet étudiant ESCP)
 
 Ce site est un **« fake door test »** (test de la fausse porte). Il présente une boisson prête à boire dont le bouchon contient 3 à 5 g de créatine monohydrate stockée au sec : on appuie sur le bouchon, la poudre tombe, on secoue, on boit. Il mesure **combien de visiteurs cliquent sur « Précommander » selon le prix affiché** (2,50 €, 3,50 € ou 4,50 €) et selon la source du visiteur (Instagram, affiche en salle, LinkedIn…).
 
@@ -114,7 +114,7 @@ Dans le projet Vercel : **Settings > Environment Variables**, ajouter pour **Pro
 | `ADMIN_PASSWORD` | mot de passe de `/admin`, 12 caractères minimum (différent de celui utilisé en local) |
 | `APP_SECRET` | nouveau secret de 32 caractères minimum (commande de la section 3) |
 
-Facultatif : `SITE_URL` si vous utilisez un nom de domaine personnalisé (ex. `https://frucdoz.fr`, sans « / » final). Sinon, l'URL `*.vercel.app` est détectée automatiquement pour les balises Open Graph.
+Facultatif : `SITE_URL` si vous utilisez un nom de domaine personnalisé (ex. `https://dose.fr`, sans « / » final). Sinon, l'URL `*.vercel.app` est détectée automatiquement pour les balises Open Graph.
 
 ### 4.3 Redéployer et vérifier
 
@@ -131,15 +131,15 @@ Facultatif : `SITE_URL` si vous utilisez un nom de domaine personnalisé (ex. `h
 
 Si `/admin` affiche « Tableau de bord désactivé » : `ADMIN_PASSWORD` ou `APP_SECRET` manque ou est trop court, ou le site n'a pas été redéployé.
 
-### 4.4 Changer l'adresse du site (ex. `frucdoz.vercel.app`)
+### 4.4 Changer l'adresse du site (ex. `dose-escp.vercel.app`)
 
 Aujourd'hui, le site est en ligne sur `https://upkap.vercel.app` (ancien nom de la marque).
 
 1. Vercel, ouvrir le projet, puis **Settings > Domains > Add Domain**.
-2. Taper `frucdoz.vercel.app` et valider. Si l'adresse est déjà prise par quelqu'un d'autre, essayer `frucdoz-test.vercel.app` ou `drink-frucdoz.vercel.app`.
-3. Sur la ligne `upkap.vercel.app` : **Edit**, puis **Redirect to** `frucdoz.vercel.app` (308). Les anciens liens continuent de marcher.
+2. Taper `dose.vercel.app` et valider (pas d'accent dans une adresse web). Si l'adresse est déjà prise par quelqu'un d'autre, essayer `dose-escp.vercel.app` ou `drink-dose.vercel.app`.
+3. Sur la ligne `upkap.vercel.app` : **Edit**, puis **Redirect to** la nouvelle adresse (308). Les anciens liens continuent de marcher.
 4. **Deployments > Redeploy**. Les balises Open Graph prennent alors automatiquement la nouvelle adresse : Vercel choisit le domaine de production le plus court.
-5. Facultatif : **Settings > General > Project Name**, renommer le projet en `frucdoz`. Cela change seulement le nom dans le tableau de bord Vercel, pas l'adresse (c'est l'étape 2 qui la change).
+5. Facultatif : **Settings > General > Project Name**, renommer le projet en `dose`. Cela change seulement le nom dans le tableau de bord Vercel, pas l'adresse (c'est l'étape 2 qui la change).
 
 Pour changer le **nom de la marque** affiché sur le site, il suffit de modifier `BRAND_NAME` dans `site.config.js` (section 6), puis de faire un commit et un push.
 
@@ -170,7 +170,7 @@ Tout se règle dans **un seul fichier : `site.config.js`**. Ensuite : `git commi
 
 | Réglage | Exemple | Rôle |
 | --- | --- | --- |
-| `BRAND_NAME` | `'FRUCDOZ'` | Nom de la marque partout sur le site. Vérifier sa disponibilité (INPI / EUIPO) avant tout lancement réel. |
+| `BRAND_NAME` | `'Dosé'` | Nom de la marque partout sur le site. Vérifier sa disponibilité (INPI / EUIPO) avant tout lancement réel. |
 | `PRICES` | `[2.5, 3.5, 4.5]` | Prix testés en euros par bouteille (nombres entre 0 et 100). |
 | `PRICE_MODE` | `'random'` | `'random'` : chaque visiteur reçoit au hasard un des prix, toujours le même pour lui. `'schedule'` : le prix dépend de la date (heure de Paris), selon `PRICE_SCHEDULE`. |
 | `PRICE_SCHEDULE` | `{ from: '2026-11-16', price: 2.5 }` | Utilisé seulement en mode `'schedule'`. À partir de chaque date (incluse), ce prix s'applique. Chaque prix doit figurer dans `PRICES`. |

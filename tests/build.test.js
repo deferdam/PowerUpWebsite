@@ -31,7 +31,7 @@ const meta = (html, prop) => {
 };
 
 before(async () => {
-  outDir = await fs.mkdtemp(path.join(os.tmpdir(), 'frucdoz-build-'));
+  outDir = await fs.mkdtemp(path.join(os.tmpdir(), 'dose-build-'));
   await build({ outDir, quiet: true });
 });
 
@@ -217,7 +217,7 @@ test('URL sans « / » final (vercel.json : trailingSlash false) dans canonical,
 });
 
 test('SITE_URL est échappé dans les balises hreflang', async () => {
-  const dir = await fs.mkdtemp(path.join(os.tmpdir(), 'frucdoz-build-url-'));
+  const dir = await fs.mkdtemp(path.join(os.tmpdir(), 'dose-build-url-'));
   try {
     await build({ outDir: dir, quiet: true, config: { ...config, SITE_URL: 'https://exemple.fr/a"b' } });
     const html = await fs.readFile(path.join(dir, 'index.html'), 'utf8');
