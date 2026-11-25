@@ -1,8 +1,8 @@
 {
   "meta": {
     "home": {
-      "title": "{brand} — Press. Shake. Drink. Your creatine in the doser",
-      "description": "A refillable doser that sits on your bottle. Your creatine stays dry until the click. Press, shake, drink. An ESCP student project."
+      "title": "{brand} — Press. Shake. Drink. Your creatine kept dry, on your bottle",
+      "description": "{brand} sits on your bottle and keeps your creatine dry until the click. Refillable. Press, shake, drink. An ESCP student project."
     },
     "privacy": {
       "title": "Privacy policy — {brand}",
@@ -12,7 +12,7 @@
       "title": "Legal notice — {brand}",
       "description": "Publisher, host and purpose of the {brand} site, a student concept test at ESCP Business School."
     },
-    "ogImageAlt": "{brand}, the creatine doser, on a graphite background"
+    "ogImageAlt": "{brand}, for your creatine, on a graphite background"
   },
   "nav": {
     "skip": "Skip to content",
@@ -22,53 +22,53 @@
     "back": "See the product"
   },
   "hero": {
-    "meta": "Creatine doser · for your bottle",
+    "meta": "Creatine kept dry · for your bottle",
     "metaRight": "Proto 01 / Lab",
     "title": "Press.\nShake.\nDrink.",
-    "lead": "A doser that sits on your water bottle. Inside, your creatine stays dry until the moment you drink.",
+    "lead": "{brand} sits on your water bottle. Inside, your creatine stays dry until the moment you drink.",
     "chip1": "3–5 g creatine, adjustable dose",
     "chip2": "Fits a standard bottle",
     "dragHint": "Drag to turn",
-    "priceUnit": "per doser",
+    "priceUnit": "per unit",
     "cta": "Pre-order",
     "scroll": "Explore the object"
   },
   "scene": {
-    "alt": "3D {brand} doser, clear and filled with creatine powder, sitting on a bottle's neck. Push the button and the powder drops into the water.",
+    "alt": "3D {brand}: a clear tube filled with creatine powder, sitting on a bottle's neck. Push the button and the powder drops into the water.",
     "keys": "Use the left and right arrow keys to turn it."
   },
   "explore": {
     "kicker": "Explore the object",
     "navLabel": "Object chapters",
     "c1": {
-      "tab": "The doser",
-      "title": "The doser\ndoes the work.",
+      "tab": "{brand}",
+      "title": "{brand}\ndoes the work.",
       "text": "A clear body: you see your dose before you release it. One button to push, one membrane that opens, and the powder drops into your bottle.",
       "spec": "Clear body · Screw-on button · Membrane"
     },
     "c2": {
       "tab": "The dose",
       "title": "Your dose.\nSet in advance.",
-      "text": "You fill it at home with your creatine. Rings set the amount: 3 to 5 g, no scoop at the gym.",
+      "text": "You fill {brand} at home with your creatine. Rings set the amount: 3 to 5 g, no scoop at the gym.",
       "spec": "Creatine monohydrate · 3–5 g · Dose rings"
     },
     "c3": {
       "tab": "Your bottle",
       "title": "Dry\nuntil the click.",
-      "text": "Creatine is generally considered more stable dry than in solution. So it waits in the doser and only meets your water when you press.",
+      "text": "Creatine is generally considered more stable dry than in solution. So it waits in {brand} and only meets your water when you press.",
       "spec": "Standard neck · On the go · No shaker"
     },
     "c4": {
       "tab": "Who it's for",
       "title": "Built for\nthe gym.",
-      "text": "Bodybuilding, powerlifting, CrossFit: the doser goes in your bag, tip clipped on, and the powder doesn't go everywhere.",
+      "text": "Bodybuilding, powerlifting, CrossFit: {brand} goes in your bag, tip clipped on, and the powder doesn't go everywhere.",
       "spec": "Bodybuilding · Powerlifting · CrossFit"
     }
   },
   "demo": {
     "kicker": "Learn by doing",
     "title": "Don't read.\nDo it.",
-    "intro": "Three moves, just like with the real doser. Go ahead.",
+    "intro": "Three moves, just like for real. Go ahead.",
     "stepsLabel": "Demo steps",
     "reset": "Start over",
     "s1": {
@@ -76,7 +76,7 @@
       "title": "Push the button.",
       "text": "Hold the button until it clicks: the plunger pushes the powder, the membrane opens and the creatine drops into your bottle.",
       "button": "Hold to press",
-      "hint": "Or keep your finger on the doser, right in the scene.",
+      "hint": "Or keep your finger on {brand}, right in the scene.",
       "gesture": "Hold…"
     },
     "s2": {
@@ -92,13 +92,13 @@
     "s3": {
       "name": "Drink",
       "title": "Drink.",
-      "text": "Take the doser off: your dose is in your bottle. Your turn.",
+      "text": "Take {brand} off: your dose is in your bottle. Your turn.",
       "button": "Drink",
       "gesture": "Cheers."
     },
     "done": {
       "title": "Done.\nZero shaker.",
-      "text": "No sachet, no scoop, no powder at the bottom of your bag. Your bottle, your doser, that's it."
+      "text": "No sachet, no scoop, no powder at the bottom of your bag. Your bottle and {brand}, that's it."
     }
   },
   "why": {
@@ -106,11 +106,11 @@
     "title": "Powder\nhas its place.\nDry.",
     "p1": {
       "title": "Dry until the end",
-      "text": "Creatine is generally considered more stable as a dry powder than once dissolved. So it stays in the doser, and you release it when you're about to drink."
+      "text": "Creatine is generally considered more stable as a dry powder than once dissolved. So it stays in {brand}, and you release it when you're about to drink."
     },
     "p2": {
       "title": "Your dose, set",
-      "text": "You fill the doser at home, rings set the dose. At the gym, nothing to measure."
+      "text": "You fill {brand} at home, rings set the dose. At the gym, nothing to measure."
     },
     "p3": {
       "title": "No shaker, no sachet",
@@ -124,7 +124,7 @@
       },
       "b": {
         "title": "Powerlifting",
-        "text": "No tub to open on the platform. The doser already measured it."
+        "text": "No tub to open on the platform. {brand} already measured it."
       },
       "c": {
         "title": "CrossFit",
@@ -134,12 +134,12 @@
     "claim": {
       "title": "Authorised health claim (EU)",
       "text": "Creatine increases physical performance in successive bursts of short-term, high intensity exercise. The beneficial effect is obtained with a daily intake of 3 g of creatine.",
-      "note": "Product in development: the doser and its format are not final. To be consumed as part of a varied, balanced diet and a healthy lifestyle. Not recommended for children, teenagers, or pregnant or breastfeeding women. Do not exceed the stated daily dose."
+      "note": "Product in development: {brand} and its format are not final. To be consumed as part of a varied, balanced diet and a healthy lifestyle. Not recommended for children, teenagers, or pregnant or breastfeeding women. Do not exceed the stated daily dose."
     }
   },
   "final": {
-    "title": "Your dose.\nIn the doser.",
-    "text": "A doser for your bottle, your creatine kept dry, three moves."
+    "title": "Your dose.\nAlready measured.",
+    "text": "{brand} on your bottle, your creatine kept dry, three moves."
   },
   "bar": {
     "label": "Price"

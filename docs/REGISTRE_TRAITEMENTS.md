@@ -61,7 +61,7 @@ Version du 16/11/2026. Mettre ce registre à jour à chaque changement : nouvell
 | Personnes concernées | Visiteurs qui ouvrent volontairement le questionnaire (depuis le site ou un lien direct) |
 | Données | Réponses au questionnaire. Champs cachés transmis par le site : langue, prix affiché (`p`, `arm`), source (`src`). Aucun identifiant visiteur, aucune adresse e-mail : réponses non reliables aux statistiques du site |
 | Sous-traitant | Tally BV (Belgique, UE) |
-| Durée de conservation | Jusqu'au 30/06/2027 au plus tard, puis suppression des formulaires et réponses dans Tally |
+| Durée de conservation | Jusqu'au 10/12/2026 au plus tard (date annoncée en tête des questionnaires), puis suppression des formulaires et réponses dans Tally |
 | Note | Le formulaire e-mail séparé (entretien de 15 minutes) relève du même principe : consentement, table distincte des réponses |
 
 ---

@@ -1,8 +1,8 @@
 {
   "meta": {
     "home": {
-      "title": "{brand} — Premi. Agita. Bevi. La tua creatina nel dosatore",
-      "description": "Un dosatore ricaricabile che si mette sulla tua bottiglia. La creatina resta all'asciutto fino al clic. Premi, agita, bevi. Progetto studentesco ESCP."
+      "title": "{brand} — Premi. Agita. Bevi. La tua creatina all'asciutto, sulla tua bottiglia",
+      "description": "{brand} si mette sulla tua bottiglia e tiene la creatina all'asciutto fino al clic. Ricaricabile. Premi, agita, bevi. Progetto studentesco ESCP."
     },
     "privacy": {
       "title": "Informativa privacy — {brand}",
@@ -12,7 +12,7 @@
       "title": "Note legali — {brand}",
       "description": "Editore, hosting e natura del sito {brand}, un test di concept studentesco di ESCP Business School."
     },
-    "ogImageAlt": "{brand}, il dosatore per la creatina, su sfondo grafite"
+    "ogImageAlt": "{brand}, per la tua creatina, su sfondo grafite"
   },
   "nav": {
     "skip": "Vai al contenuto",
@@ -22,53 +22,53 @@
     "back": "Vedi il prodotto"
   },
   "hero": {
-    "meta": "Dosatore di creatina · per la tua bottiglia",
+    "meta": "Creatina all'asciutto · per la tua bottiglia",
     "metaRight": "Proto 01 / Lab",
     "title": "Premi.\nAgita.\nBevi.",
-    "lead": "Un dosatore che si mette sulla tua bottiglia d'acqua. Dentro, la tua creatina resta all'asciutto fino al momento di bere.",
+    "lead": "{brand} si mette sulla tua bottiglia d'acqua. Dentro, la tua creatina resta all'asciutto fino al momento di bere.",
     "chip1": "3–5 g di creatina, dose regolabile",
     "chip2": "Si mette su una bottiglia standard",
     "dragHint": "Trascina per ruotare",
-    "priceUnit": "a dosatore",
+    "priceUnit": "al pezzo",
     "cta": "Preordina",
     "scroll": "Esplora l'oggetto"
   },
   "scene": {
-    "alt": "Dosatore {brand} in 3D, trasparente e pieno di creatina in polvere, sul collo di una bottiglia. Premendo il pulsante, la polvere cade nell'acqua.",
+    "alt": "{brand} in 3D: un tubo trasparente pieno di creatina in polvere, sul collo di una bottiglia. Premendo il pulsante, la polvere cade nell'acqua.",
     "keys": "Usa le frecce sinistra e destra per farla girare."
   },
   "explore": {
     "kicker": "Esplora l'oggetto",
     "navLabel": "Capitoli dell'oggetto",
     "c1": {
-      "tab": "Il dosatore",
-      "title": "Il dosatore\nfa il lavoro.",
+      "tab": "{brand}",
+      "title": "{brand}\nfa il lavoro.",
       "text": "Un corpo trasparente: vedi la tua dose prima di rilasciarla. Un pulsante da spingere, una membrana che si apre, e la polvere cade nella tua bottiglia.",
       "spec": "Corpo trasparente · Pulsante a vite · Membrana"
     },
     "c2": {
       "tab": "La dose",
       "title": "La tua dose.\nGià regolata.",
-      "text": "Lo riempi a casa con la tua creatina. Degli anelli regolano la quantità: da 3 a 5 g, senza misurino in palestra.",
+      "text": "Riempi {brand} a casa con la tua creatina. Degli anelli regolano la quantità: da 3 a 5 g, senza misurino in palestra.",
       "spec": "Creatina monoidrato · 3–5 g · Anelli di dosaggio"
     },
     "c3": {
       "tab": "La tua bottiglia",
       "title": "Asciutta\nfino al clic.",
-      "text": "La creatina è considerata più stabile in forma secca che in soluzione. Per questo aspetta nel dosatore e raggiunge l'acqua solo quando premi.",
+      "text": "La creatina è considerata più stabile in forma secca che in soluzione. Per questo aspetta in {brand} e raggiunge l'acqua solo quando premi.",
       "spec": "Collo standard · Da portare · Senza shaker"
     },
     "c4": {
       "tab": "Per chi",
       "title": "Fatta per\nla palestra.",
-      "text": "Pesi, powerlifting, CrossFit: il dosatore va nella borsa, con il beccuccio agganciato, e la polvere non va dappertutto.",
+      "text": "Pesi, powerlifting, CrossFit: {brand} va nella borsa, con il beccuccio agganciato, e la polvere non va dappertutto.",
       "spec": "Pesi · Powerlifting · CrossFit"
     }
   },
   "demo": {
     "kicker": "Imparare facendo",
     "title": "Non leggere.\nFallo.",
-    "intro": "Tre gesti, come con il dosatore vero. Vai.",
+    "intro": "Tre gesti, come dal vero. Vai.",
     "stepsLabel": "Passaggi della demo",
     "reset": "Ricomincia",
     "s1": {
@@ -76,7 +76,7 @@
       "title": "Premi il pulsante.",
       "text": "Tieni premuto il pulsante fino al clic: il pistone spinge la polvere, la membrana si apre e la creatina cade nella tua bottiglia.",
       "button": "Tieni premuto",
-      "hint": "Oppure tieni il dito sul dosatore, direttamente nella scena.",
+      "hint": "Oppure tieni il dito su {brand}, direttamente nella scena.",
       "gesture": "Tieni…"
     },
     "s2": {
@@ -92,13 +92,13 @@
     "s3": {
       "name": "Bevi",
       "title": "Bevi.",
-      "text": "Togli il dosatore: la dose è nella tua bottiglia. Tocca a te.",
+      "text": "Togli {brand}: la dose è nella tua bottiglia. Tocca a te.",
       "button": "Bevi",
       "gesture": "Salute."
     },
     "done": {
       "title": "Fatto.\nZero shaker.",
-      "text": "Niente bustine, niente misurino, niente polvere in fondo alla borsa. La tua bottiglia, il tuo dosatore, basta così."
+      "text": "Niente bustine, niente misurino, niente polvere in fondo alla borsa. La tua bottiglia e {brand}, basta così."
     }
   },
   "why": {
@@ -106,11 +106,11 @@
     "title": "La polvere\nha il suo posto.\nAll'asciutto.",
     "p1": {
       "title": "Asciutta fino in fondo",
-      "text": "La creatina è generalmente considerata più stabile in polvere che una volta disciolta. Per questo resta nel dosatore e la rilasci al momento di bere."
+      "text": "La creatina è generalmente considerata più stabile in polvere che una volta disciolta. Per questo resta in {brand} e la rilasci al momento di bere."
     },
     "p2": {
       "title": "La tua dose, regolata",
-      "text": "Riempi il dosatore a casa, degli anelli regolano la dose. In palestra, niente da misurare."
+      "text": "Riempi {brand} a casa, degli anelli regolano la dose. In palestra, niente da misurare."
     },
     "p3": {
       "title": "Né shaker, né bustine",
@@ -124,7 +124,7 @@
       },
       "b": {
         "title": "Powerlifting",
-        "text": "Nessun barattolo da aprire in pedana. Il dosatore ha già dosato."
+        "text": "Nessun barattolo da aprire in pedana. {brand} ha già dosato."
       },
       "c": {
         "title": "CrossFit",
@@ -134,12 +134,12 @@
     "claim": {
       "title": "Indicazione sulla salute autorizzata (UE)",
       "text": "La creatina aumenta la prestazione fisica in caso di esercizi di alta intensità, brevi e ripetuti. L'effetto benefico si ottiene con l'assunzione giornaliera di 3 g di creatina.",
-      "note": "Prodotto in sviluppo: il dosatore e il suo formato non sono definitivi. Da consumare nell'ambito di una dieta varia ed equilibrata e di uno stile di vita sano. Sconsigliato a bambini, adolescenti e donne in gravidanza o in allattamento. Non superare la dose giornaliera indicata."
+      "note": "Prodotto in sviluppo: {brand} e il suo formato non sono definitivi. Da consumare nell'ambito di una dieta varia ed equilibrata e di uno stile di vita sano. Sconsigliato a bambini, adolescenti e donne in gravidanza o in allattamento. Non superare la dose giornaliera indicata."
     }
   },
   "final": {
-    "title": "La tua dose.\nNel dosatore.",
-    "text": "Un dosatore per la tua bottiglia, la creatina all'asciutto, tre gesti."
+    "title": "La tua dose.\nGià dosata.",
+    "text": "{brand} sulla tua bottiglia, la creatina all'asciutto, tre gesti."
   },
   "bar": {
     "label": "Prezzo"

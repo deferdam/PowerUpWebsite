@@ -1,8 +1,8 @@
 {
   "meta": {
     "home": {
-      "title": "{brand} — Appuie. Secoue. Bois. Ta créatine dans la dosette",
-      "description": "Une dosette rechargeable qui se pose sur ta bouteille. Ta créatine reste au sec jusqu'au clic. Appuie, secoue, bois. Projet étudiant ESCP."
+      "title": "{brand} — Appuie. Secoue. Bois. Ta créatine au sec, sur ta bouteille",
+      "description": "{brand} se pose sur ta bouteille et garde ta créatine au sec jusqu'au clic. Rechargeable. Appuie, secoue, bois. Projet étudiant ESCP."
     },
     "privacy": {
       "title": "Confidentialité — {brand}",
@@ -12,7 +12,7 @@
       "title": "Mentions légales — {brand}",
       "description": "Éditeur, hébergeur et nature du site {brand}, un test de concept étudiant ESCP Business School."
     },
-    "ogImageAlt": "{brand}, la dosette à créatine, sur fond graphite"
+    "ogImageAlt": "{brand}, pour ta créatine, sur fond graphite"
   },
   "nav": {
     "skip": "Aller au contenu",
@@ -22,53 +22,53 @@
     "back": "Voir le produit"
   },
   "hero": {
-    "meta": "Dosette à créatine · pour ta bouteille",
+    "meta": "Créatine au sec · pour ta bouteille",
     "metaRight": "Proto 01 / Lab",
     "title": "Appuie.\nSecoue.\nBois.",
-    "lead": "Une dosette qui se pose sur ta bouteille d'eau. Dedans, ta créatine reste au sec jusqu'au moment de boire.",
+    "lead": "{brand} se pose sur ta bouteille d'eau. Dedans, ta créatine reste au sec jusqu'au moment de boire.",
     "chip1": "3–5 g de créatine, dose réglable",
     "chip2": "Se pose sur une bouteille standard",
     "dragHint": "Glisse pour tourner",
-    "priceUnit": "la dosette",
+    "priceUnit": "l'unité",
     "cta": "Précommander",
     "scroll": "Explore l'objet"
   },
   "scene": {
-    "alt": "Dosette {brand} en 3D, transparente et remplie de créatine en poudre, posée sur le goulot d'une bouteille. Quand on pousse le bouton, la poudre tombe dans l'eau.",
+    "alt": "{brand} en 3D : un tube transparent rempli de créatine en poudre, posé sur le goulot d'une bouteille. Quand on pousse le bouton, la poudre tombe dans l'eau.",
     "keys": "Flèches gauche et droite pour la faire tourner."
   },
   "explore": {
     "kicker": "Explore l'objet",
     "navLabel": "Chapitres de l'objet",
     "c1": {
-      "tab": "La dosette",
-      "title": "La dosette\nfait le boulot.",
+      "tab": "{brand}",
+      "title": "{brand}\nfait le boulot.",
       "text": "Un corps transparent : tu vois ta dose avant de la libérer. Un bouton à pousser, une membrane qui s'ouvre, et la poudre tombe dans ta bouteille.",
       "spec": "Corps transparent · Bouton vissé · Membrane"
     },
     "c2": {
       "tab": "La dose",
       "title": "Ta dose.\nRéglée d'avance.",
-      "text": "Tu la remplis à la maison avec ta créatine. Des bagues règlent la quantité : 3 à 5 g, sans cuillère à la salle.",
+      "text": "Tu remplis {brand} à la maison avec ta créatine. Des bagues règlent la quantité : 3 à 5 g, sans cuillère à la salle.",
       "spec": "Créatine monohydrate · 3–5 g · Bagues de dose"
     },
     "c3": {
       "tab": "Ta bouteille",
       "title": "Au sec\njusqu'au clic.",
-      "text": "La créatine est réputée plus stable sous forme sèche qu'en solution. Elle attend donc dans la dosette et ne rejoint ton eau qu'au moment où tu appuies.",
+      "text": "La créatine est réputée plus stable sous forme sèche qu'en solution. Elle attend donc dans {brand} et ne rejoint ton eau qu'au moment où tu appuies.",
       "spec": "Goulot standard · À emporter · Sans shaker"
     },
     "c4": {
       "tab": "Pour qui",
       "title": "Fait pour\nla salle.",
-      "text": "Musculation, powerlifting, CrossFit : la dosette va dans le sac, embout clipsé, et la poudre ne va pas partout.",
+      "text": "Musculation, powerlifting, CrossFit : {brand} va dans le sac, embout clipsé, et la poudre ne va pas partout.",
       "spec": "Muscu · Powerlifting · CrossFit"
     }
   },
   "demo": {
     "kicker": "Apprendre en faisant",
     "title": "Ne lis pas.\nFais-le.",
-    "intro": "Trois gestes, comme avec la vraie dosette. Vas-y.",
+    "intro": "Trois gestes, comme en vrai. Vas-y.",
     "stepsLabel": "Étapes de la démo",
     "reset": "Recommencer",
     "s1": {
@@ -76,7 +76,7 @@
       "title": "Appuie sur le bouton.",
       "text": "Maintiens le bouton jusqu'au clic : le piston pousse la poudre, la membrane s'ouvre et la créatine tombe dans ta bouteille.",
       "button": "Maintiens pour appuyer",
-      "hint": "Ou garde le doigt sur la dosette, directement dans la scène.",
+      "hint": "Ou garde le doigt sur {brand}, directement dans la scène.",
       "gesture": "Maintiens…"
     },
     "s2": {
@@ -92,13 +92,13 @@
     "s3": {
       "name": "Bois",
       "title": "Bois.",
-      "text": "Retire la dosette : ta dose est dans ta bouteille. À toi.",
+      "text": "Retire {brand} : ta dose est dans ta bouteille. À toi.",
       "button": "Boire",
       "gesture": "Santé."
     },
     "done": {
       "title": "Voilà.\nZéro shaker.",
-      "text": "Pas de sachet, pas de cuillère, pas de poudre au fond du sac. Ta bouteille, ta dosette, c'est tout."
+      "text": "Pas de sachet, pas de cuillère, pas de poudre au fond du sac. Ta bouteille et {brand}, c'est tout."
     }
   },
   "why": {
@@ -106,11 +106,11 @@
     "title": "La poudre\na sa place.\nAu sec.",
     "p1": {
       "title": "Au sec jusqu'au bout",
-      "text": "La créatine est généralement considérée comme plus stable sous forme sèche qu'une fois dissoute. Elle reste donc dans la dosette, et tu la libères au moment de boire."
+      "text": "La créatine est généralement considérée comme plus stable sous forme sèche qu'une fois dissoute. Elle reste donc dans {brand}, et tu la libères au moment de boire."
     },
     "p2": {
       "title": "Ta dose, réglée",
-      "text": "Tu remplis la dosette à la maison, des bagues règlent la dose. À la salle, rien à mesurer."
+      "text": "Tu remplis {brand} à la maison, des bagues règlent la dose. À la salle, rien à mesurer."
     },
     "p3": {
       "title": "Ni shaker, ni sachet",
@@ -124,7 +124,7 @@
       },
       "b": {
         "title": "Powerlifting",
-        "text": "Pas de pot à ouvrir sur le plateau. La dosette a déjà dosé."
+        "text": "Pas de pot à ouvrir sur le plateau. {brand} a déjà dosé."
       },
       "c": {
         "title": "CrossFit",
@@ -134,12 +134,12 @@
     "claim": {
       "title": "Allégation de santé autorisée (UE)",
       "text": "La créatine augmente la performance physique lors d'exercices brefs, intenses et répétés. L'effet bénéfique est obtenu par la consommation journalière de 3 g de créatine.",
-      "note": "Produit en développement : la dosette et son format ne sont pas définitifs. À consommer dans le cadre d'une alimentation variée et équilibrée et d'un mode de vie sain. Déconseillé aux enfants, aux adolescents et aux femmes enceintes ou allaitantes. Ne pas dépasser la dose journalière indiquée."
+      "note": "Produit en développement : {brand} et son format ne sont pas définitifs. À consommer dans le cadre d'une alimentation variée et équilibrée et d'un mode de vie sain. Déconseillé aux enfants, aux adolescents et aux femmes enceintes ou allaitantes. Ne pas dépasser la dose journalière indiquée."
     }
   },
   "final": {
-    "title": "Ta dose.\nDans la dosette.",
-    "text": "Une dosette pour ta bouteille, ta créatine au sec, trois gestes."
+    "title": "Ta dose.\nDéjà dosée.",
+    "text": "{brand} sur ta bouteille, ta créatine au sec, trois gestes."
   },
   "bar": {
     "label": "Prix"
