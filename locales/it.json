@@ -1,8 +1,8 @@
 {
   "meta": {
     "home": {
-      "title": "{brand} — Premi. Agita. Bevi. La tua creatina all'asciutto, sulla tua bottiglia",
-      "description": "{brand} si mette sulla tua bottiglia e tiene la creatina all'asciutto fino al clic. Ricaricabile. Premi, agita, bevi. Progetto studentesco ESCP."
+      "title": "{brand} — Premi. Agita. Bevi. I tuoi integratori all'asciutto, sulla tua bottiglia",
+      "description": "{brand} si mette sulla tua bottiglia e tiene il tuo integratore in polvere all'asciutto fino al clic: pre-workout, BCAA, proteine, creatina. Ricaricabile. Progetto studentesco ESCP."
     },
     "privacy": {
       "title": "Informativa privacy — {brand}",
@@ -12,7 +12,7 @@
       "title": "Note legali — {brand}",
       "description": "Editore, hosting e natura del sito {brand}, un test di concept studentesco di ESCP Business School."
     },
-    "ogImageAlt": "{brand}, per la tua creatina, su sfondo grafite"
+    "ogImageAlt": "{brand}, per i tuoi integratori in polvere, su sfondo grafite"
   },
   "nav": {
     "skip": "Vai al contenuto",
@@ -22,10 +22,10 @@
     "back": "Vedi il prodotto"
   },
   "hero": {
-    "meta": "Creatina all'asciutto · per la tua bottiglia",
+    "meta": "Integratori all'asciutto · per la tua bottiglia",
     "metaRight": "Proto 01 / Lab",
     "title": "Premi.\nAgita.\nBevi.",
-    "lead": "{brand} si mette sulla tua bottiglia d'acqua. Dentro, la tua creatina resta all'asciutto fino al momento di bere.",
+    "lead": "{brand} si mette sulla tua bottiglia d'acqua. Dentro, la tua dose di pre-workout, BCAA, proteine o creatina resta all'asciutto fino al momento di bere.",
     "chip1": "Due formati: 3–5 g o 15–20 g",
     "chip2": "Si mette su una bottiglia standard",
     "dragHint": "Trascina per ruotare",
@@ -34,7 +34,7 @@
     "scroll": "Esplora l'oggetto"
   },
   "scene": {
-    "alt": "{brand} in 3D: un tubo trasparente pieno di creatina in polvere, sul collo di una bottiglia. Premendo il pulsante, la polvere cade nell'acqua.",
+    "alt": "{brand} in 3D: un tubo trasparente pieno di polvere, sul collo di una bottiglia. Premendo il pulsante, la polvere cade nell'acqua.",
     "keys": "Usa le frecce sinistra e destra per farla girare."
   },
   "explore": {
@@ -49,13 +49,13 @@
     "c2": {
       "tab": "La dose",
       "title": "La tua dose.\nGià regolata.",
-      "text": "Riempi {brand} a casa. Due formati: da 3 a 5 g per la creatina, da 15 a 20 g per le proteine. Degli anelli regolano la quantità, senza misurino in palestra.",
-      "spec": "Creatina 3–5 g · Proteine 15–20 g · Anelli di dosaggio"
+      "text": "Riempi {brand} a casa con il tuo integratore: pre-workout, BCAA, proteine, creatina. Due formati: da 3 a 5 g, oppure da 15 a 20 g per le proteine. Degli anelli regolano la quantità, senza misurino in palestra.",
+      "spec": "Pre-workout · BCAA · Proteine · Creatina"
     },
     "c3": {
       "tab": "La tua bottiglia",
       "title": "Asciutta\nfino al clic.",
-      "text": "La creatina è considerata più stabile in forma secca che in soluzione. Per questo aspetta in {brand} e raggiunge l'acqua solo quando premi.",
+      "text": "La tua polvere aspetta all'asciutto in {brand} e raggiunge l'acqua solo quando premi. Niente shaker preparato ore prima, niente grumi.",
       "spec": "Collo standard · Da portare · Senza shaker"
     },
     "c4": {
@@ -74,7 +74,7 @@
     "s1": {
       "name": "Premi",
       "title": "Premi il pulsante.",
-      "text": "Tieni premuto il pulsante fino al clic: il pistone spinge la polvere, la membrana si apre e la creatina cade nella tua bottiglia.",
+      "text": "Tieni premuto il pulsante fino al clic: il pistone spinge la polvere, la membrana si apre e la tua dose cade nella bottiglia.",
       "button": "Tieni premuto",
       "hint": "Oppure tieni il dito su {brand}, direttamente nella scena.",
       "gesture": "Tieni…"
@@ -106,11 +106,11 @@
     "title": "La polvere\nha il suo posto.\nAll'asciutto.",
     "p1": {
       "title": "Asciutta fino in fondo",
-      "text": "La creatina è generalmente considerata più stabile in polvere che una volta disciolta. Per questo resta in {brand} e la rilasci al momento di bere."
+      "text": "La tua polvere resta in {brand} fino all'ultimo momento. La rilasci subito prima di bere, invece di preparare lo shaker ore prima."
     },
     "p2": {
       "title": "La tua dose, regolata",
-      "text": "Riempi {brand} a casa, degli anelli regolano la dose: da 3 a 5 g di creatina, o da 15 a 20 g di proteine con il formato grande. In palestra, niente da misurare."
+      "text": "Riempi {brand} a casa, degli anelli regolano la dose: da 3 a 5 g di pre-workout, BCAA o creatina, oppure da 15 a 20 g di proteine con il formato grande. In palestra, niente da misurare."
     },
     "p3": {
       "title": "Né shaker, né bustine",
@@ -139,7 +139,7 @@
   },
   "final": {
     "title": "La tua dose.\nGià dosata.",
-    "text": "{brand} sulla tua bottiglia, la creatina all'asciutto, tre gesti."
+    "text": "{brand} sulla tua bottiglia, il tuo integratore all'asciutto, tre gesti."
   },
   "bar": {
     "label": "Prezzo"

@@ -1,8 +1,8 @@
 {
   "meta": {
     "home": {
-      "title": "{brand} — Press. Shake. Drink. Your creatine kept dry, on your bottle",
-      "description": "{brand} sits on your bottle and keeps your creatine dry until the click. Refillable. Press, shake, drink. An ESCP student project."
+      "title": "{brand} — Press. Shake. Drink. Your supplements kept dry, on your bottle",
+      "description": "{brand} sits on your bottle and keeps your powdered supplement dry until the click: pre-workout, BCAA, protein, creatine. Refillable. An ESCP student project."
     },
     "privacy": {
       "title": "Privacy policy — {brand}",
@@ -12,7 +12,7 @@
       "title": "Legal notice — {brand}",
       "description": "Publisher, host and purpose of the {brand} site, a student concept test at ESCP Business School."
     },
-    "ogImageAlt": "{brand}, for your creatine, on a graphite background"
+    "ogImageAlt": "{brand}, for your powdered supplements, on a graphite background"
   },
   "nav": {
     "skip": "Skip to content",
@@ -22,10 +22,10 @@
     "back": "See the product"
   },
   "hero": {
-    "meta": "Creatine kept dry · for your bottle",
+    "meta": "Supplements kept dry · for your bottle",
     "metaRight": "Proto 01 / Lab",
     "title": "Press.\nShake.\nDrink.",
-    "lead": "{brand} sits on your water bottle. Inside, your creatine stays dry until the moment you drink.",
+    "lead": "{brand} sits on your water bottle. Inside, your dose of pre-workout, BCAA, protein or creatine stays dry until the moment you drink.",
     "chip1": "Two sizes: 3–5 g or 15–20 g",
     "chip2": "Fits a standard bottle",
     "dragHint": "Drag to turn",
@@ -34,7 +34,7 @@
     "scroll": "Explore the object"
   },
   "scene": {
-    "alt": "3D {brand}: a clear tube filled with creatine powder, sitting on a bottle's neck. Push the button and the powder drops into the water.",
+    "alt": "3D {brand}: a clear tube filled with powder, sitting on a bottle's neck. Push the button and the powder drops into the water.",
     "keys": "Use the left and right arrow keys to turn it."
   },
   "explore": {
@@ -49,13 +49,13 @@
     "c2": {
       "tab": "The dose",
       "title": "Your dose.\nSet in advance.",
-      "text": "You fill {brand} at home. Two sizes: 3 to 5 g for your creatine, 15 to 20 g for your protein. Rings set the amount, no scoop at the gym.",
-      "spec": "Creatine 3–5 g · Protein 15–20 g · Dose rings"
+      "text": "You fill {brand} at home with your supplement: pre-workout, BCAA, protein, creatine. Two sizes: 3 to 5 g, or 15 to 20 g for protein. Rings set the amount, no scoop at the gym.",
+      "spec": "Pre-workout · BCAA · Protein · Creatine"
     },
     "c3": {
       "tab": "Your bottle",
       "title": "Dry\nuntil the click.",
-      "text": "Creatine is generally considered more stable dry than in solution. So it waits in {brand} and only meets your water when you press.",
+      "text": "Your powder waits dry in {brand} and only meets your water when you press. No shaker made hours in advance, no clumps.",
       "spec": "Standard neck · On the go · No shaker"
     },
     "c4": {
@@ -74,7 +74,7 @@
     "s1": {
       "name": "Press",
       "title": "Push the button.",
-      "text": "Hold the button until it clicks: the plunger pushes the powder, the membrane opens and the creatine drops into your bottle.",
+      "text": "Hold the button until it clicks: the plunger pushes the powder, the membrane opens and your dose drops into your bottle.",
       "button": "Hold to press",
       "hint": "Or keep your finger on {brand}, right in the scene.",
       "gesture": "Hold…"
@@ -106,11 +106,11 @@
     "title": "Powder\nhas its place.\nDry.",
     "p1": {
       "title": "Dry until the end",
-      "text": "Creatine is generally considered more stable as a dry powder than once dissolved. So it stays in {brand}, and you release it when you're about to drink."
+      "text": "Your powder stays in {brand} until the last moment. You release it right before you drink, instead of mixing your shaker hours in advance."
     },
     "p2": {
       "title": "Your dose, set",
-      "text": "You fill {brand} at home, rings set the dose: 3 to 5 g of creatine, or 15 to 20 g of protein with the large size. At the gym, nothing to measure."
+      "text": "You fill {brand} at home, rings set the dose: 3 to 5 g of pre-workout, BCAA or creatine, or 15 to 20 g of protein with the large size. At the gym, nothing to measure."
     },
     "p3": {
       "title": "No shaker, no sachet",
@@ -139,7 +139,7 @@
   },
   "final": {
     "title": "Your dose.\nAlready measured.",
-    "text": "{brand} on your bottle, your creatine kept dry, three moves."
+    "text": "{brand} on your bottle, your supplement kept dry, three moves."
   },
   "bar": {
     "label": "Price"

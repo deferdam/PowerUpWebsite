@@ -1,8 +1,8 @@
 {
   "meta": {
     "home": {
-      "title": "{brand} — Appuie. Secoue. Bois. Ta créatine au sec, sur ta bouteille",
-      "description": "{brand} se pose sur ta bouteille et garde ta créatine au sec jusqu'au clic. Rechargeable. Appuie, secoue, bois. Projet étudiant ESCP."
+      "title": "{brand} — Appuie. Secoue. Bois. Tes compléments au sec, sur ta bouteille",
+      "description": "{brand} se pose sur ta bouteille et garde ton complément en poudre au sec jusqu'au clic : pré-workout, BCAA, protéine, créatine. Rechargeable. Projet étudiant ESCP."
     },
     "privacy": {
       "title": "Confidentialité — {brand}",
@@ -12,7 +12,7 @@
       "title": "Mentions légales — {brand}",
       "description": "Éditeur, hébergeur et nature du site {brand}, un test de concept étudiant ESCP Business School."
     },
-    "ogImageAlt": "{brand}, pour ta créatine, sur fond graphite"
+    "ogImageAlt": "{brand}, pour tes compléments en poudre, sur fond graphite"
   },
   "nav": {
     "skip": "Aller au contenu",
@@ -22,10 +22,10 @@
     "back": "Voir le produit"
   },
   "hero": {
-    "meta": "Créatine au sec · pour ta bouteille",
+    "meta": "Compléments au sec · pour ta bouteille",
     "metaRight": "Proto 01 / Lab",
     "title": "Appuie.\nSecoue.\nBois.",
-    "lead": "{brand} se pose sur ta bouteille d'eau. Dedans, ta créatine reste au sec jusqu'au moment de boire.",
+    "lead": "{brand} se pose sur ta bouteille d'eau. Dedans, ta dose de pré-workout, de BCAA, de protéine ou de créatine reste au sec jusqu'au moment de boire.",
     "chip1": "Deux tailles : 3–5 g ou 15–20 g",
     "chip2": "Se pose sur une bouteille standard",
     "dragHint": "Glisse pour tourner",
@@ -34,7 +34,7 @@
     "scroll": "Explore l'objet"
   },
   "scene": {
-    "alt": "{brand} en 3D : un tube transparent rempli de créatine en poudre, posé sur le goulot d'une bouteille. Quand on pousse le bouton, la poudre tombe dans l'eau.",
+    "alt": "{brand} en 3D : un tube transparent rempli de poudre, posé sur le goulot d'une bouteille. Quand on pousse le bouton, la poudre tombe dans l'eau.",
     "keys": "Flèches gauche et droite pour la faire tourner."
   },
   "explore": {
@@ -49,13 +49,13 @@
     "c2": {
       "tab": "La dose",
       "title": "Ta dose.\nRéglée d'avance.",
-      "text": "Tu remplis {brand} à la maison. Deux tailles : 3 à 5 g pour ta créatine, 15 à 20 g pour ta protéine. Des bagues règlent la quantité, sans cuillère à la salle.",
-      "spec": "Créatine 3–5 g · Protéine 15–20 g · Bagues de dose"
+      "text": "Tu remplis {brand} à la maison avec ton complément : pré-workout, BCAA, protéine, créatine. Deux tailles : 3 à 5 g, ou 15 à 20 g pour la protéine. Des bagues règlent la quantité, sans cuillère à la salle.",
+      "spec": "Pré-workout · BCAA · Protéine · Créatine"
     },
     "c3": {
       "tab": "Ta bouteille",
       "title": "Au sec\njusqu'au clic.",
-      "text": "La créatine est réputée plus stable sous forme sèche qu'en solution. Elle attend donc dans {brand} et ne rejoint ton eau qu'au moment où tu appuies.",
+      "text": "Ta poudre attend au sec dans {brand} et ne rejoint ton eau qu'au moment où tu appuies. Pas de shaker préparé des heures avant, pas de grumeaux.",
       "spec": "Goulot standard · À emporter · Sans shaker"
     },
     "c4": {
@@ -74,7 +74,7 @@
     "s1": {
       "name": "Appuie",
       "title": "Appuie sur le bouton.",
-      "text": "Maintiens le bouton jusqu'au clic : le piston pousse la poudre, la membrane s'ouvre et la créatine tombe dans ta bouteille.",
+      "text": "Maintiens le bouton jusqu'au clic : le piston pousse la poudre, la membrane s'ouvre et ta dose tombe dans ta bouteille.",
       "button": "Maintiens pour appuyer",
       "hint": "Ou garde le doigt sur {brand}, directement dans la scène.",
       "gesture": "Maintiens…"
@@ -106,11 +106,11 @@
     "title": "La poudre\na sa place.\nAu sec.",
     "p1": {
       "title": "Au sec jusqu'au bout",
-      "text": "La créatine est généralement considérée comme plus stable sous forme sèche qu'une fois dissoute. Elle reste donc dans {brand}, et tu la libères au moment de boire."
+      "text": "Ta poudre reste dans {brand} jusqu'au dernier moment. Tu la libères juste avant de boire, au lieu de préparer ton shaker des heures avant."
     },
     "p2": {
       "title": "Ta dose, réglée",
-      "text": "Tu remplis {brand} à la maison, des bagues règlent la dose : 3 à 5 g de créatine, ou 15 à 20 g de protéine avec la grande taille. À la salle, rien à mesurer."
+      "text": "Tu remplis {brand} à la maison, des bagues règlent la dose : 3 à 5 g de pré-workout, de BCAA ou de créatine, ou 15 à 20 g de protéine avec la grande taille. À la salle, rien à mesurer."
     },
     "p3": {
       "title": "Ni shaker, ni sachet",
@@ -139,7 +139,7 @@
   },
   "final": {
     "title": "Ta dose.\nDéjà dosée.",
-    "text": "{brand} sur ta bouteille, ta créatine au sec, trois gestes."
+    "text": "{brand} sur ta bouteille, ton complément au sec, trois gestes."
   },
   "bar": {
     "label": "Prix"
