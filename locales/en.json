@@ -26,7 +26,7 @@
     "metaRight": "Proto 01 / Lab",
     "title": "Press.\nShake.\nDrink.",
     "lead": "{brand} sits on your water bottle. Inside, your creatine stays dry until the moment you drink.",
-    "chip1": "3–5 g creatine, adjustable dose",
+    "chip1": "Two sizes: 3–5 g or 15–20 g",
     "chip2": "Fits a standard bottle",
     "dragHint": "Drag to turn",
     "priceUnit": "per unit",
@@ -49,8 +49,8 @@
     "c2": {
       "tab": "The dose",
       "title": "Your dose.\nSet in advance.",
-      "text": "You fill {brand} at home with your creatine. Rings set the amount: 3 to 5 g, no scoop at the gym.",
-      "spec": "Creatine monohydrate · 3–5 g · Dose rings"
+      "text": "You fill {brand} at home. Two sizes: 3 to 5 g for your creatine, 15 to 20 g for your protein. Rings set the amount, no scoop at the gym.",
+      "spec": "Creatine 3–5 g · Protein 15–20 g · Dose rings"
     },
     "c3": {
       "tab": "Your bottle",
@@ -110,7 +110,7 @@
     },
     "p2": {
       "title": "Your dose, set",
-      "text": "You fill {brand} at home, rings set the dose. At the gym, nothing to measure."
+      "text": "You fill {brand} at home, rings set the dose: 3 to 5 g of creatine, or 15 to 20 g of protein with the large size. At the gym, nothing to measure."
     },
     "p3": {
       "title": "No shaker, no sachet",

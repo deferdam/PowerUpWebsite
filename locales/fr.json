@@ -26,7 +26,7 @@
     "metaRight": "Proto 01 / Lab",
     "title": "Appuie.\nSecoue.\nBois.",
     "lead": "{brand} se pose sur ta bouteille d'eau. Dedans, ta créatine reste au sec jusqu'au moment de boire.",
-    "chip1": "3–5 g de créatine, dose réglable",
+    "chip1": "Deux tailles : 3–5 g ou 15–20 g",
     "chip2": "Se pose sur une bouteille standard",
     "dragHint": "Glisse pour tourner",
     "priceUnit": "l'unité",
@@ -49,8 +49,8 @@
     "c2": {
       "tab": "La dose",
       "title": "Ta dose.\nRéglée d'avance.",
-      "text": "Tu remplis {brand} à la maison avec ta créatine. Des bagues règlent la quantité : 3 à 5 g, sans cuillère à la salle.",
-      "spec": "Créatine monohydrate · 3–5 g · Bagues de dose"
+      "text": "Tu remplis {brand} à la maison. Deux tailles : 3 à 5 g pour ta créatine, 15 à 20 g pour ta protéine. Des bagues règlent la quantité, sans cuillère à la salle.",
+      "spec": "Créatine 3–5 g · Protéine 15–20 g · Bagues de dose"
     },
     "c3": {
       "tab": "Ta bouteille",
@@ -110,7 +110,7 @@
     },
     "p2": {
       "title": "Ta dose, réglée",
-      "text": "Tu remplis {brand} à la maison, des bagues règlent la dose. À la salle, rien à mesurer."
+      "text": "Tu remplis {brand} à la maison, des bagues règlent la dose : 3 à 5 g de créatine, ou 15 à 20 g de protéine avec la grande taille. À la salle, rien à mesurer."
     },
     "p3": {
       "title": "Ni shaker, ni sachet",
