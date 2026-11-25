@@ -492,7 +492,8 @@ main:focus {
   pointer-events: none;
   transition: opacity 0.5s var(--ease), visibility 0.5s;
 }
-.has-3d .stage__fallback {
+.has-3d .stage__fallback,
+.is-3d-pending .stage--hero .stage__fallback {
   opacity: 0;
   visibility: hidden;
 }

@@ -50,6 +50,11 @@ function load3d(scene, story) {
   const canvas = document.querySelector('.gl');
   if (!canvas) return;
   const zones = [...document.querySelectorAll('[data-zone]')];
+  // En attendant la 3D, le hero n'affiche pas l'image de repli (une bouteille) : la page
+  // doit s'ouvrir sur la dosette seule. Si la 3D échoue, l'image revient.
+  const root = document.documentElement;
+  if (window.WebGLRenderingContext) root.classList.add('is-3d-pending');
+  let introPlayed = false; // l'intro ne rejoue pas au retour par le bouton « précédent »
 
   const start = async () => {
     if (scene.api) return;
@@ -59,16 +64,19 @@ function load3d(scene, story) {
         canvas,
         zones,
         reducedMotion: reducedMotion.matches,
+        intro: !introPlayed,
         label: { brand: config.BRAND_NAME, ...canvas.dataset },
       });
+      introPlayed = true;
       scene.api.setChapter(story.chapter);
       scene.api.jumpTo(story.phase);
-      document.documentElement.classList.add('has-3d');
+      root.classList.add('has-3d');
+      root.classList.remove('is-3d-pending');
       setZonesInteractive(zones, true);
     } catch (err) {
       // Pas de WebGL ou fichier non chargé : l'image de repli reste affichée.
       scene.api = null;
-      document.documentElement.classList.remove('has-3d');
+      root.classList.remove('has-3d', 'is-3d-pending');
       setZonesInteractive(zones, false);
       if (location.hostname === 'localhost') console.warn('3D indisponible :', err);
     }

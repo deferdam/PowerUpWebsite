@@ -5,13 +5,14 @@
 //  derrière le contenu. À chaque image, on cherche la « zone » ([data-zone])
 //  la plus visible et on place la bouteille dessus : hero, chapitres, démo.
 //
-//  La bouteille est 100 % procédurale (pas de fichier 3D à charger) :
-//  - corps PET givré (LatheGeometry = profil qu'on fait tourner autour d'un axe)
-//  - boisson intérieure, qui « vague » quand on secoue (petit shader)
-//  - étiquette dessinée dans un <canvas> avec les polices du site
-//  - bouchon haut : bague moletée, chambre sèche transparente avec la poudre,
-//    membrane, bouton-poussoir vert
+//  Tout est procédural (pas de fichier 3D à charger) :
+//  - la DOSETTE-STYLO, le produit, d'après la coupe d'assemblage v0.3 : bouton vissé,
+//    tige et piston, bagues de dose, corps transparent avec la poudre, membrane fendue,
+//    embout à collerette qui se pose sur le goulot
+//  - une bouteille quelconque (corps PET givré, LatheGeometry = profil qu'on fait tourner),
+//    sa boisson qui « vague » quand on secoue (petit shader) et son étiquette (<canvas>)
 //  - poudre qui tombe = THREE.Points
+//  Intro (une fois) : la dosette seule en gros plan, puis elle tombe sur la bouteille.
 // =====================================================================
 
 import {
@@ -24,6 +25,7 @@ import {
   LatheGeometry,
   CylinderGeometry,
   CircleGeometry,
+  TorusGeometry,
   PlaneGeometry,
   BufferGeometry,
   BufferAttribute,
@@ -45,42 +47,55 @@ import {
 } from 'three';
 import { RoomEnvironment } from 'three/examples/jsm/environments/RoomEnvironment.js';
 
-// ---------- Dimensions de la bouteille (unités 3D, le bas est à y = 0) ----------
-const BOTTLE_H = 2.76; // hauteur totale, bouton compris
-const CENTER_Y = 1.38; // milieu : point de rotation
+// ---------- Dimensions (unités 3D, le bas de la bouteille est à y = 0) ----------
+const NECK_TOP = 2.1; // haut du goulot
+const NECK_R = 0.19; // rayon extérieur du goulot
 const FILL_Y = 1.52; // niveau de la boisson
-const FILL_END = 0.06; // ce qui reste après « Bois »
-const CHAMBER = { bottom: 2.25, top: 2.6, radius: 0.19 }; // chambre sèche du bouchon
+const FILL_END = 0.03; // ce qui reste après « Bois »
+
+// Dosette-stylo, d'après la coupe d'assemblage v0.3 : cotes en mm le long de son axe
+// (0 = collerette du corps, 63 = posée sur le goulot). Debout sur la bouteille, embout en bas.
+const MM = 0.0145; // 1 mm → unités 3D
+const at = (xmm) => (63 - xmm) * MM; // hauteur d'une cote au-dessus du goulot
+const R = (mm) => mm * MM;
+const PUSH_MM = 25.8; // course du bouton (−38 → −12 mm) : le piston va jusqu'à la membrane
+const POWDER_MM = 24.5; // hauteur de poudre, du piston (35 mm) à la membrane (59,5 mm)
+const TOTAL_H = NECK_TOP + at(-39.6); // bouteille + dosette, bouton tiré (≈ 3,6)
+const CENTER_Y = TOTAL_H / 2; // milieu : point de rotation
+const DOSE_MID = NECK_TOP + at(12); // milieu de la dosette posée
+// Intro (une fois, dans le hero) : gros plan sur la dosette seule (hold), on recule et la
+// bouteille apparaît dessous (reveal), puis la dosette tombe sur le goulot (fall) et se cale.
+const INTRO = { lead: 0.5, hold: 1.0, reveal: 1.0, fall: 0.45, settle: 0.6, drop: 0.65, zoom: 2.05 };
 const CAM_Z = 12;
 const FOV = 26;
 
 // ---------- Cadrage par zone et par chapitre ----------
-// fill : part de la hauteur de la zone occupée par la bouteille ; zoom : grossissement ;
-// focus : hauteur (sur la bouteille) placée au centre de la zone ; yaw/tilt : angles visés.
+// fill : part de la hauteur de la zone occupée par l'objet ; zoom : grossissement ;
+// focus : hauteur (sur l'objet) placée au centre de la zone ; yaw/tilt : angles visés.
 const ZONES = {
-  hero: { fill: 0.88, zoom: 1, focus: CENTER_Y, yaw: null, tilt: 0.06 },
-  demo: { fill: 0.82, zoom: 1, focus: CENTER_Y, yaw: -0.45, tilt: 0.05 },
-  chapters: { fill: 0.8 },
-};
-const CHAPTERS = [
-  { yaw: 0.6, tilt: 0.22, zoom: 2.1, focus: 2.3 }, // 01 le bouchon
-  { yaw: -0.85, tilt: 0.1, zoom: 1.6, focus: 2.05 }, // 02 la dose
-  { yaw: 0, tilt: 0.02, zoom: 1.0, focus: CENTER_Y }, // 03 la boisson (étiquette de face)
-  { yaw: Math.PI, tilt: -0.04, zoom: 1.12, focus: 1.25 }, // 04 pour qui (dos de l'étiquette)
-];
-// Téléphone / tablette (< 1024 px, même seuil que le CSS) : bouteille plus petite et
-// remontée dans le hero (la consigne « glisse pour tourner » est dessous), gros plans
-// plus doux. Dans « Explore », le rendu est découpé au cadre (le gros plan fait loupe).
-const ZONES_M = {
-  hero: { fill: 0.8, zoom: 1, focus: CENTER_Y - 0.2, yaw: null, tilt: 0.06 },
+  hero: { fill: 0.86, zoom: 1, focus: CENTER_Y - 0.08, yaw: null, tilt: 0.06 },
   demo: { fill: 0.84, zoom: 1, focus: CENTER_Y, yaw: -0.45, tilt: 0.05 },
   chapters: { fill: 0.82 },
 };
+const CHAPTERS = [
+  { yaw: 0.6, tilt: 0.16, zoom: 1.55, focus: DOSE_MID - 0.2 }, // 01 la dosette, en entier
+  { yaw: -0.85, tilt: 0.08, zoom: 2.0, focus: NECK_TOP + at(30) }, // 02 la dose : chambre, bagues, membrane
+  { yaw: 0, tilt: 0.02, zoom: 1.0, focus: CENTER_Y }, // 03 la boisson (étiquette de face)
+  { yaw: Math.PI, tilt: -0.04, zoom: 1.1, focus: 1.75 }, // 04 pour qui (dos de l'étiquette), objet entier
+];
+// Téléphone / tablette (< 1024 px, même seuil que le CSS) : objet un peu plus petit et
+// remonté dans le hero (la consigne « glisse pour tourner » est dessous), gros plans
+// plus doux. Dans « Explore », le rendu est découpé au cadre (le gros plan fait loupe).
+const ZONES_M = {
+  hero: { fill: 0.84, zoom: 1, focus: CENTER_Y - 0.1, yaw: null, tilt: 0.06 },
+  demo: { fill: 0.86, zoom: 1, focus: CENTER_Y, yaw: -0.45, tilt: 0.05 },
+  chapters: { fill: 0.84 },
+};
 const CHAPTERS_M = [
-  { ...CHAPTERS[0], zoom: 1.8, focus: 2.25 },
-  { ...CHAPTERS[1], zoom: 1.45, focus: 2.0 },
-  { ...CHAPTERS[2], zoom: 1.0, focus: CENTER_Y },
-  { ...CHAPTERS[3], zoom: 1.05, focus: 1.25 },
+  { ...CHAPTERS[0], zoom: 1.5 },
+  { ...CHAPTERS[1], zoom: 1.85 },
+  { ...CHAPTERS[2], zoom: 1.0 },
+  { ...CHAPTERS[3], zoom: 1.05 },
 ];
 const NARROW_MQ = '(max-width: 1023px)';
 
@@ -158,6 +173,25 @@ function knurlTexture() {
   return t;
 }
 
+/** Flanc du bouton vissé : moletage fin et nom de la marque, trois fois sur le tour. */
+function drawKnob(canvas, label) {
+  const ctx = canvas.getContext('2d');
+  const W = canvas.width;
+  const H = canvas.height;
+  if ('fontStretch' in ctx) ctx.fontStretch = 'condensed';
+  ctx.fillStyle = '#1c1c1f';
+  ctx.fillRect(0, 0, W, H);
+  ctx.fillStyle = 'rgba(255,255,255,0.08)';
+  for (let x = 0; x < W; x += 6) ctx.fillRect(x, 0, 2, H);
+  ctx.fillStyle = COLORS.volt;
+  ctx.fillRect(0, 0, W, H * 0.07);
+  ctx.fillStyle = COLORS.chalk;
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+  ctx.font = `900 ${Math.round(H * 0.56)}px "Archivo", "Arial Narrow", Arial, sans-serif`;
+  for (const x of [W / 6, W / 2, (5 * W) / 6]) fitText(ctx, label.brand.toUpperCase(), x, H * 0.56, W * 0.2);
+}
+
 /** Petit point rond et doux pour chaque grain de poudre. */
 function dotTexture() {
   const c = makeCanvas(32, 32);
@@ -230,7 +264,7 @@ function drawLabel(canvas, label) {
  * Crée la scène. Lève une erreur si WebGL n'est pas disponible
  * (l'appelant garde alors l'image de repli).
  */
-export async function createStage({ canvas, zones, reducedMotion = false, label }) {
+export async function createStage({ canvas, zones, reducedMotion = false, intro = true, label }) {
   const mobile = matchMedia('(max-width: 767px), (pointer: coarse)').matches;
   // < 1024 px : cadrages « mobile », rendu découpé au cadre dans Explore, et canvas qui
   // défile avec la page (voir frame()). Relu à chaque changement (rotation d'une tablette).
@@ -262,6 +296,8 @@ export async function createStage({ canvas, zones, reducedMotion = false, label 
   scene.add(key, rim);
 
   // ---------- Hiérarchie : anchor (position/échelle) > pivot (rotation) > bottle ----------
+  // La dosette a son propre pivot, qui tourne exactement comme la bouteille : elle peut
+  // ainsi tomber dessus (intro) puis en être retirée pour boire, sans basculer avec elle.
   const anchor = new Group();
   const pivot = new Group();
   pivot.rotation.order = 'ZXY'; // tourne sur elle-même, puis s'incline vers l'écran
@@ -269,7 +305,13 @@ export async function createStage({ canvas, zones, reducedMotion = false, label 
   const bottle = new Group();
   bottle.position.y = -CENTER_Y;
   pivot.add(bottle);
-  anchor.add(pivot);
+  const dosePivot = new Group();
+  dosePivot.rotation.order = 'ZXY';
+  dosePivot.position.y = CENTER_Y;
+  const doseBase = new Group();
+  doseBase.position.y = -CENTER_Y;
+  dosePivot.add(doseBase);
+  anchor.add(pivot, dosePivot);
   scene.add(anchor);
 
   const seg = mobile ? 40 : 72;
@@ -280,7 +322,7 @@ export async function createStage({ canvas, zones, reducedMotion = false, label 
   const profile = new SplineCurve(
     [
       [0, 0], [0.36, 0], [0.46, 0.03], [0.5, 0.12], [0.5, 0.42], [0.468, 0.6], [0.468, 0.78], [0.5, 0.96],
-      [0.5, 1.46], [0.47, 1.62], [0.38, 1.78], [0.27, 1.9], [0.245, 1.98], [0.245, 2.06],
+      [0.5, 1.46], [0.47, 1.62], [0.37, 1.78], [0.25, 1.9], [NECK_R, 1.99], [NECK_R, NECK_TOP],
     ].map(([x, y]) => new Vector2(x, y)),
   ).getPoints(mobile ? 48 : 90);
 
@@ -342,8 +384,10 @@ export async function createStage({ canvas, zones, reducedMotion = false, label 
   labelTex.anisotropy = Math.min(8, renderer.capabilities.getMaxAnisotropy());
   const labelMesh = new Mesh(
     keep(new CylinderGeometry(0.508, 0.508, 0.46, seg, 1, true, -Math.PI, Math.PI * 2)),
-    keep(new MeshStandardMaterial({ map: labelTex, roughness: 0.55, metalness: 0.05 })),
+    // transparent : l'étiquette apparaît en fondu avec la bouteille pendant l'intro
+    keep(new MeshStandardMaterial({ map: labelTex, roughness: 0.55, metalness: 0.05, transparent: true })),
   );
+  const labelMat = labelMesh.material;
   labelMesh.position.y = 1.21;
   bottle.add(labelMesh);
   // On redessine quand les polices du site sont prêtes (sinon police système en attendant)
@@ -357,48 +401,119 @@ export async function createStage({ canvas, zones, reducedMotion = false, label 
       .then(() => {
         drawLabel(labelCanvas, label);
         labelTex.needsUpdate = true;
+        drawKnob(knobCanvas, label);
+        knobTex.needsUpdate = true;
       });
   }
 
-  // ---------- Bouchon ----------
-  const cap = new Group();
-  bottle.add(cap);
-  const knurl = keep(knurlTexture());
-  const steelMat = keep(new MeshStandardMaterial({ color: '#1d1d20', metalness: 0.75, roughness: 0.36, bumpMap: knurl, bumpScale: 1.5 }));
-  const darkMat = keep(new MeshStandardMaterial({ color: '#19191b', metalness: 0.6, roughness: 0.4 }));
-  const collar = new Mesh(keep(new CylinderGeometry(0.29, 0.29, 0.24, seg)), steelMat);
-  collar.position.y = 2.13;
-  const rimTop = new Mesh(keep(new CylinderGeometry(0.272, 0.272, 0.05, seg)), darkMat);
-  rimTop.position.y = 2.625;
-  const chamberMat = keep(
-    new MeshPhysicalMaterial({ color: '#ffffff', roughness: 0.06, transparent: true, opacity: 0.2, clearcoat: 1, depthWrite: false }),
+  // Bague du goulot (détail des bouteilles PET standard)
+  const neckRingMat = keep(new MeshStandardMaterial({ color: '#d9dcd6', roughness: 0.35, transparent: true, opacity: 0.55 }));
+  const neckRing = new Mesh(keep(new CylinderGeometry(NECK_R + 0.045, NECK_R + 0.045, 0.025, seg)), neckRingMat);
+  neckRing.position.y = 1.97;
+  bottle.add(neckRing);
+
+  // ---------- Dosette-stylo (le produit) ----------
+  // Origine du groupe = point où l'embout se pose sur le goulot. Cotes : voir at() et R().
+  const dose = new Group();
+  dose.position.y = NECK_TOP;
+  doseBase.add(dose);
+  const lathe = (pts) => keep(new LatheGeometry(pts.map(([r, x]) => new Vector2(R(r), at(x))), seg));
+  const solid = (opts) => keep(new MeshStandardMaterial({ side: DoubleSide, ...opts }));
+
+  // Embout de distribution : manchon autour du corps, collerette, jupe qui coiffe le goulot.
+  // Fumé translucide : on devine la membrane qui s'ouvre à l'intérieur.
+  const tipMat = keep(
+    new MeshPhysicalMaterial({ color: '#2a2c30', metalness: 0.2, roughness: 0.3, clearcoat: 0.8, transparent: true, opacity: 0.62, depthWrite: false, side: DoubleSide }),
   );
-  const chamber = new Mesh(keep(new CylinderGeometry(0.255, 0.255, CHAMBER.top - CHAMBER.bottom, seg, 1, true)), chamberMat);
-  chamber.position.y = (CHAMBER.top + CHAMBER.bottom) / 2;
-  chamber.renderOrder = 4;
-  // Poudre de créatine dans la chambre (base à y = 0 pour pouvoir la « vider » en scale.y)
-  const powderGeo = keep(new CylinderGeometry(0.2, 0.2, 0.26, 32));
-  powderGeo.translate(0, 0.13, 0);
-  const powder = new Mesh(powderGeo, keep(new MeshStandardMaterial({ color: '#F4F2EA', roughness: 1 })));
-  powder.position.y = CHAMBER.bottom + 0.008;
-  // Membrane qui s'ouvre (elle rétrécit comme un diaphragme)
-  const membraneGeo = keep(new CircleGeometry(0.24, 32));
-  membraneGeo.rotateX(-Math.PI / 2);
-  const membrane = new Mesh(membraneGeo, keep(new MeshStandardMaterial({ color: '#BDBAB2', roughness: 0.6, metalness: 0.2, side: DoubleSide })));
-  membrane.position.y = CHAMBER.bottom;
-  // Bouton-poussoir + tige
+  const tip = new Mesh(
+    lathe([[10.15, 51], [11.6, 51], [11.6, 57.4], [15.2, 57.9], [15.2, 61], [14.8, 61.6], [14.8, 70], [13.5, 70], [13.5, 62], [10.15, 62], [10.15, 51]]),
+    tipMat,
+  );
+  // Liseré vert sur la collerette : il « claque » quand la dosette se pose
+  const clipMat = keep(new MeshStandardMaterial({ color: COLORS.volt, roughness: 0.35, emissive: COLORS.volt, emissiveIntensity: 0.25 }));
+  const clipRing = new Mesh(keep(new TorusGeometry(R(15.2), R(0.55), 8, seg)), clipMat);
+  clipRing.rotation.x = Math.PI / 2;
+  clipRing.position.y = at(57.9);
+  tip.renderOrder = 6;
+
+  // Corps transparent : on voit la poudre, le piston et les bagues
+  const tubeMat = keep(
+    new MeshPhysicalMaterial({ color: '#ffffff', roughness: 0.07, transparent: true, opacity: 0.2, clearcoat: 1, clearcoatRoughness: 0.08, depthWrite: false }),
+  );
+  const tube = new Mesh(keep(new CylinderGeometry(R(10), R(10), R(57), seg, 1, true)), tubeMat);
+  tube.position.y = at(31.5);
+  tube.renderOrder = 5;
+  // Collerette du corps (appui des doigts, comme une seringue)
+  const plasticMat = solid({ color: '#dcd9cf', roughness: 0.5 });
+  const flange = new Mesh(keep(new CylinderGeometry(R(13), R(13), R(3), seg)), plasticMat);
+  flange.position.y = at(1.5);
+  // Bagues de dose (fixes) : 2 × 2 mL et 1 × 1 mL ; on en retire pour une plus grosse dose
+  const ringMat2 = solid({ color: '#bdb9ad', roughness: 0.55 });
+  const ringMat1 = solid({ color: '#a8c93a', roughness: 0.5 });
+  const rings = [
+    [2.9, 12.4, ringMat2],
+    [12.8, 22.4, ringMat2],
+    [22.8, 27.8, ringMat1],
+  ].map(([a, b, mat]) => {
+    const m = new Mesh(keep(new CylinderGeometry(R(8.1), R(8.1), R(b - a), seg)), mat);
+    m.position.y = at((a + b) / 2);
+    return m;
+  });
+
+  // Ce qui descend quand on pousse : bouton vissé, tige, piston et son joint torique
   const plunger = new Group();
+  const knobCanvas = makeCanvas(mobile ? 384 : 576, mobile ? 64 : 96);
+  drawKnob(knobCanvas, label);
+  const knobTex = keep(new CanvasTexture(knobCanvas));
+  knobTex.colorSpace = SRGBColorSpace;
+  const knobSideMat = keep(new MeshStandardMaterial({ map: knobTex, metalness: 0.45, roughness: 0.45 }));
   const buttonMat = keep(new MeshStandardMaterial({ color: COLORS.volt, roughness: 0.35, emissive: COLORS.volt, emissiveIntensity: 0.18 }));
-  const button = new Mesh(keep(new CylinderGeometry(0.18, 0.19, 0.09, seg)), buttonMat);
-  button.position.y = 2.695;
-  const rod = new Mesh(keep(new CylinderGeometry(0.028, 0.028, 0.3, 12)), darkMat);
-  rod.position.y = 2.5;
-  plunger.add(button, rod);
-  cap.add(collar, rimTop, chamber, powder, membrane, plunger);
-  // Zone de clic plus large que le bouchon (invisible) : pratique au doigt
-  const capHit = new Mesh(keep(new CylinderGeometry(0.42, 0.42, 0.8, 12)), keep(new MeshBasicMaterial({ visible: false })));
-  capHit.position.y = 2.38;
-  cap.add(capHit);
+  const darkMat = keep(new MeshStandardMaterial({ color: '#19191b', metalness: 0.6, roughness: 0.4 }));
+  const knob = new Mesh(keep(new CylinderGeometry(R(11), R(11), R(12.1), seg)), [knobSideMat, buttonMat, darkMat]);
+  knob.position.y = at(-32.05);
+  const knobTop = new Mesh(keep(new CylinderGeometry(R(9.4), R(10.6), R(1.5), seg)), buttonMat);
+  knobTop.position.y = at(-38.85);
+  const rod = new Mesh(keep(new CylinderGeometry(R(3.6), R(3.6), R(54), 16)), plasticMat);
+  rod.position.y = at(1);
+  const head = new Mesh(keep(new CylinderGeometry(R(8.2), R(8.2), R(7), seg)), solid({ color: '#2a2b2f', roughness: 0.5 }));
+  head.position.y = at(31.5);
+  const oring = new Mesh(keep(new TorusGeometry(R(8.2), R(0.95), 8, seg)), solid({ color: '#0e0e10', roughness: 0.7 }));
+  oring.rotation.x = Math.PI / 2;
+  oring.position.y = at(30);
+  plunger.add(knob, knobTop, rod, head, oring);
+
+  // Poudre de créatine, entre le piston et la membrane (base sur la membrane : elle se
+  // « vide » vers le bas en scale.y quand le piston descend)
+  const powderGeo = keep(new CylinderGeometry(R(8.1), R(8.1), 1, 32));
+  powderGeo.translate(0, 0.5, 0);
+  const powder = new Mesh(powderGeo, keep(new MeshStandardMaterial({ color: '#F4F2EA', roughness: 1 })));
+  powder.position.y = at(59.5);
+  powder.scale.y = R(POWDER_MM);
+
+  // Membrane fendue : 6 pétales qui se rabattent vers le bas sous la poussée
+  const membraneMat = solid({ color: '#ece7da', roughness: 0.55, emissive: '#3a3a30', emissiveIntensity: 0.4 }); // claire : se lit à travers l'embout
+  const petalGeo = keep(new CircleGeometry(R(8.4), 6, -Math.PI / 6, Math.PI / 3));
+  petalGeo.rotateX(-Math.PI / 2);
+  petalGeo.translate(-R(8.4), 0, 0); // charnière sur le bord : la pointe est au centre
+  const membrane = new Group();
+  membrane.position.y = at(59.75);
+  const petals = [];
+  for (let i = 0; i < 6; i++) {
+    const holder = new Group();
+    holder.rotation.y = (i * Math.PI) / 3;
+    const hinge = new Group();
+    hinge.position.x = R(8.4);
+    hinge.add(new Mesh(petalGeo, membraneMat));
+    holder.add(hinge);
+    membrane.add(holder);
+    petals.push(hinge);
+  }
+
+  dose.add(tip, clipRing, tube, flange, ...rings, plunger, powder, membrane);
+  // Zone de clic plus large que la dosette (invisible) : pratique au doigt
+  const capHit = new Mesh(keep(new CylinderGeometry(0.34, 0.34, at(-40) - at(72), 12)), keep(new MeshBasicMaterial({ visible: false })));
+  capHit.position.y = (at(-40) + at(72)) / 2;
+  dose.add(capHit);
 
   // Ombre de contact (reste à plat : elle est dans anchor, pas dans pivot)
   const shadowMat = keep(new MeshBasicMaterial({ map: keep(shadowTexture()), transparent: true, depthWrite: false, opacity: 1 }));
@@ -424,15 +539,18 @@ export async function createStage({ canvas, zones, reducedMotion = false, label 
   particles.renderOrder = 2;
   bottle.add(particles);
 
+  // Dans la boisson (état après l'appui), ou à la sortie de la membrane : un filet de
+  // poudre qui s'écoule pendant que le piston descend.
   function seedParticles(inLiquid) {
     for (let i = 0; i < N; i++) {
-      const r = Math.sqrt(Math.random()) * (inLiquid ? 0.4 : CHAMBER.radius);
+      const r = Math.sqrt(Math.random()) * (inLiquid ? 0.4 : R(6));
       const a = Math.random() * Math.PI * 2;
       pPos[i * 3] = Math.cos(a) * r;
-      pPos[i * 3 + 1] = inLiquid ? 0.08 + Math.random() * 0.45 : CHAMBER.bottom + 0.02 + Math.random() * 0.22;
+      pPos[i * 3 + 1] = inLiquid ? 0.08 + Math.random() * 0.45 : NECK_TOP + at(59.5) - Math.random() * 0.03;
       pPos[i * 3 + 2] = Math.sin(a) * r;
-      pVel[i * 3] = pVel[i * 3 + 1] = pVel[i * 3 + 2] = 0;
-      pDelay[i] = inLiquid ? 0 : Math.random() * 0.55;
+      pVel[i * 3] = pVel[i * 3 + 2] = 0;
+      pVel[i * 3 + 1] = inLiquid ? 0 : -0.6 - Math.random() * 0.6; // poussée par le piston
+      pDelay[i] = inLiquid ? 0 : 0.08 + Math.random() * 0.62;
     }
     pGeo.attributes.position.needsUpdate = true;
   }
@@ -469,6 +587,10 @@ export async function createStage({ canvas, zones, reducedMotion = false, label 
     shakeAng: 0,
     shakeVel: 0,
     drinkT: -1, // -1 = pas en train de boire ; 0 → 1 pendant ; 1 = fini
+    // Intro : temps écoulé (négatif = attente pendant le fondu d'apparition du canvas)
+    introT: -INTRO.lead,
+    introDone: reducedMotion || !intro,
+    press0: 0, // appui atteint au moment du clic (pour que le piston reparte de là)
   };
 
   // =================================================================
@@ -671,7 +793,7 @@ export async function createStage({ canvas, zones, reducedMotion = false, label 
 
   function frame(t) {
     raf = requestAnimationFrame(frame);
-    const dt = Math.min((t - last) / 1000, 1 / 20);
+    const dt = clamp((t - last) / 1000, 0, 1 / 20); // jamais négatif (1re image)
     last = t;
     resize();
     // < 1024 px, le canvas est dans le flux de la page (position absolue) : on le recale
@@ -713,7 +835,49 @@ export async function createStage({ canvas, zones, reducedMotion = false, label 
     s.zoneName = name;
     const Z = narrow ? ZONES_M : ZONES;
     const C = narrow ? CHAPTERS_M : CHAPTERS;
-    const cfg = name === 'chapters' ? { ...Z.chapters, ...C[s.chapter] } : Z[name] || Z.hero;
+    let cfg = name === 'chapters' ? { ...Z.chapters, ...C[s.chapter] } : Z[name] || Z.hero;
+
+    // ----- Intro : la dosette seule en gros plan, puis elle tombe sur le goulot -----
+    // Une seule fois, et seulement si la page s'ouvre sur le hero ; on la termine d'un
+    // coup si on quitte le hero avant la fin.
+    let dropY = 0; // hauteur de la dosette au-dessus du goulot
+    let bottleVis = 1; // 0 = bouteille invisible, 1 = là
+    let landing = 0; // petit choc à l'arrivée (0 → 1 → 0)
+    let introCam = null; // cadrage imposé pendant l'intro (sinon : ressorts vers cfg)
+    if (!s.introDone && name !== 'hero') s.introDone = true;
+    if (!s.introDone) {
+      const it = Math.max(0, s.introT);
+      s.introT += dt;
+      const D = INTRO.drop;
+      const tReveal = INTRO.hold;
+      const tFall = tReveal + INTRO.reveal;
+      const tLand = tFall + INTRO.fall;
+      const midZoom = TOTAL_H / (TOTAL_H + D); // assez de recul pour la dosette en l'air
+      const midFocus = CENTER_Y + D / 2;
+      const rv = clamp((it - tReveal) / INTRO.reveal, 0, 1);
+      const fall = clamp((it - tFall) / INTRO.fall, 0, 1);
+      const bob = 0.03 * Math.sin(it * 2.4) * (1 - smoothstep(tFall - 0.4, tFall, it));
+      dropY = D * (1 - fall * fall) + bob; // chute accélérée, comme un objet lâché
+      // La bouteille n'apparaît qu'une fois assez de recul pris (sinon elle déborde de la zone)
+      bottleVis = smoothstep(0.7, 1, rv);
+      if (it < tFall) {
+        introCam = { zoom: lerp(INTRO.zoom, midZoom, smooth(rv)), focus: lerp(DOSE_MID + D, midFocus, smooth(rv)) };
+      } else if (it < tLand) {
+        const e = smooth(fall);
+        introCam = { zoom: lerp(midZoom, cfg.zoom || 1, e), focus: lerp(midFocus, cfg.focus || CENTER_Y, e) };
+      }
+      if (introCam) {
+        // Garde-fous : le haut de la dosette et (dès qu'elle apparaît) le bas de la bouteille
+        // restent dans la zone, avec une petite marge.
+        const half = TOTAL_H / (2 * (cfg.fill || 0.86) * introCam.zoom);
+        const lo = TOTAL_H + dropY + 0.06 - half;
+        const hi = bottleVis > 0 ? -0.3 * (1 - bottleVis) - 0.04 + half : Infinity;
+        introCam.focus = Math.min(Math.max(introCam.focus, lo), Math.max(lo, hi));
+      }
+      const land = it - tLand;
+      if (land >= 0) landing = Math.sin(Math.min(1, land / INTRO.settle) * Math.PI) * Math.exp(-land * 5);
+      if (land > INTRO.settle) s.introDone = true;
+    }
     const userActive = drag || now() - s.lastUser < 1000;
     const snap = reducedMotion || !s.pos; // mouvement réduit ou premier placement : d'un coup
     const go = (st, target, stiff) => {
@@ -745,9 +909,14 @@ export async function createStage({ canvas, zones, reducedMotion = false, label 
     // Taille à l'écran = hauteur de la zone × fill × zoom (le FOV et la distance s'annulent).
     const upp = (2 * CAM_Z * Math.tan((FOV * Math.PI) / 360)) / size.h; // unités par pixel
     const r = zone.r;
-    go(s.zoom, cfg.zoom || 1, 5.5);
-    go(s.focus, cfg.focus || CENTER_Y, 5.5);
-    const px = Math.min((r.height * cfg.fill) / BOTTLE_H, (r.width * 0.8) / 1.0);
+    if (introCam) {
+      Object.assign(s.zoom, { x: introCam.zoom, v: 0 });
+      Object.assign(s.focus, { x: introCam.focus, v: 0 });
+    } else {
+      go(s.zoom, cfg.zoom || 1, 5.5);
+      go(s.focus, cfg.focus || CENTER_Y, 5.5);
+    }
+    const px = Math.min((r.height * cfg.fill) / TOTAL_H, (r.width * 0.8) / 1.0);
     const target = {
       x: (r.left + r.width / 2 - size.w / 2) * upp,
       y: -(r.top + r.height / 2 - size.h / 2) * upp,
@@ -774,35 +943,61 @@ export async function createStage({ canvas, zones, reducedMotion = false, label 
     s.pos = { x: target.x + s.offX.x, y: target.y + s.offY.x, sc: s.base.x * s.zoom.x };
 
     // ----- Démo -----
-    s.demoW = lerp(s.demoW, name === 'demo' ? 1 : 0, damp(5, dt));
+    s.demoW = reducedMotion ? (name === 'demo' ? 1 : 0) : lerp(s.demoW, name === 'demo' ? 1 : 0, damp(5, dt));
     const w = s.demoW;
     // ressort de la secousse
     s.shakeVel += (-70 * s.shakeAng - 7 * s.shakeVel) * dt;
     s.shakeAng += s.shakeVel * dt;
     if (s.released) s.releaseT += dt;
     s.dissolveShown = lerp(s.dissolveShown, s.dissolve, damp(3, dt));
+    // « Bois » : on retire d'abord la dosette (posée à côté), puis on boit
     let drinkAngle = 0;
     let fill = 1;
+    let lift = 0;
     if (s.drinkT >= 0) {
-      if (s.drinkT < 1) s.drinkT = Math.min(1, s.drinkT + dt / 1.6);
+      if (s.drinkT < 1) s.drinkT = Math.min(1, s.drinkT + dt / 2.3);
       const d = s.drinkT;
-      drinkAngle = d >= 1 ? 0 : 1.15 * (d < 0.3 ? smooth(d / 0.3) : d < 0.7 ? 1 : 1 - smooth((d - 0.7) / 0.3));
-      fill = lerp(1, FILL_END, smoothstep(0.25, 0.75, d));
+      lift = smoothstep(0, 0.24, d);
+      const up = d < 0.24 ? 0 : d < 0.45 ? smooth((d - 0.24) / 0.21) : d < 0.75 ? 1 : 1 - smooth((d - 0.75) / 0.25);
+      drinkAngle = d >= 1 ? 0 : 1.15 * up;
+      fill = lerp(1, FILL_END, smoothstep(0.42, 0.78, d));
     }
 
     anchor.position.set(s.pos.x + s.shakeAng * 0.35 * s.pos.sc * w, s.pos.y - s.focus.x * s.pos.sc, 0);
     anchor.scale.setScalar(s.pos.sc);
     pivot.rotation.set(s.tilt.x, s.yaw, (s.shakeAng + drinkAngle) * w);
+    dosePivot.rotation.set(s.tilt.x, s.yaw, s.shakeAng * w);
 
-    // Bouton et membrane
-    const shownPress = s.press * w;
-    plunger.position.y = -0.075 * shownPress;
+    // Intro : la bouteille monte et apparaît pendant que la dosette tombe
+    bottle.visible = bottleVis > 0.002;
+    bottle.position.y = -CENTER_Y - 0.3 * (1 - bottleVis);
+    glassMat.opacity = 0.3 * bottleVis;
+    liquidMat.opacity = 0.8 * bottleVis;
+    labelMat.opacity = bottleVis;
+    labelMat.depthWrite = bottleVis > 0.999; // pendant le fondu, ne cache pas la boisson
+    neckRingMat.opacity = 0.55 * bottleVis;
+
+    // Dosette : chute de l'intro, puis (pour boire) retirée et posée à côté de la bouteille
+    const off = lift * w;
+    dose.position.set(
+      -1.02 * smoothstep(0, 0.6, off),
+      NECK_TOP + dropY + lerp(0, -at(70) - NECK_TOP, smoothstep(0.35, 1, off)) + 0.55 * Math.sin(Math.PI * off),
+      0,
+    );
+    dose.rotation.z = 0.12 * clamp(dropY / INTRO.drop, 0, 1); // un peu penchée en l'air
+    dose.scale.set(1 + 0.03 * landing, 1 - 0.05 * landing, 1 + 0.03 * landing);
+    clipMat.emissiveIntensity = 0.25 + 2.2 * landing;
+
+    // Appui : maintenir = le bouton descend d'un quart (la membrane se tend) ; au clic,
+    // le piston va jusqu'au bout, la membrane s'ouvre et la poudre tombe dans la bouteille.
+    const travel = s.released ? lerp(0.25 * s.press0, 1, smooth(clamp(s.releaseT / 0.75, 0, 1))) : s.press * 0.25;
+    const shownTravel = travel * w;
+    plunger.position.y = -R(PUSH_MM) * shownTravel;
+    powder.scale.y = Math.max(0.0001, R(POWDER_MM - PUSH_MM * shownTravel));
     const pulse = name === 'chapters' && s.chapter === 1 && !reducedMotion ? 0.5 + 0.5 * Math.sin(t / 260) : 0;
-    buttonMat.emissiveIntensity = 0.18 + 0.5 * shownPress + 0.35 * pulse;
-    const open = s.released ? Math.min(1, s.releaseT * 3) : s.press * 0.12;
-    membrane.scale.setScalar(Math.max(0.001, 1 - open * w));
-    const powderLeft = s.released ? Math.max(0, 1 - s.releaseT * 1.6) : 1;
-    powder.scale.y = Math.max(0.001, 1 - (1 - powderLeft) * w);
+    buttonMat.emissiveIntensity = 0.18 + 0.5 * s.press * w + 0.35 * pulse;
+    const open = (s.released ? lerp(0.06 * s.press0, 1, smoothstep(0, 0.22, s.releaseT)) : s.press * 0.06) * w;
+    for (const p of petals) p.rotation.z = 1.4 * open;
 
     // Boisson : niveau, trouble pendant le mélange, vague
     const shownFill = lerp(1, fill, w);
@@ -810,14 +1005,14 @@ export async function createStage({ canvas, zones, reducedMotion = false, label 
     const cloud = s.released ? Math.min(1, s.releaseT * 1.5) * (1 - s.dissolveShown) * 0.7 * w : 0;
     liquidMat.color.copy(COLORS.liquid).lerp(COLORS.cloudy, cloud);
     wobble.value.set(-s.shakeAng * 1.5 * w + Math.sin(t / 140) * Math.abs(s.shakeVel) * 0.01, -s.yawVel * 0.025);
-    shadowMat.opacity = 1 - Math.min(0.6, Math.abs(drinkAngle * w));
+    shadowMat.opacity = (1 - Math.min(0.6, Math.abs(drinkAngle * w))) * bottleVis;
 
     // Particules : visibles seulement dans la démo, après l'appui
     particles.visible = s.released && w > 0.5 && s.dissolveShown < 0.98;
     if (particles.visible) {
       stepParticles(dt, shownFill);
       pMat.opacity = clamp(1 - s.dissolveShown * 1.05, 0, 1);
-      pMat.size = 0.05 * s.pos.sc * (1 - 0.6 * s.dissolveShown);
+      pMat.size = 0.06 * s.pos.sc * (1 - 0.6 * s.dissolveShown);
     }
   }
 
@@ -848,7 +1043,7 @@ export async function createStage({ canvas, zones, reducedMotion = false, label 
         y = 0.06;
         pVel[ix + 1] = 0;
       }
-      const maxR = y > 1.75 ? 0.2 : 0.42;
+      const maxR = y > 1.97 ? 0.15 : y > 1.78 ? 0.26 : 0.42; // goulot, épaule, corps
       const rr = Math.hypot(x, z);
       if (rr > maxR) {
         x *= maxR / rr;
@@ -868,7 +1063,7 @@ export async function createStage({ canvas, zones, reducedMotion = false, label 
   const ndc = new Vector2();
 
   function reset() {
-    Object.assign(s, { press: 0, released: false, releaseT: 0, dissolve: 0, dissolveShown: 0, shakeAng: 0, shakeVel: 0, drinkT: -1 });
+    Object.assign(s, { press: 0, press0: 0, released: false, releaseT: 0, dissolve: 0, dissolveShown: 0, shakeAng: 0, shakeVel: 0, drinkT: -1 });
     particles.visible = false;
   }
 
@@ -883,6 +1078,7 @@ export async function createStage({ canvas, zones, reducedMotion = false, label 
     release() {
       if (s.released) return;
       seedParticles(false);
+      s.press0 = s.press;
       s.press = 1;
       s.released = true;
       s.releaseT = 0;
@@ -902,7 +1098,7 @@ export async function createStage({ canvas, zones, reducedMotion = false, label 
       reset();
       if (phase === 'press') return;
       seedParticles(true);
-      Object.assign(s, { press: 1, released: true, releaseT: 5 });
+      Object.assign(s, { press: 1, press0: 1, released: true, releaseT: 5 });
       if (phase === 'drink' || phase === 'done') Object.assign(s, { dissolve: 1, dissolveShown: 1 });
       if (phase === 'done') s.drinkT = 1;
     },
