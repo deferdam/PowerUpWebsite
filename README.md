@@ -1,6 +1,6 @@
 # Dosé — test d'intention d'achat (projet étudiant ESCP)
 
-Ce site est un **« fake door test »** (test de la fausse porte). Il présente une boisson prête à boire dont le bouchon contient 3 à 5 g de créatine monohydrate stockée au sec : on appuie sur le bouchon, la poudre tombe, on secoue, on boit. Il mesure **combien de visiteurs cliquent sur « Précommander » selon le prix affiché** (2,50 €, 3,50 € ou 4,50 €) et selon la source du visiteur (Instagram, affiche en salle, LinkedIn…).
+Ce site est un **« fake door test »** (test de la fausse porte). Il présente une dosette-stylo rechargeable : on la remplit de 3 à 5 g de créatine à la maison, elle garde la poudre au sec, et à la salle on la pose sur le goulot de sa bouteille, on pousse le bouton, la poudre tombe, on secoue, on boit. Il mesure **combien de visiteurs cliquent sur « Précommander » selon le prix affiché pour la dosette** (12 €, 17 € ou 22 €) et selon la source du visiteur (Instagram, affiche en salle, LinkedIn…).
 
 **Rien n'est vendu ni encaissé.** Au clic, le visiteur lit tout de suite que le produit est en développement et pas encore en vente. Il peut laisser son e-mail s'il le souhaite (case de consentement non cochée), puis répondre à un questionnaire.
 
@@ -171,7 +171,7 @@ Tout se règle dans **un seul fichier : `site.config.js`**. Ensuite : `git commi
 | Réglage | Exemple | Rôle |
 | --- | --- | --- |
 | `BRAND_NAME` | `'Dosé'` | Nom de la marque partout sur le site. Vérifier sa disponibilité (INPI / EUIPO) avant tout lancement réel. |
-| `PRICES` | `[2.5, 3.5, 4.5]` | Prix testés en euros par bouteille (nombres entre 0 et 100). |
+| `PRICES` | `[12, 17, 22]` | Prix testés en euros par dosette (nombres entre 0 et 100). Un prix rond s'affiche sans décimales (« 12 € »). |
 | `PRICE_MODE` | `'random'` | `'random'` : chaque visiteur reçoit au hasard un des prix, toujours le même pour lui. `'schedule'` : le prix dépend de la date (heure de Paris), selon `PRICE_SCHEDULE`. |
 | `PRICE_SCHEDULE` | `{ from: '2026-11-16', price: 2.5 }` | Utilisé seulement en mode `'schedule'`. À partir de chaque date (incluse), ce prix s'applique. Chaque prix doit figurer dans `PRICES`. |
 | `QUESTIONNAIRE_URL` | `{ fr: 'https://tally.so/r/…', en: …, it: … }` | Questionnaire de l'écran de remerciement, une URL par langue (ou une seule URL pour toutes). Doit commencer par `https://`. Vide (`''`) = lien masqué. Le site ajoute au lien les champs cachés Tally `p` (prix vu, « 3,50 »), `arm` (prix en centimes), `lang` et `src` (`site_` + source UTM) : la question sur le prix affiche donc le même prix que le site. Aucun identifiant visiteur n'est transmis. |

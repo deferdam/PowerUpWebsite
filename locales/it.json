@@ -1,8 +1,8 @@
 {
   "meta": {
     "home": {
-      "title": "{brand} — Premi. Agita. Bevi. La creatina nel tappo",
-      "description": "Una bevanda pronta da bere con 3–5 g di creatina monoidrato conservata asciutta nel tappo. Premi, agita, bevi. Progetto studentesco ESCP."
+      "title": "{brand} — Premi. Agita. Bevi. La tua creatina nel dosatore",
+      "description": "Un dosatore ricaricabile che si mette sulla tua bottiglia. La creatina resta all'asciutto fino al clic. Premi, agita, bevi. Progetto studentesco ESCP."
     },
     "privacy": {
       "title": "Informativa privacy — {brand}",
@@ -12,7 +12,7 @@
       "title": "Note legali — {brand}",
       "description": "Editore, hosting e natura del sito {brand}, un test di concept studentesco di ESCP Business School."
     },
-    "ogImageAlt": "Bottiglia {brand} con il tappo alla creatina, su sfondo grafite"
+    "ogImageAlt": "{brand}, il dosatore per la creatina, su sfondo grafite"
   },
   "nav": {
     "skip": "Vai al contenuto",
@@ -22,64 +22,61 @@
     "back": "Vedi il prodotto"
   },
   "hero": {
-    "meta": "Pronta da bere — creatina all'asciutto",
+    "meta": "Dosatore di creatina · per la tua bottiglia",
     "metaRight": "Proto 01 / Lab",
     "title": "Premi.\nAgita.\nBevi.",
-    "lead": "Una bevanda pronta da bere. Nel tappo, la tua dose di creatina monoidrato, tenuta all'asciutto fino al momento di bere.",
-    "chip1": "3–5 g di creatina monoidrato",
-    "chip2": "Conservata asciutta nel tappo",
+    "lead": "Un dosatore che si mette sulla tua bottiglia d'acqua. Dentro, la tua creatina resta all'asciutto fino al momento di bere.",
+    "chip1": "3–5 g di creatina, dose regolabile",
+    "chip2": "Si mette su una bottiglia standard",
     "dragHint": "Trascina per ruotare",
-    "priceUnit": "a bottiglia",
+    "priceUnit": "a dosatore",
     "cta": "Preordina",
     "scroll": "Esplora l'oggetto"
   },
   "scene": {
-    "alt": "Bottiglia {brand} in 3D: una bevanda e un tappo trasparente che contiene la creatina in polvere.",
-    "labelDose": "Creatina monoidrato · 3–5 g",
-    "labelSports": "Pesi · Powerlifting · CrossFit",
-    "labelMeta": "Dry-cap · Proto 01",
+    "alt": "Dosatore {brand} in 3D, trasparente e pieno di creatina in polvere, sul collo di una bottiglia. Premendo il pulsante, la polvere cade nell'acqua.",
     "keys": "Usa le frecce sinistra e destra per farla girare."
   },
   "explore": {
     "kicker": "Esplora l'oggetto",
     "navLabel": "Capitoli dell'oggetto",
     "c1": {
-      "tab": "Il tappo",
-      "title": "Il tappo\nfa il lavoro.",
-      "text": "Una camera asciutta e trasparente, sopra la bevanda. Vedi la tua dose prima di rilasciarla. Un pulsante da premere, una membrana che si apre.",
-      "spec": "Camera asciutta · Pulsante · Membrana"
+      "tab": "Il dosatore",
+      "title": "Il dosatore\nfa il lavoro.",
+      "text": "Un corpo trasparente: vedi la tua dose prima di rilasciarla. Un pulsante da spingere, una membrana che si apre, e la polvere cade nella tua bottiglia.",
+      "spec": "Corpo trasparente · Pulsante a vite · Membrana"
     },
     "c2": {
       "tab": "La dose",
-      "title": "Da 3 a 5 g.\nGià dosati.",
-      "text": "Creatina monoidrato, pronta nel tappo. Niente misurino, niente barattolo da aprire, niente dosi a occhio.",
-      "spec": "Creatina monoidrato · 3–5 g · Dose pronta"
+      "title": "La tua dose.\nGià regolata.",
+      "text": "Lo riempi a casa con la tua creatina. Degli anelli regolano la quantità: da 3 a 5 g, senza misurino in palestra.",
+      "spec": "Creatina monoidrato · 3–5 g · Anelli di dosaggio"
     },
     "c3": {
-      "tab": "La bevanda",
+      "tab": "La tua bottiglia",
       "title": "Asciutta\nfino al clic.",
-      "text": "La creatina è considerata più stabile in forma secca che in soluzione. Per questo aspetta nel tappo e raggiunge la bevanda solo quando premi.",
-      "spec": "Pronta da bere · Da portare · Senza shaker"
+      "text": "La creatina è considerata più stabile in forma secca che in soluzione. Per questo aspetta nel dosatore e raggiunge l'acqua solo quando premi.",
+      "spec": "Collo standard · Da portare · Senza shaker"
     },
     "c4": {
       "tab": "Per chi",
       "title": "Fatta per\nla palestra.",
-      "text": "Pesi, powerlifting, CrossFit: la bottiglia va nella borsa, la polvere non va dappertutto.",
+      "text": "Pesi, powerlifting, CrossFit: il dosatore va nella borsa, con il beccuccio agganciato, e la polvere non va dappertutto.",
       "spec": "Pesi · Powerlifting · CrossFit"
     }
   },
   "demo": {
     "kicker": "Imparare facendo",
     "title": "Non leggere.\nFallo.",
-    "intro": "Tre gesti, come con la bottiglia vera. Vai.",
+    "intro": "Tre gesti, come con il dosatore vero. Vai.",
     "stepsLabel": "Passaggi della demo",
     "reset": "Ricomincia",
     "s1": {
       "name": "Premi",
-      "title": "Premi il tappo.",
-      "text": "Tieni premuto il pulsante fino al clic: la membrana si apre e la creatina cade nella bevanda.",
+      "title": "Premi il pulsante.",
+      "text": "Tieni premuto il pulsante fino al clic: il pistone spinge la polvere, la membrana si apre e la creatina cade nella tua bottiglia.",
       "button": "Tieni premuto",
-      "hint": "Oppure tieni premuto il tappo direttamente sulla bottiglia.",
+      "hint": "Oppure tieni il dito sul dosatore, direttamente nella scena.",
       "gesture": "Tieni…"
     },
     "s2": {
@@ -95,13 +92,13 @@
     "s3": {
       "name": "Bevi",
       "title": "Bevi.",
-      "text": "La dose è nella bevanda. Tocca a te.",
+      "text": "Togli il dosatore: la dose è nella tua bottiglia. Tocca a te.",
       "button": "Bevi",
       "gesture": "Salute."
     },
     "done": {
       "title": "Fatto.\nZero shaker.",
-      "text": "Niente bustine, niente misurino, niente polvere in fondo alla borsa. Solo una bottiglia."
+      "text": "Niente bustine, niente misurino, niente polvere in fondo alla borsa. La tua bottiglia, il tuo dosatore, basta così."
     }
   },
   "why": {
@@ -109,15 +106,15 @@
     "title": "La polvere\nha il suo posto.\nAll'asciutto.",
     "p1": {
       "title": "Asciutta fino in fondo",
-      "text": "La creatina è generalmente considerata più stabile in polvere che una volta disciolta. Per questo resta nel tappo e la rilasci al momento di bere."
+      "text": "La creatina è generalmente considerata più stabile in polvere che una volta disciolta. Per questo resta nel dosatore e la rilasci al momento di bere."
     },
     "p2": {
-      "title": "Una dose fissa",
-      "text": "Da 3 a 5 g di creatina monoidrato, dosati in anticipo. Niente misurino, niente approssimazioni, niente barattoli in giro."
+      "title": "La tua dose, regolata",
+      "text": "Riempi il dosatore a casa, degli anelli regolano la dose. In palestra, niente da misurare."
     },
     "p3": {
       "title": "Né shaker, né bustine",
-      "text": "Niente da travasare, niente da lavare. Premi, agiti, bevi."
+      "text": "Nessuno shaker da lavare dopo l'allenamento. Lo metti, premi, agiti, bevi."
     },
     "who": {
       "title": "Per chi?",
@@ -127,22 +124,22 @@
       },
       "b": {
         "title": "Powerlifting",
-        "text": "Nessun barattolo da aprire in pedana. Il tappo ha già dosato."
+        "text": "Nessun barattolo da aprire in pedana. Il dosatore ha già dosato."
       },
       "c": {
         "title": "CrossFit",
-        "text": "Una bottiglia, un gesto. Niente polvere in giro per il box."
+        "text": "La tua bottiglia, un gesto. Niente polvere in giro per il box."
       }
     },
     "claim": {
       "title": "Indicazione sulla salute autorizzata (UE)",
       "text": "La creatina aumenta la prestazione fisica in caso di esercizi di alta intensità, brevi e ripetuti. L'effetto benefico si ottiene con l'assunzione giornaliera di 3 g di creatina.",
-      "note": "Prodotto in sviluppo: composizione, gusto e formato non sono definitivi. Da consumare nell'ambito di una dieta varia ed equilibrata e di uno stile di vita sano. Sconsigliato a bambini, adolescenti e donne in gravidanza o in allattamento. Non superare la dose giornaliera indicata."
+      "note": "Prodotto in sviluppo: il dosatore e il suo formato non sono definitivi. Da consumare nell'ambito di una dieta varia ed equilibrata e di uno stile di vita sano. Sconsigliato a bambini, adolescenti e donne in gravidanza o in allattamento. Non superare la dose giornaliera indicata."
     }
   },
   "final": {
-    "title": "La tua dose.\nNel tappo.",
-    "text": "Una bevanda pronta da bere, 3–5 g di creatina monoidrato all'asciutto, tre gesti."
+    "title": "La tua dose.\nNel dosatore.",
+    "text": "Un dosatore per la tua bottiglia, la creatina all'asciutto, tre gesti."
   },
   "bar": {
     "label": "Prezzo"

@@ -244,7 +244,7 @@ test('export des événements : en-tête correct, aucun e-mail', async () => {
   const lines = text.replace(/^﻿/, '').trim().split('\r\n');
   assert.equal(lines[0], 'ts,visitor_id,event,lang,price,price_mode,source,utm_source,utm_medium,utm_campaign');
   assert.equal(lines.length, 3); // page_vue + email_soumis
-  assert.match(lines[2], /,email_soumis,fr,\d\.\d\d,random,direct,,,$/);
+  assert.match(lines[2], /,email_soumis,fr,\d+\.\d\d,random,direct,,,$/);
   assert.ok(!text.includes('@'));
 });
 

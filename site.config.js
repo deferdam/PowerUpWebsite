@@ -15,16 +15,18 @@ export const BRAND_NAME = 'Dosé'; // nom définitif (novembre 2026), après UPK
 // "schedule" : le prix dépend de la date (heure de Paris), selon PRICE_SCHEDULE.
 export const PRICE_MODE = 'random';
 
-// Prix testés, en euros par bouteille.
-export const PRICES = [2.5, 3.5, 4.5];
+// Prix testés, en euros par dosette (l'objet réutilisable, sans la créatine).
+// Changés le 25/11/2026 (avant : 2,50 / 3,50 / 4,50 € par bouteille) : dans /admin, les
+// statistiques sont rangées par prix, donc les anciennes lignes restent à part.
+export const PRICES = [12, 17, 22];
 
 // Utilisé seulement si PRICE_MODE = "schedule".
 // Chaque ligne : à partir de cette date (incluse, heure de Paris), ce prix s'applique.
 // Avant la 1re date : 1er prix. Après la dernière : dernier prix. Les prix doivent figurer dans PRICES.
 export const PRICE_SCHEDULE = [
-  { from: '2026-11-16', price: 2.5 }, // semaine 1
-  { from: '2026-11-23', price: 3.5 }, // semaine 2
-  { from: '2026-11-30', price: 4.5 }, // semaine 3
+  { from: '2026-11-30', price: 12 }, // semaine 1
+  { from: '2026-12-07', price: 17 }, // semaine 2
+  { from: '2026-12-14', price: 22 }, // semaine 3
 ];
 
 export const CURRENCY = 'EUR';

@@ -9,8 +9,9 @@
 //  - la DOSETTE-STYLO, le produit, d'après la coupe d'assemblage v0.3 : bouton vissé,
 //    tige et piston, bagues de dose, corps transparent avec la poudre, membrane fendue,
 //    embout à collerette qui se pose sur le goulot
-//  - une bouteille quelconque (corps PET givré, LatheGeometry = profil qu'on fait tourner),
-//    sa boisson qui « vague » quand on secoue (petit shader) et son étiquette (<canvas>)
+//  - une bouteille quelconque, sans marque (corps PET givré, LatheGeometry = profil qu'on
+//    fait tourner) et son eau, qui « vague » quand on secoue (petit shader) : c'est la
+//    bouteille du visiteur, le produit est la dosette
 //  - poudre qui tombe = THREE.Points
 //  Intro (une fois) : la dosette seule en gros plan, puis elle tombe sur la bouteille.
 // =====================================================================
@@ -80,8 +81,8 @@ const ZONES = {
 const CHAPTERS = [
   { yaw: 0.6, tilt: 0.16, zoom: 1.55, focus: DOSE_MID - 0.2 }, // 01 la dosette, en entier
   { yaw: -0.85, tilt: 0.08, zoom: 2.0, focus: NECK_TOP + at(30) }, // 02 la dose : chambre, bagues, membrane
-  { yaw: 0, tilt: 0.02, zoom: 1.0, focus: CENTER_Y }, // 03 la boisson (étiquette de face)
-  { yaw: Math.PI, tilt: -0.04, zoom: 1.1, focus: 1.75 }, // 04 pour qui (dos de l'étiquette), objet entier
+  { yaw: 0, tilt: 0.02, zoom: 1.0, focus: CENTER_Y }, // 03 ta bouteille, objet entier
+  { yaw: Math.PI, tilt: -0.04, zoom: 1.1, focus: 1.75 }, // 04 pour qui : l'autre face, objet entier
 ];
 // Téléphone / tablette (< 1024 px, même seuil que le CSS) : objet un peu plus petit et
 // remonté dans le hero (la consigne « glisse pour tourner » est dessous), gros plans
@@ -104,7 +105,7 @@ const COLORS = {
   muted: '#8A8A85',
   graphite: '#141416',
   volt: '#D4FF3A',
-  liquid: new Color('#E3EE9A'),
+  liquid: new Color('#D3E4E0'), // eau, à peine teintée
   cloudy: new Color('#F2F1E6'),
 };
 
@@ -217,46 +218,6 @@ function fitText(ctx, text, x, y, maxWidth) {
   } else ctx.fillText(text, x, y);
 }
 
-/**
- * Étiquette tout autour de la bouteille. Le centre du canvas est face à la caméra
- * (marque + dose), les bords gauche/droit se rejoignent au dos (les sports).
- */
-function drawLabel(canvas, label) {
-  const ctx = canvas.getContext('2d');
-  const W = canvas.width;
-  const H = canvas.height;
-  const display = (size) => `900 ${Math.round(size)}px "Archivo", "Arial Narrow", Arial, sans-serif`;
-  const mono = (size, weight = 700) => `${weight} ${Math.round(size)}px "JetBrains Mono", ui-monospace, monospace`;
-  if ('fontStretch' in ctx) ctx.fontStretch = 'condensed';
-
-  ctx.fillStyle = COLORS.graphite;
-  ctx.fillRect(0, 0, W, H);
-  ctx.fillStyle = COLORS.volt;
-  ctx.fillRect(0, 0, W, H * 0.04);
-  ctx.fillStyle = 'rgba(238,235,227,0.16)';
-  ctx.fillRect(0, H * 0.955, W, H * 0.045);
-  ctx.textAlign = 'center';
-  ctx.textBaseline = 'middle';
-
-  // Face avant : la marque en très grand, la dose en dessous
-  ctx.fillStyle = COLORS.chalk;
-  ctx.font = display(H * 0.5);
-  // 22 % du tour (~80°) : au-delà, les lettres du bord fuient sur le côté de la bouteille.
-  fitText(ctx, label.brand.toUpperCase(), W / 2, H * 0.42, W * 0.22);
-  ctx.fillStyle = COLORS.volt;
-  ctx.font = mono(H * 0.085);
-  fitText(ctx, (label.labelDose || '').toUpperCase(), W / 2, H * 0.78, W * 0.3);
-
-  // Côtés : petites mentions techniques
-  ctx.fillStyle = COLORS.muted;
-  ctx.font = mono(H * 0.06, 400);
-  for (const x of [W * 0.24, W * 0.76]) fitText(ctx, (label.labelMeta || '').toUpperCase(), x, H * 0.5, W * 0.12);
-
-  // Dos : les sports, à cheval sur la couture (dessiné aux deux bords)
-  ctx.fillStyle = COLORS.chalk;
-  ctx.font = display(H * 0.2);
-  for (const x of [0, W]) fitText(ctx, (label.labelSports || '').toUpperCase(), x, H * 0.5, W * 0.34);
-}
 
 // =====================================================================
 
@@ -354,9 +315,9 @@ export async function createStage({ canvas, zones, reducedMotion = false, intro 
       color: COLORS.liquid.clone(),
       roughness: 0.1,
       transparent: true,
-      opacity: 0.8,
+      opacity: 0.55,
       clearcoat: 0.6,
-      emissive: '#3a4400',
+      emissive: '#1d2b28',
       emissiveIntensity: 0.35,
       depthWrite: false,
     }),
@@ -376,20 +337,6 @@ export async function createStage({ canvas, zones, reducedMotion = false, intro 
   liquid.renderOrder = 1;
   bottle.add(liquid);
 
-  // Étiquette (centre du canvas = face avant, grâce à thetaStart = -π)
-  const labelCanvas = makeCanvas(mobile ? 1024 : 2048, mobile ? 152 : 304);
-  drawLabel(labelCanvas, label);
-  const labelTex = keep(new CanvasTexture(labelCanvas));
-  labelTex.colorSpace = SRGBColorSpace;
-  labelTex.anisotropy = Math.min(8, renderer.capabilities.getMaxAnisotropy());
-  const labelMesh = new Mesh(
-    keep(new CylinderGeometry(0.508, 0.508, 0.46, seg, 1, true, -Math.PI, Math.PI * 2)),
-    // transparent : l'étiquette apparaît en fondu avec la bouteille pendant l'intro
-    keep(new MeshStandardMaterial({ map: labelTex, roughness: 0.55, metalness: 0.05, transparent: true })),
-  );
-  const labelMat = labelMesh.material;
-  labelMesh.position.y = 1.21;
-  bottle.add(labelMesh);
   // On redessine quand les polices du site sont prêtes (sinon police système en attendant)
   if (document.fonts && document.fonts.ready) {
     Promise.all([
@@ -399,8 +346,6 @@ export async function createStage({ canvas, zones, reducedMotion = false, intro 
       .catch(() => {})
       .then(() => document.fonts.ready)
       .then(() => {
-        drawLabel(labelCanvas, label);
-        labelTex.needsUpdate = true;
         drawKnob(knobCanvas, label);
         knobTex.needsUpdate = true;
       });
@@ -972,9 +917,7 @@ export async function createStage({ canvas, zones, reducedMotion = false, intro 
     bottle.visible = bottleVis > 0.002;
     bottle.position.y = -CENTER_Y - 0.3 * (1 - bottleVis);
     glassMat.opacity = 0.3 * bottleVis;
-    liquidMat.opacity = 0.8 * bottleVis;
-    labelMat.opacity = bottleVis;
-    labelMat.depthWrite = bottleVis > 0.999; // pendant le fondu, ne cache pas la boisson
+    liquidMat.opacity = 0.55 * bottleVis;
     neckRingMat.opacity = 0.55 * bottleVis;
 
     // Dosette : chute de l'intro, puis (pour boire) retirée et posée à côté de la bouteille

@@ -40,7 +40,13 @@ function boot() {
 /** Affiche le prix du visiteur (même calcul que le serveur). */
 function showPrice() {
   const { priceCents } = priceFor(config, getVisitorId());
-  const text = new Intl.NumberFormat(lang(), { style: 'currency', currency: config.CURRENCY }).format(priceCents / 100);
+  const whole = priceCents % 100 === 0; // « 12 € » plutôt que « 12,00 € »
+  const text = new Intl.NumberFormat(lang(), {
+    style: 'currency',
+    currency: config.CURRENCY,
+    minimumFractionDigits: whole ? 0 : 2,
+    maximumFractionDigits: whole ? 0 : 2,
+  }).format(priceCents / 100);
   for (const el of document.querySelectorAll('[data-price]')) el.textContent = text;
   return priceCents;
 }

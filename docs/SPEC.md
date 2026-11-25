@@ -1,6 +1,6 @@
 # Spécification technique (contrat commun)
 
-Site « fake door test » pour un projet étudiant ESCP. Il mesure l'intention d'achat d'une boisson prête à boire dont le bouchon contient 3 à 5 g de créatine stockée au sec : on appuie sur le bouchon, la poudre tombe, on secoue, on boit. Le site ne vend rien, n'encaisse rien et ne trompe personne.
+Site « fake door test » pour un projet étudiant ESCP. Il mesure l'intention d'achat d'une dosette-stylo rechargeable (prix testé par dosette) : remplie de 3 à 5 g de créatine à la maison, elle garde la poudre au sec ; à la salle, on la pose sur le goulot de sa bouteille, on pousse le bouton, la poudre tombe, on secoue, on boit. (Concept initial, abandonné le 25/11/2026 : une boisson prête à boire avec la créatine dans le bouchon.) Le site ne vend rien, n'encaisse rien et ne trompe personne.
 
 Déjà écrits (ne pas réécrire sans raison, mais tu peux corriger un bug) : `package.json`, `site.config.js`, `src/shared/pricing.js`, `src/shared/constants.js`, `vercel.json`, `.gitignore`, `.env.example`. Les dépendances sont déjà installées, **ne lance pas `npm install`** : `@libsql/client` (runtime), `three`, `esbuild`, `@fontsource-variable/archivo`, `@fontsource/jetbrains-mono` (dev). Node 24, ESM partout (`"type": "module"`). **Aucune autre dépendance.**
 

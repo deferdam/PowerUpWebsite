@@ -30,7 +30,7 @@ Décisions prises après le cahier des charges :
 **INTERDIT** : fausse rupture de stock, faux compte à rebours, fausse rareté, collecte bancaire ou d'adresse postale, case pré-cochée.
 
 ## Test de prix
-- Prix par défaut : [2.50, 3.50, 4.50] € la bouteille.
+- Prix par défaut : [2.50, 3.50, 4.50] € la bouteille. **Mis à jour le 25/11/2026** : le produit devient une dosette rechargeable, prix testés [12, 17, 22] € la dosette.
 - `PRICE_MODE` peut valoir :
   - `random` : attribution uniforme à la première visite, mémorisée par `localStorage` et un identifiant anonyme ;
   - `schedule` : prix fixé par date, selon un calendrier.

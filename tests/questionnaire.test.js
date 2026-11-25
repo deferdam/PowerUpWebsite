@@ -20,6 +20,12 @@ test('choisit la version de la langue et ajoute les champs cachés', () => {
   assert.equal(en.searchParams.get('src'), 'site_direct');
 });
 
+test('prix rond : écrit sans décimales, comme sur le site', () => {
+  const fr = new URL(questionnaireUrl(BASE, { lang: 'fr', priceCents: 1700 }));
+  assert.equal(fr.searchParams.get('p'), '17');
+  assert.equal(fr.searchParams.get('arm'), '1700');
+});
+
 test('format italien et URL unique pour toutes les langues', () => {
   const it = new URL(questionnaireUrl('https://tally.so/r/ALL', { lang: 'it', priceCents: 450 }));
   assert.equal(it.pathname, '/r/ALL');
